@@ -1,0 +1,144 @@
+.reachOutDiv1 {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-family: verdana;
+    background-color: #eeeeee;
+}
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+[class*="col-"] {
+	float: left;
+	padding: 15px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+html {
+	font-family: vadana;
+}
+
+#clientNames {
+	 background-color: transparent;
+}
+
+#clientNames li {
+     margin: 10px;
+     padding: 10px;
+     width: 80%;
+     background-color: white;
+     list-style-type: none;
+     margin-left: 15%;
+     border-radius: 5px;
+     cursor: pointer;
+}
+
+#clientNames li:hover {
+	background-color: #eeeeee;
+}
+
+#clientNames ul {
+	 background-color: transparent;
+}
+
+#clientNames li:first-child {
+     margin-top: 100px;
+     background-color: lightgreen;
+     color: black;
+     font-weight: bold;
+}
+
+#chatSection {
+	margin-top: 40px;
+	background-color: transparent;
+}
+
+#textInput {
+	position: relative;
+	bottom: 0px;
+	width: 90%;
+	padding: 20px;
+	background-color: white;
+	border: 1px solid lightgreen;
+	margin-left: 5%;
+	border-radius: 5px;
+	font-size: 17px;
+	margin-top: 40px;
+	margin-top: 528px;
+}
+
+#Time {
+	margin-top: 40px;
+	background-color: transparent;
+}
+
+#Time p {
+	padding: 32%;
+	/*max-width: 80%;*/
+	margin-right: 20%;
+	background-color: white;
+	font-size: 1em;
+	background-color: lightgreen;
+	border-radius: 50%;
+	border: 10px solid yellow;
+}
+
+#connectionButton  {
+	padding: 10px;
+	background-color: #110033;
+	color: white;
+	margin-left: 10%;
+	border: none;
+	border: 1px solid yellow;
+	border-radius: 5px;
+}
+
+#connectionButton:hover  {
+
+	background-color: lightgreen;
+	color: black;
+
+}
+
+#mainRow1 {
+   -webkit-animation-name: zoom;
+   -webkit-animation-duration: 0.1s;
+   animation-name: zoom;
+   animation-duration: 0.1s;
+   background-color: transparent;
+}
+
+.modal2 {
+	/*display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+@keyframes zoom {
+	from {transform: scale(0)}
+	to {transform: scale(1)}
+}
+
+@-webkit-keyframes zoom {
+	from {-webkit-transform: scale(0)}
+	to {-webkit-transform: scale(1)}
+}

@@ -1,0 +1,74 @@
+.parentForRateCover {
+	z-index: 5; 
+	top: 0px; 
+	width: 100%;
+	position: fixed; 
+	background-color: none;
+    display: none;
+}
+
+.enableScroll {
+	 overflow-x: hidden;
+     overflow-y: scroll;
+     max-height: 800px;
+     padding-bottom: 200px;
+     background-color: rgba(0,0,0,0.1);
+}
+.parentForRate {
+	padding-top: 20px; 
+	padding-bottom: 20px; 
+	width: 100%; 
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+}
+
+.flexContainerRating {
+	margin-left: 25%; 
+	background-color: white;  
+	width: 50%; 
+	display: flex; 
+	flex-wrap: nowrap;
+}
+
+.imgDiv {
+	width: 30%; 
+	margin-left: 7%;
+	background-color: white;
+}
+
+.imgDiv img {
+	width: 80%;
+	float: right;
+}
+
+.discDiv {
+	width: 30%;
+	background-color: white;
+}
+
+.virInputRate {
+	width: 100%; 
+	margin-top: 25%; 
+	text-align: center;
+	background-color: white;
+}
+
+.rateDiv {
+	width: 30%;
+	background-color: white;
+}
+
+.numberInputRate {
+	float: right; 
+	padding: 10px; 
+	margin-top: 25%; 
+	border-radius: 5px; 
+	border: 1px solid black; 
+	margin-right: 50%;
+	background-color: white;
+}
+
+
+
+
+

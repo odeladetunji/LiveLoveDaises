@@ -1,0 +1,340 @@
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-family: verdana;
+
+}
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+[class*="col-"] {
+	float: left;
+	padding: 15px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+html {
+	font-family: vadana;
+}
+#upmostHeader  {
+	position: fixed;
+	z-index: 2;
+	background-color: white;
+	width: 100%;
+	top: 0px;
+	border-bottom: 1px solid #110033;
+	/*display: none;*/
+}
+
+#upmostHeaderButton1 {
+
+	background-color: #183148;
+	padding: 4px;
+	padding-left: 25px;
+	padding-right: 25px;
+	color: white;
+	border-radius: 5px;
+	float: right;
+	right: 10px;
+	border: 1px solid orange;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	display: inline;
+
+}
+
+#upmostHeaderButton2 {
+	position: fixed;
+	background-color: #183148;
+	padding: 4px;
+	padding-left: 25px;
+	padding-right: 25px;
+	color: white;
+	border-radius: 5px;
+	float: right;
+	right: 120px;
+	border: 1px solid orange;
+	margin-top: 8px;
+	display: inline;
+
+}
+#upmostHeaderButton3 {
+	position: fixed;
+	background-color: #183148;
+	padding: 4px;
+	padding-left: 25px;
+	padding-right: 25px;
+	color: white;
+	border-radius: 5px;
+	float: right;
+	right: 120px;
+	border: 1px solid orange;
+	margin-top: 8px;
+	display: inline;
+
+}
+
+#upmostHeaderButton3, #upmostHeaderButton1, #upmostHeaderButton2 {
+	display: inline;
+}
+
+#upmostHeaderButton2:hover, #upmostHeaderButton1:hover {
+	background-color: green;
+
+}
+
+#outerDiv {
+	background-color: #eeeeee;
+
+}
+
+#Daisesp {
+	position: relative;
+	top: 50px !important;
+	padding-left: 3%;
+
+
+}
+
+#Daisesp p:hover {
+	background-color: green;
+}
+
+#Daisesp p {
+	background-color: #134d5a;
+	width: 10%;
+	padding: 5px;
+	padding-left: 10px;
+	color: white;
+	cursor: pointer;
+	border: 1px solid orange;
+	border-radius: 5px;
+}
+
+#belovedSaviourProfessionalDiv {
+	position: relative;
+	top: 50px;
+
+}
+#belovedId {
+	background-color: red;
+	color: white;
+	cursor: pointer;
+}
+#belovedId:hover {
+	background-color: green;
+	border-right: 10px solid orange;
+}
+
+#saviourId {
+	background-color: #183148;
+	color: white;
+	cursor: pointer;
+}
+
+#saviourId:hover {
+	background-color: green;
+	border-right: 10px solid orange;
+}
+
+#professionalId {
+	background-color: green;
+	color: white;
+	cursor: pointer;
+}
+
+#professionalId:hover {
+	background-color: lightgreen;
+	border-right: 10px solid orange;
+}
+
+#midSection  {
+	margin-top: 80px;
+   /* display: none;*/
+}
+
+#belovedSaviourProfessionalDivOuter {
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-top-right-radius: 50px;
+}
+
+#saviourHint {
+	position: relative;
+	top: 60px;
+	padding: 15px;
+	background-color: #75b8b1;
+	color: white;
+}
+#saviourHint1 {
+	position: relative;
+	top: 60px;
+	padding: 15px;
+	background-color: #75b8b1;
+	color: white;
+}
+#saviourHint2 {
+	position: relative;
+	top: 60px;
+	padding: 15px;
+	background-color: #75b8b1;
+	color: white;
+}
+
+#daisesTag {
+	/*position: relative;*/
+	width: 100%;
+	/*margin-top: 10px;*/
+	padding: 10px;
+}
+#daisesTag2 {
+	/*position: relative;*/
+	width: 100%;
+	/*margin-top: 10px;*/
+	padding: 10px;
+}
+#daisesTag1 {
+	/*position: relative;*/
+	width: 100%;
+	/*margin-top: 10px;*/
+	padding: 10px;
+}
+#daisesMessage {
+	/*position: relative;*/
+	width: 80%;
+	margin-right: 20%;
+	height: 50px;
+	/*margin-top: 10px;*/
+	padding: 10px;
+	border-radius: 5px;
+
+}
+#daisesMessage2 {
+	/*position: relative;*/
+	width: 80%;
+	margin-right: 20%;
+	height: 50px;
+	/*margin-top: 10px;*/
+	padding: 10px;
+	border-radius: 5px;
+
+}
+#daisesMessage1 {
+	/*position: relative;*/
+	width: 80%;
+	margin-right: 20%;
+	height: 50px;
+	/*margin-top: 10px;*/
+	padding: 10px;
+	border-radius: 5px;
+
+}
+
+#BelovedD {
+	/*margin-top: 280px;*/
+}
+
+#moreButton {
+	padding: 7px;
+	background-color: #183148;
+	color: white;
+	border-radius: 5px;
+	border: 1px solid orange;
+	margin-left: 1.5%;
+	text-align: center;
+}
+#nextButton {
+	padding: 7px;
+	background-color: #183148;
+	color: white;
+	border-radius: 5px;
+	border: 1px solid orange;
+	margin-left: 1.5%;
+	width: 30%;
+	text-align: center;
+	cursor: pointer;
+}
+
+#nextButton1 {
+	padding: 7px;
+	background-color: #183148;
+	color: white;
+	border-radius: 5px;
+	border: 1px solid orange;
+	margin-left: 1.5%;
+	width: 30%;
+	text-align: center;
+	cursor: pointer;
+}
+
+#DaisesAndTag {
+	margin-top: 0px;
+	color: #110033;
+}
+
+#YourId {
+	margin-top: 60px;
+	color: #110033;
+}
+#footermain {
+	position: relative;
+	top: 320px;
+}
+#footer ul li {
+	background-color: #110033;
+	list-style-type: none;
+	color: white;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#footer ul li:hover {
+	color: orange;
+}
+
+#footer {
+	background-color: #110033;
+	position: relative;
+	padding-top: 90px;
+}
+
+#footer {
+	padding: 70px;
+}
+
+#footermain {
+
+	height: auto;
+	clear: both;
+	margin: auto;
+	margin-top: 90px;
+}
+#lastDivSection {
+  position: relative;
+  bottom: 0px;
+  top: 300px;
+  background-color: #183148;
+}
+#lastDivSection p {
+  text-align: center;
+  padding: 20px;
+  color: orange;
+  background-color: #183148;
+}
+
+.yourId {
+	margin-top: 60px;
+}

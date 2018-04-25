@@ -1,0 +1,34 @@
+#modalContainer7 {
+   -webkit-animation-name: zoom;
+   -webkit-animation-duration: 1s;
+   animation-name: zoom;
+   animation-duration: 1s;
+   background-color: transparent;
+}
+#modal7 {
+  /*display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+@keyframes zoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+#modalContainer7 {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 100px;
+}

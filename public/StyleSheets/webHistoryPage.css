@@ -1,0 +1,28 @@
+#webHistoryPage {
+ position: fixed;
+ margin-top: 120px;
+ margin-left: 12%;
+ padding: 10px;
+ color: white;
+ background-color: #110033;
+ z-index: 4;
+}
+.SearchHint{
+   width: 50%;
+   z-index: 100; 
+   top: 90px; 
+   left: 47.5%; 
+   position: fixed;
+ }
+ .SearchHintp{
+    background-color: #183148; 
+    padding: 4px; 
+    border: 0.2px solid #f1f1f1;
+    color: white;
+    padding-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;
+ }
+

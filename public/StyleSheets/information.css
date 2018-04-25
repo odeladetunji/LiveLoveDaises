@@ -1,0 +1,184 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    font-family: verdana;
+    background-color: #eeeeee;
+}
+
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+#upmostHeader  {
+  position: fixed;
+  z-index: 1;
+  background-color: white;
+  width: 100%;
+  top: 0px;
+  /*display: none;*/
+}
+
+#upmostHeaderButton1 {
+
+  background-color: #183148;
+  padding: 4px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  border-radius: 5px;
+  float: right;
+  right: 10px;
+  border: 1px solid orange;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  display: inline;
+
+}
+
+#upmostHeaderButton2 {
+  position: fixed;
+  background-color: #183148;
+  padding: 4px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  border-radius: 5px;
+  float: right;
+  right: 120px;
+  border: 1px solid orange;
+  margin-top: 8px;
+  display: inline;
+
+}
+#upmostHeaderButton3 {
+  position: fixed;
+  background-color: #183148;
+  padding: 4px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  border-radius: 5px;
+  float: right;
+  right: 120px;
+  border: 1px solid orange;
+  margin-top: 8px;
+  display: inline;
+
+}
+
+#upmostHeaderButton3, #upmostHeaderButton1, #upmostHeaderButton2 {
+  display: inline;
+}
+
+#upmostHeaderButton2:hover, #upmostHeaderButton1:hover {
+  background-color: green;
+
+}
+
+
+form input {
+  width: 100%;
+  padding: 17px;
+  margin-bottom: 5px;
+  background-color: white;
+  border: none;
+  border-bottom: 0.1px solid #eeeeee;
+}
+
+#formSection  {
+      padding: 50px;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-top: 150px;
+      border-top-right-radius: 50px;
+
+}
+
+form {
+  background-color: white;
+}
+
+#formSection1 {
+
+}
+
+form button {
+  padding: 8px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
+ /* width: 100%;*/
+  background-color: #183148;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+#tintinati {
+
+}
+
+#tintinati2 {
+  }
+ #footer ul li {
+  background-color: #110033;
+  list-style-type: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+ }
+
+ #footer ul li:hover {
+  color: orange;
+ }
+
+#footer {
+  background-color: #110033;
+  position: relative;
+  padding-top: 90px;
+}
+
+#footer {
+  padding: 70px;
+}
+
+#footermain {
+
+  height: auto;
+  clear: both;
+  margin: auto;
+  margin-top: 90px;
+}
+
+
+#lastDivSection {
+  position: relative;
+    bottom: 0px;
+    background-color: #183148;
+}
+
+#lastDivSection p {
+  text-align: center;
+  padding: 20px;
+  color: orange;
+  background-color: #183148;
+}

@@ -1,0 +1,1413 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: verdana;
+
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%; padding: 0px;}
+.col-3 {width: 25%; padding: 0px;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+html {
+  font-family: vadana;
+  background-color: #f1f1f1;
+}
+
+/* header section */
+.leftnav a {
+  text-decoration: none;
+  color: black;
+}
+header {
+  position: fixed;
+  background-color: white;
+  color: #ffffff;
+  width: 100%;
+  padding: 5px;
+  z-index: 2;
+  top: 40px;
+  border-bottom: 1px solid #110033;
+}
+
+.search {
+  width: 15%;
+  height: 30px;
+  float: right;
+  padding: 5px;
+  padding-left: 15px;
+  color: black;
+  /*border-radius: 5px;*/
+  border-style: none;
+  margin-left: 30px;
+  border: 1px solid green;
+  cursor: pointer;
+}
+.search1 {
+  width: 35%;
+  height: 30px;
+  float: right;
+  padding: 5px;
+  padding-left: 15px;
+  color: black;
+  border-radius: 5px;
+  border-style: none;
+  margin-left: 30px;
+  border: 1px solid green;
+  cursor: pointer;
+}
+#toggleDaises {
+  width: 15%;
+  height: 30px;
+  float: right;
+  padding: 5px;
+  padding-left: 15px;
+  color: black;
+  border-radius: 5px;
+  border-style: none;
+  margin-left: 30px;
+  cursor: pointer;
+  background-color: #110033;
+  color: white;
+  text-decoration: none;
+}
+
+.search3 {
+  width: 15%;
+  height: 30px;
+  float: right;
+  padding: 5px;
+  padding-left: 15px;
+  color: black;
+  border-radius: 5px;
+  border-style: none;
+  margin-left: 30px;
+  cursor: pointer;
+  background-color: #110033;
+  color: white;
+  text-decoration: none;
+}
+#search1 {
+  width: 20%;
+  height: 30px;
+  float: right;
+  padding: 5px;
+  padding-left: 15px;
+  color: black;
+  border-radius: 5px;
+  border: 1px solid green;
+  cursor: pointer;
+}
+
+header ul{
+  list-style-type: none;
+}
+
+header ul li {
+  float: left;
+}
+
+header ul li:first-child {
+  width: 100%;
+}
+header li {
+  list-style-type: none;
+}
+
+.leftnav {
+  background-color: white;
+  width: 17%;
+  position: fixed;
+  top: 148px;
+  left: 0px;
+  margin-left: 1%;
+  padding: 0px;
+  z-index: 3;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+
+.leftnav ul {
+  background-color: white;
+  list-style-type: none;
+  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+
+.leftnav li {
+  color: black;
+  padding: 3px;
+  padding-left:  10px;
+  background-color: white;
+}
+
+.leftnav li:last-child {
+ /* margin-bottom: 31px;*/
+}
+
+.leftnav li:hover {
+  color: green;
+  cursor: pointer;
+}
+
+i {
+  padding-right: 10px;
+  font-size: 25px;
+}
+
+.leftnav li:first-child {
+  font-weight: bold;
+  font-size: 14px;
+ /* padding-top: 20px;*/
+}
+
+.leftnav li:first-child:hover {
+  font-weight: bold;
+  font-size: 14px;
+}
+.leftnav li:nth-child(11) {
+  padding-bottom: 20px;
+}
+
+
+/* midsection  */
+
+.midsection {
+  position: relative;
+  top: 140px;
+  left: 17%;
+  background-color: #f1f1f1;
+  padding: 0px;
+  margin-right: 0px;
+}
+
+.enterDaises {
+  /*border-top-right-radius: 50px;*/
+  background-color: white;
+  max-width: 80%;
+  padding: 1px;
+  margin-left: 10%;
+  /*margin-top: 10px;*/
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#DaisesInput{
+    width: 100%;
+    height: 70px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    padding: 10px;
+    cursor: pointer;
+}
+#DaisesInput1{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid grey;
+    padding: 10px;
+    cursor: pointer;
+}
+#imageFile{
+    background-color: white;
+
+}
+#textInputPicture{
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 15px;
+  border-radius: 50%;
+}
+
+#textInputPicture2{
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 15px;
+  border-radius: 50%;
+}
+#textInputPicture1{
+  width: 50%;
+  margin-left: 35%;
+  margin-top: 15px;
+ 
+}
+
+#selectionDaises select {
+   width: 100%;
+   padding: 4px;
+   border-radius: 5px;
+   cursor: pointer;
+}
+#selectionDaises select > option {
+  cursor: pointer;
+  padding: 4px;
+}
+ #labelForImage {
+  float: right;
+}
+#videoFile{
+   background-color: white;
+}
+.daisesFormLabel{
+  padding:3px 10px;
+  background-color: white;
+  border: 1px solid green;
+  border-radius: 5px;
+  cursor: pointer;
+  /*float:right;*/
+}
+#postButton{
+     background-color: green;
+     color: white;
+     border-radius: 5px;
+     float: right;
+     padding: 7px;
+     border: none;
+     cursor: pointer;
+     width: 100%;
+}
+#selectionDaises{
+  background-color: white;
+  border-radius: 5px;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.inputFile {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#hiddenInput{
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+#hiddenInput2{
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+
+#enterDaisesForm, #pictureinform {
+  width: 40%;
+  background-color: white;
+  margin-top: 100px;
+  margin-left: 30%;
+}
+
+#pictureinform {
+  background-color: transparent;
+  margin-left: 25%;
+}
+
+#connectingForm {
+  width: 40%;
+  background-color: white;
+  margin-top: 100px;
+  margin-left: 30%;
+  border-radius: 8px;
+}
+
+#taggingForm {
+  width: 40%;
+  background-color: white;
+  margin-top: 100px;
+  margin-left: 30%;
+  border-radius: 8px;
+}
+
+
+#connectingFormMyform {
+  width: 40%;
+  background-color: white;
+  margin-top: 100px;
+  margin-left: 30%;
+  border-radius: 8px;
+}
+
+#videoFormMyform {
+  display: block;
+  width: 40%;
+  background-color: white;
+  margin-top: 100px;
+  margin-left: 30%;
+  border-radius: 8px;
+}
+
+#taggingWasFormMyform {
+  width: 40%;
+  background-color: lightgreen;
+  margin-top: 100px;
+  margin-left: 30%;
+  border-radius: 8px;
+}
+#connectionFormMyformRejection {
+  width: 40%;
+  background-color: white;
+  margin-top: 100px;
+  margin-left: 30%;
+  border-radius: 8px;
+}
+
+#connectingP{
+    width: 100%;
+    border-radius: 5px;
+   /* border: 1px solid grey;*/
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    background-color: lightgreen;
+  /*  color: white;*/
+    font-size: 16px;
+    cursor: pointer;
+}
+#connectingPicture{
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 15px;
+  border-radius: 50%;
+}
+
+#connectButton{
+     font-size: 14px;
+     background-color: green;
+     color: white;
+     border-radius: 5px;
+     float: right;
+     padding: 5px;
+     padding-bottom: 7px;
+     text-align: center;
+     border: none;
+     cursor: pointer;
+     width: 30%;
+}
+
+#taggingconnectButton{
+     font-size: 14px;
+     background-color: green;
+     color: white;
+     border-radius: 5px;
+     float: right;
+     padding: 5px;
+     padding-bottom: 5px;
+     text-align: center;
+     border: none;
+     cursor: pointer;
+     width: 20%;
+}
+#connectButton2{
+     background-color: green;
+     color: white;
+     border-radius: 5px;
+     float: right;
+     padding: 7px;
+     border: none;
+     cursor: pointer;
+     width: 100%;
+}
+#taggingconnectButton{
+     background-color: green;
+     color: white;
+     border-radius: 5px;
+     float: right;
+     padding: 5px;
+     border: none;
+     cursor: pointer;
+     width: 100%;
+}
+#ajaxSection {
+  border-top-right-radius: 50px;
+  background-color: white;
+  max-width: 80%;
+  padding: 1px;
+  margin-left: 10%;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+#ajaxSection #caption {
+  width: 95%;
+  margin-left: 2.5%;
+}
+#caption1 {
+ width: 95%;
+ margin-left: 2.5%;
+ padding-top: 3px;
+ /*font-weight: bold;*/
+}
+#caption {
+  padding-top: 10px;
+}
+/* use this div as wrapper for uploads */
+
+#innerAjaxDiv {
+  width: 95%;
+  /*border: 1px solid grey;*/
+  margin-left: 2.5%;
+}
+
+
+/* ends here!  */
+
+#innerAjaxDiv1 p {
+  width: 95%;
+  position: relative;
+  bottom: 5px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  margin-left: 2.5%;
+  margin-bottom: 0px;
+  margin-top: 5px;
+  border-bottom: 1px solid grey;
+}
+
+hr {
+  margin-top: 5px;
+  width: 80%;
+  margin-left: 2.5%;
+
+}
+
+#reviews {
+ color: white;
+ float: right;
+ margin-left: 80%;
+ cursor: pointer;
+}
+
+#reviews:hover {
+  color: #110033;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#secondrule {
+  margin-bottom: 2px;
+  width: 95%;
+
+}
+
+#sharelikeComment p {
+  display: inline;
+  float: left;
+  background-color: white;
+  color:black;
+}
+
+#sharelikeComment p:first-child {
+  margin-left: 0%;
+}
+
+#sharelikeComment {
+  margin-bottom: 10px;
+  background-color: white;
+  padding-bottom: 30px;
+}
+
+#sharelikeComment p i:fist-child {
+  margin-left: 10px;
+}
+
+#sharelikeComment p:hover {
+  color: #110033;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#sharelikeComment p i:hover {
+  color: #110033;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.glyphicon {
+  position: relative;
+  left: 25px;
+  font-size: 18px;
+  background-color: transparent;
+
+}
+
+#loadbutton {
+  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-left: 10%;
+  padding: 5px;
+  text-align: center;
+  background-color: #110033;
+  color: white;
+  border: 1px solid orange;
+  border-radius: 5px;
+}
+
+
+.advert {
+  position: fixed;
+  right: 0px;
+  top: 150px;
+  background-color: white;
+  height: 700px;
+  /*border-left: 1px solid #110033;
+  border-top: 1px solid #110033;*/
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  /*display: none;*/
+}
+/* styling for personal menus starts here!*/
+
+#menu {
+  border-left: 20px solid white;
+  position: fixed;
+  top: 0px;
+  z-index: 3;
+  left: 70px;
+  width: 20%;
+  background-color: #110033;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+#menu ul{
+  list-style-type: none;
+}
+
+#menu ul li {
+
+  background-color: #110033;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  color: white;
+}
+
+#menu ul li:hover {
+  font-size: 20px;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+
+#menu ul li:first-child {
+  font-weight: bold;
+  color: orange;
+
+}
+
+/* styling of the footer starts here   */
+
+  /* I am using on style sheet for production in order to
+  lessen the time of testing */
+
+  footer {
+
+    background-color: #110033;
+    border-left: 3px solid #110033;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: column;
+    align-items: column;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: -webkit-center;
+    justify-content: center;
+    -webkit-justify-content: -webkit-space-around;
+    justify-content: space-around;
+    padding: 10px;
+    padding-top: 40px;
+    width: 82%;
+    margin-top: 80px;
+    margin-left: 9%;
+
+
+  }
+
+  .foot {
+    width: 20%;
+    background-color: #110033;
+
+  }
+
+  .foot ul {
+    list-style-type: none;
+  }
+
+
+  footer div ul li {
+    padding: 5px;
+    color: white;
+    background-color: #110033;
+  }
+
+  footer div ul li:hover {
+    padding: 5px;
+    color: orange !important;
+    background-color: #110033;
+  }
+
+  #topImageAjax1 {
+    width: 55%;
+    margin-left: 10%;
+    margin-top: 5px;
+  }
+  #AjaxImage{
+    width: 40%;
+    border-radius: 50%;
+    margin-left: 15px;
+    margin-top: 5px;
+  }
+ 
+  #circleTipris1, #circleTipris {
+    display: inline;
+    float: right;
+  }
+  #circleTipris1 {
+    margin-left: 5px;
+    color: white;
+    background-color: green;
+    padding: 6px;
+    border-radius: 50px;
+    border: 4px solid orange;
+    cursor: pointer;
+  }
+
+  #circleTipris {
+    color: white;
+    background-color: green;
+    padding: 6px;
+    border-radius: 50px;
+    border: 4px solid orange;
+    cursor: pointer;
+  }
+.rateValue p:first-child, .rateValue p:nth-child(2) {
+    display: inline;
+    float: right;
+    width: 50px;
+   /* padding-left: 8px;*/
+}
+
+.rateValue p:nth-child(2){
+    margin-left: 5px;
+    color: white;
+    background-color: green;
+    padding: 12px;
+    border-radius: 50px;
+    border: 4px solid orange;
+    cursor: pointer;
+}
+
+.rateValue p:first-child {
+  margin-left: 5px;
+  color: white;
+  background-color: green;
+  padding: 12px;
+  border-radius: 50px;
+  border: 4px solid orange;
+  cursor: pointer;
+}
+  #upmostHeader  {
+    position: fixed;
+    z-index: 2;
+    background-color: white;
+    width: 100%;
+    top: 0px;
+  }
+
+  #upmostHeader a {
+    text-decoration: none;
+  }
+
+  #upmostHeaderButton1 {
+
+    background-color: #183148;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    border-radius: 5px;
+    float: right;
+    right: 2px;
+    border: 1px solid orange;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 5px;
+    display: inline;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  #upmostHeaderButton2 {
+    position: fixed;
+    background-color: #183148;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    border-radius: 5px;
+    float: right;
+    right: 80px;
+    border: 1px solid orange;
+    margin-top: 8px;
+    display: inline;
+    font-size: 12px;
+    cursor: pointer;
+
+  }
+
+
+  #upmostHeaderButton2:hover, #upmostHeaderButton1:hover {
+    background-color: green;
+
+  }
+
+  #daiseOutterDiv {
+    position: fixed;
+    top: 10px;
+    z-index: 2;
+    left: 38%;
+    width: 20%;
+    display: none;
+  }
+
+  #daiseOutterDiv ul li {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 30px;
+    background-color: #183148!important;
+    width: 100%;
+    color: white;
+    list-style-type: none;
+    cursor: pointer;
+
+  }
+
+  #daiseOutterDiv ul li:hover {
+    color: orange!important;
+  }
+
+  #daiseOutterDiv ul li:first-child {
+    border-bottom: 3px solid lightblue;
+    color: white;
+  }
+  #daiseOutterDiv ul li:first-child:hover {
+
+    color: white!important;
+  }
+  #homePage {
+    position: fixed;
+    margin-top: 120px;
+    margin-left: 16%;
+    padding: 10px;
+    color: white;
+    background-color: #110033;
+    z-index: 4;
+  }
+
+  #loadingDiv {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    z-index: 200;
+    background-color: #f1f1f1;
+  }
+
+
+  #loader {
+    margin-left: 47%;
+    margin-top: 250px;
+    border: 16px solid lightgreen;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-bottom: 16px solid blue;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 0.1s linear infinite;
+    animation: spin 0.1s linear infinite;
+  }
+
+  #loadingRequest {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    z-index: 201;
+  }
+
+  #loadingSharing {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    z-index: 201;
+  }
+
+  #loadingP {
+    margin-left: 47%;
+    margin-top: 250px;
+    border: 16px solid lightgreen;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-bottom: 16px solid lightgreen;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 0.1s linear infinite;
+    animation: spin 0.1s linear infinite;
+  }
+
+  #loaderInterfaceRequest{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    z-index: 200;
+  }
+
+  #loaderInterfaceRequestChat{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 25%;
+    top: 15%;
+    width: 50%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    z-index: 200;
+  }
+  
+  #loaderInterface {
+    margin-left: 47%;
+    margin-top: 250px;
+    border: 16px solid lightgreen;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-bottom: 16px solid lightgreen;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 0.1s linear infinite;
+    animation: spin 0.1s linear infinite;
+  }
+
+  #loaderInterfaceChat {
+    margin-left: 43%;
+    margin-top: 200px;
+    border: 16px solid lightgreen;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-bottom: 16px solid lightgreen;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 0.1s linear infinite;
+    animation: spin 0.1s linear infinite;
+    
+  }
+
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+/*coding for logOutModal Form*/
+
+
+  #logoutOutterModalDiv {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 1s;
+    animation-name: zoom;
+    animation-duration: 1s;
+    background-color: transparent;
+  }
+
+  #rejectionModalDiv {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 1s;
+    animation-name: zoom;
+    animation-duration: 1s;
+    background-color: transparent;
+  }
+
+  #returnedRating {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 1s;
+    animation-name: zoom;
+    animation-duration: 1s;
+    background-color: transparent;
+  }
+
+  #returnedRatingModal {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 1s;
+    animation-name: zoom;
+    animation-duration: 1s;
+    background-color: transparent;
+  }
+  #returnedRatingModal1 {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 1s;
+    animation-name: zoom;
+    animation-duration: 1s;
+    background-color: transparent;
+  }
+
+  #enterDaisesDiv {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.1s;
+    animation-name: zoom;
+    animation-duration: 0.1s;
+    background-color: transparent;
+  }
+
+  #connectingDiv {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.1s;
+    animation-name: zoom;
+    animation-duration: 0.1s;
+    background-color: transparent;
+  }
+
+  #taggingDiv {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.1s;
+    animation-name: zoom;
+    animation-duration: 0.1s;
+    background-color: transparent;
+  }
+  #connectingDivMyDiv {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.1s;
+    animation-name: zoom;
+    animation-duration: 0.1s;
+    background-color: transparent;
+  }
+  #videoDivMyDiv {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.1s;
+    animation-name: zoom;
+    animation-duration: 0.1s;
+    background-color: transparent;
+  }
+  #taggingWasSuccesfullDivMyDiv {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.1s;
+    animation-name: zoom;
+    animation-duration: 0.1s;
+    background-color: transparent;
+  }
+  #connectionDivMyDivRejection {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.1s;
+    animation-name: zoom;
+    animation-duration: 0.1s;
+    background-color: transparent;
+  }
+
+  #changeMyPictureDiv {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.1s;
+    animation-name: zoom;
+    animation-duration: 0.1s;
+    background-color: transparent;
+  }
+.logoutModal {
+  /*display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+
+.returnedRating {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.returnedRatingModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+.returnedRatingModal1 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+.enterDaises1, #changeProfilepix {
+  /*display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.connecting {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+
+.taggingFriends {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 300; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+.connectingConfirmed {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 300; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+.videoModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 300; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.taggingConfirmed {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 300; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.connectionRejection {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 500; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+  #logoutForm {
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 150px;
+    margin-left: 25%;
+    background-color: lightgreen;
+    margin-bottom: 100px;
+    padding-bottom: 70px;
+  }
+
+  #rejectionForm1 {
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 150px;
+    margin-left: 25%;
+    background-color: lightgreen;
+    margin-bottom: 100px;
+    padding-bottom: 70px;
+  }
+  #returnedForm {
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 150px;
+    margin-left: 25%;
+    background-color: lightgreen;
+    margin-bottom: 100px;
+    padding-bottom: 70px;
+  }
+   #returnedFormModal {
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 150px;
+    margin-left: 25%;
+    background-color: white;
+    margin-bottom: 100px;
+    padding-bottom: 30px;
+  }
+
+  #returnedFormModal1 {
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 150px;
+    margin-left: 25%;
+    background-color: white;
+    margin-bottom: 100px;
+    padding-bottom: 30px;
+  }
+  #logOutMessage {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  #rejectionMessage {
+    width: 100%;
+    text-align: center;
+    /*font-weight: bold;*/
+    padding-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  #returnedMessage {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    color: green;
+  }
+
+  #returnedMessage2 {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  #returnedMessage1 {
+    color: green;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  #loggingOutButton, #noLogOut {
+     display: inline;
+     background-color: white;
+     padding: 6px;
+
+  }
+  #loggingOutButton {
+    padding: 6px;
+    border-radius: 10px;
+    background-color: red;
+    border: 1px solid white;
+    color: white;
+  }
+  #noLogOut{
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 40%;
+  }
+
+  #triggerReview{
+    border: 1px solid orange;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 43%;
+    margin-top: 20px;
+  }
+
+
+  #connectionRejectionHidden, #connectionRejectionHidden1 {
+        background-color: lightgreen;
+        text-align: center;
+  }
+
+  #connectionRejectionHidden1 {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+  }
+
+  #rejectionMessage1 {
+        text-align: center; 
+        padding-top: 70px; 
+        padding-bottom: 20px; 
+        background-color: lightgreen; 
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+  }
+
+  .videoFriends {
+    background-color: black;
+    margin-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .videoFriends li {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #110033;
+    color: white;
+    margin-top: 7px;
+    border: none;
+  }
+
+  .videoFriends li:first-child {
+
+  }
+
+  .videoFriends li:hover {
+    background-color: lightgreen;
+    color: black;
+  }
+
+  #videoConnectingButton1:hover {
+      background-color: lightgreen;
+      color: black;
+  }
+
+  #showVideoChat {
+    cursor: pointer;
+    border: 1px solid red;
+    margin-top: 10px;
+  }
+
+  #videoConnectingButton3:hover {
+    background-color: red;
+    color: white;
+  }
+
+  .videoChatInterface{
+      /*display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+ .SearchHint{
+   width: 50%;
+   z-index: 100; 
+   top: 90px; 
+   left: 47.5%; 
+   position: fixed;
+ }
+ .SearchHintp{
+    background-color: #183148; 
+    padding: 4px; 
+    border: 0.2px solid #f1f1f1;
+    color: white;
+    padding-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;
+ }
+
