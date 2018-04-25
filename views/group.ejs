@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="/StyleSheets/group.css">
     <link rel="stylesheet" type="text/css" href="/StyleSheets/reachOut.css">
     <link rel="stylesheet" type="text/css" href="/StyleSheets/reachOut1.css">
-		<base href = "http://beloveddais.com/">
+		<base href = "http://127.0.0.1:9000/">
 
 </head>
 <body>
@@ -297,7 +297,7 @@
 		        //ajaxSectionDynamic1
 		        if(data.message != 'You do not belog to any group!!'){
 		        	for(var i=0; i < data.message.length; i++){
-		        		     generatedHTML = '<div id="ajaxSectionDynamic1" class="' + data.message[i].FriendEmail + '">' + '<div id="outerCoverDynamic">' + '<p id="firstPDynamic">' + data.message[i].onlineStatus + '</p>' + '<p id="SecondP">' + data.message[i].FriendFirstName + " " + data.message[i].FriendLastName + '</p>' + '<div class="row" id="innerRowDynamic">' + '<div id="pictureDivDynamic" class="col-3">' + '<img src="http://bbeloveddais.win/Images/'+ data.message[i].FriendPicture + '"' + 'style="' + 'width:80%;"' + '/>' + '</div>' + '<div id="ratingDivDynamic" class="col-9">' + '<p id="ratingNumber1" style="visibility: hidden;">70</p>' + '<p id="ratingNumber2" style="visibility: hidden;">80</p>' + '<p id="mainReviewDynamic" style="visibility:  hidden;">reviews</p>' + '</div>' + '</div>' + '<p id="thirdPDynamic">' + data.message[i].Alaise + '</p>' + '<button id="connectButtonDynamic" onClick = "" data-custom ="' + data.message[i].FriendEmail + '"' + 'class="' + data.message[i].FriendEmail + '"' + '>Log!</button>' + '</div>' + '</div>' + '<input type="text"/ style = "display: none;' + 'value="' + data.message[i].FriendEmail + '"' + " " +'/>';
+		        		     generatedHTML = '<div id="ajaxSectionDynamic1" class="' + data.message[i].FriendEmail + '">' + '<div id="outerCoverDynamic">' + '<p id="firstPDynamic">' + data.message[i].onlineStatus + '</p>' + '<p id="SecondP">' + data.message[i].FriendFirstName + " " + data.message[i].FriendLastName + '</p>' + '<div class="row" id="innerRowDynamic">' + '<div id="pictureDivDynamic" class="col-3">' + '<img src="http://b127.0.0.1:8000/Images/'+ data.message[i].FriendPicture + '"' + 'style="' + 'width:80%;"' + '/>' + '</div>' + '<div id="ratingDivDynamic" class="col-9">' + '<p id="ratingNumber1" style="visibility: hidden;">70</p>' + '<p id="ratingNumber2" style="visibility: hidden;">80</p>' + '<p id="mainReviewDynamic" style="visibility:  hidden;">reviews</p>' + '</div>' + '</div>' + '<p id="thirdPDynamic">' + data.message[i].Alaise + '</p>' + '<button id="connectButtonDynamic" onClick = "" data-custom ="' + data.message[i].FriendEmail + '"' + 'class="' + data.message[i].FriendEmail + '"' + '>Log!</button>' + '</div>' + '</div>' + '<input type="text"/ style = "display: none;' + 'value="' + data.message[i].FriendEmail + '"' + " " +'/>';
 		                         // dynamic insertion!
 			                     $(generatedHTML).insertBefore('#ajaxSection');
 		        	}
@@ -324,7 +324,7 @@
         	  if(searchQuery == '' || theType == 'number') return;
         	  var value = document.getElementById('hiddenFieldForm').value;
 		          $.ajax({
-				        url: "http://bbeloveddais.win/homepageSearchQuery",
+				        url: "http://b127.0.0.1:8000/homepageSearchQuery",
 				        type: 'POST',
 				        data: JSON.stringify({'searchQuery': searchQuery, 'hiddenFieldForm': value}),
 		                crossDomain: true,
@@ -408,9 +408,9 @@
 					            	//var uniqueId = abac;
 					            	for(var i=0; i < searchHint.length; i++){
 					            	    searchCounter++;
-					                    var generatedHTML = "<p class='SearchHintp'><a href='http://bbeloveddais.win/homepageSearchQuery/" + searchHint[i] + "'" + " style='color: white; text-decoration: none; width: 100%; background-color: transparent;'>" + searchHint[i] + "</a></p>";
+					                    var generatedHTML = "<p class='SearchHintp'><a href='http://b127.0.0.1:8000/homepageSearchQuery/" + searchHint[i] + "'" + " style='color: white; text-decoration: none; width: 100%; background-color: transparent;'>" + searchHint[i] + "</a></p>";
 					                   // var generatedHTML = "<p onload='setOnlisterner()' class='SearchHintp'>" + searchHint[i] + "</p>";
-					                   //var generatedHTML = "<a href='http://beloveddais.com/homepageSearchQuery/" + searchHint[i] + "'" + ' ' + " style='' class='SearchHintp'>" + searchHint[i] + "</a><br>";
+					                   //var generatedHTML = "<a href='http://127.0.0.1:9000/homepageSearchQuery/" + searchHint[i] + "'" + ' ' + " style='' class='SearchHintp'>" + searchHint[i] + "</a><br>";
 					                    $(generatedHTML).insertBefore('#SearchHint');
 					                    if(searchCounter == searchHint.length){
 					                         $('.SearchHint').show();

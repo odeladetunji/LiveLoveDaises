@@ -6,8 +6,6 @@
 	<link rel="shortcut icon" type="image/jpg" href="a.jpg">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	
 	<link rel="stylesheet" type="text/css" href="/StyleSheets/rateFinal.css">
 	<link rel="stylesheet" type="text/css" href="/StyleSheets/messaging.css">
 	<link rel="stylesheet" type="text/css" href="/StyleSheets/chat.css">
@@ -97,6 +95,9 @@
 	</div>
 	<div>
 		     <% include ./partials/videoModalMessage %>
+	</div>
+	<div>
+		     <% include ./partials/ratingPopUp %>
 	</div>
     <div>
 		     <% include ./partials/returnedRating %>
@@ -302,13 +303,17 @@
          
          var postUniqueId;  // used for identifying a particular post, thi
          //is set when a rating is clicked
+         $('#myEmailhidden').val(mycookie);
 
          $('#formRating').submit(function(event){
                   event.preventDefault();
-                  var myEmail = document.getElementById("myEmailhidden").value;
-                  document.getElementById("myEmailhidden").value = myEmail + " " + postUniqueId;
+                  document.getElementById("myEmailhidden").innerHTML = "";
+                  document.getElementById("myEmailhidden").value = mycookie + " " + postUniqueId;
 		   	      var formData2 = new FormData(this);
-
+		   	      console.log("Here it is: " + JSON.stringify($('#formRating').serializeArray()));
+		   	      console.log($('#formRating').serializeArray());
+                  console.log('did it work!!!');
+                  $('.parentForRateCover').css('display', 'none');
 		    	   $.ajax({
 				        url: "http://127.0.0.1:8000/rating",
 				        type: 'POST',
@@ -319,6 +324,7 @@
 				        contentType: false,
 				        processData: false,
 				        success: function (data) {
+				        	console.log(data);
 				        	$('.ratingModalForm1').hide();
 				            //alert(data.myName);
 				            updateRatingFrontEnd();
@@ -343,6 +349,7 @@
 							        processData: false,
 							        success: function (data) {
 							            console.log(data.message);
+							            console.log(rateUniqueId);
 							            if((data.typeOfRater = 'close person')){
 							            	   document.getElementById(rateUniqueId).innerHTML = data.message;
 							            	   document.getElementById('theRate').innerHTML = data.message;
@@ -641,12 +648,11 @@
               $('#headerForm').css('display', 'block');
               $('#headerInput').css('display', 'none');
               $('.searchDaises').focus();
+              $('.singleSection').css('display', 'none');
               console.log(inputtedValue);
         });
 
        $('#headerForm').keyup(function(event){
-       	      
-       	     
        	      $('.navigationDynamic').css("left", '93%');
        	      var warnmsg = document.getElementsByClassName('search1')[0].value;
        	      console.log(warnmsg);
@@ -1092,7 +1098,7 @@
               $('searchDaises').focus();
               $('.headForm').show();
               $('#headerInput').val('');
-              $('.singleSection').css('display', 'none');
+              $('.singleSection').css('display', 'block');
               //$('.SearchHint').hide();
               //$('#headerForm').hide();
               var searchValue = pElement.getAttribute("data-val");
@@ -1223,16 +1229,16 @@
 		        }	       
 	      });
         }
-
+        
+        var rateUniqueId;
 		function outputtingRating(value){
 			 // displayLoadingInterface();
 			
 			   var value = value;
 		       postUniqueId = value;
-			       console.log(value + "   .............................");
-		                  //rateUniqueId = value;
+		       rateUniqueId = value;
 		                  
-		     			   $.ajax({
+		       $.ajax({
 					        url: "http://127.0.0.1:8000/gettingRating",
 					        type: 'POST',
 					        data: JSON.stringify({ sentData: value }),
@@ -1245,6 +1251,25 @@
 					        success: function (data) {
 		                            //console.log(data.myName);
 		                            //console.log('pppppppppppppppppp');
+		                            console.log(data);
+		                            console.log('it entered here');
+		                            function displayingReturnedRating(){
+	                                   $('.returnedRating').show();
+	                                };
+
+		                            if(data.myName == "No Rating Yet!!"){
+		                            	console.log('control flow worked');
+		                         	     document.getElementById('returnedMessage').innerHTML = "";
+                             	         document.getElementById('returnedMessage2').innerHTML = "No Rating Yet!!";
+                             	         displayingReturnedRating(); // this function will display the rating
+
+                             	         setTimeout(function(){
+                                         document.getElementsByClassName('returnedRating')[0].style.display = 'none';
+                             	         }, 4000);
+
+                                         return;
+		                            }
+		                            
 		                            var objectKey = Object.keys(data.myName)[0];
 		                            var dataValue = data.myName[objectKey].split(' ')[0];
 		                            console.log(dataValue + "         this is dataValue");
@@ -1279,16 +1304,7 @@
 						                           
 					            }
 					        	
-		                         if(data.myName == "No Rating Yet!!"){
-		                         	document.getElementById('returnedMessage').innerHTML = "";
-		                         	//document.getElementsByClassName('dynamic').style.display = "none";
-		                         	document.getElementById('returnedMessage2').innerHTML = "No Rating Yet!!";
-		                         	displayingReturnedRating(); // this function will display the rating
-		                         }
-					              
-					             function displayingReturnedRating(){
-	                                $('.returnedRatingModal').show();
-	                             };
+		                         
 					            
 					            //alert(Object.keys(data.myName) + '  this is alert box is for debugging purpose!!!');
 
@@ -1309,7 +1325,8 @@
 
       function outputtingSecondRating(value){
    	               var value = value;
-   	               var postUniqueId = value;
+   	               postUniqueId = value;
+   	               rateUniqueId = value;
  	       console.log(value + "   .............................");
          			   $.ajax({
 				        url: "http://127.0.0.1:8000/gettingRatingsOfClosePeople",
@@ -1329,7 +1346,7 @@
 
 				                if(data.message == 'No Rating Yet!'){
 				                	 document.getElementById('returnedMessage').innerHTML = "";
-                             	     document.getElementById('returnedMessage2').innerHTML = "No Rating Yet!!";
+                             	     document.getElementById('returnedMessage2').innerHTML = "No Rating Yet!! <br> You Have To Be Friends before <br> You can rate this section";
                              	     displayingReturnedRating(); // this function will display the rating
 
                              	     setTimeout(function(){
