@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' >
+	<title></title>
+	<link rel="shortcut icon" type="image/jpg" href="a.jpg">
+	<!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/log.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/reachOut.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/reachOut1.css">
+	<script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
+	<base href = "http://beloveddais.com/">
+
+</head>
+<body>
+	<div id='upmostHeader'>
+		<a href="/settings"><button id='upmostHeaderButton1'>Settings</button></a>
+		<a href="/landing"><button id='upmostHeaderButton2'>Logout</button></a>
+	</div>
+
+	<header>
+
+		<ul>
+			<li>
+				<form action="/homepage" method="POST" name="headerForm" class="headerForm1">
+				<select name="statusTag" class='search' style="background-color: #eeeeee" >
+					<option value="general">filter by General</option>
+					<option value="beloved">filter by Beloved</option>
+					<option value="saviour">filter by Savours</option>
+					<option value="Professional">filter by Professional</option>
+				</select>
+				<input type="text" class='search1' value="filter Search Query!!"/>
+                <input type="text" value="" name="hiddenFieldForm" id="hiddenFieldForm" style="display: none;">
+				<a id="toggleDaises"><i class='fa fa-users' style='font-size: 14px; color: white;padding-right: 5px;'></i>Log</a>
+
+				<a  id="reachOut" class='search3'><i class='fa fa-users' style='color: white;font-size: 14px; padding-right: 5px;'></i>Reach Out</a>
+      </form>
+			</li>
+
+
+		</ul>
+	</header>
+	<div id="peopleNav">
+		<p>Log</p>
+	</div>
+	<div id="daiseOutterDiv" style="display:none;">
+		<ul>
+
+
+			<li>All Daises</li>
+			<li onclick="gettingThisDaise('health')"><i class="fa fa-medkit" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('health')"></i>Health</li>
+			<li onclick="gettingThisDaise('security')"><i class="fa fa-shield" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('security')"></i>Security</li>
+			<li onclick="gettingThisDaise('Spiritual')"><i class="fa fa-diamond" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Spiritual')"></i>Spiritual</li>
+			<li onclick="gettingThisDaise('Relationship')"><i class="fa fa-handshake-o" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Relationship')"></i>Relationship</li>
+			<li onclick="gettingThisDaise('Nutrition')"><i class="fa fa-cutlery" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Nutrition')"></i>Nutrition</li>
+			<li onclick="gettingThisDaise('Arts')"><i class="fa fa-picture-o" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Arts')"></i>Arts</li>
+			<li onclick="gettingThisDaise('Music')"><i class="fa fa-music" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Music')"></i>Music</li>
+			<li onclick="gettingThisDaise('music')"><i class="fa fa-video-camera" style="font-size:15px; padding-right: 15px" onclick="gettingThisDaise('music')"></i>Video</li>
+			<li onclick="gettingThisDaise('games')"><i class="fa fa-gamepad" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('games')"></i>Sports</li>
+			<li onclick="gettingThisDaise('Pet')"><i class="fa fa-paw" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Pet')"></i>Pet</li>
+			<li onclick="gettingThisDaise('Technology')"><i class="fa fa-television" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Technology')"></i>Technology</li>
+			<li onclick="gettingThisDaise('Finance')"><i class="fa fa-book" style="font-size:0px; padding-right: 5px;" onclick="gettingThisDaise('Finance')"></i>Academics</li>
+			<li onclick="gettingThisDaise('Finance')"><i class="fa fa-credit-card-alt" style="font-size:0px; padding-right: 5px;" onclick="gettingThisDaise('Finance')"></i>Finance</li>
+			<li onclick="gettingThisDaise('News')"><i class="fa fa-newspaper-o" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('News')"></i>News</li>
+			<li onclick="gettingThisDaise('3M')"><i class="material-icons" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('3M')"></i>3M</li>
+			<li onclick="gettingThisDaise('info')"><i class="material-icons" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('info')"></i>How to</li>
+		</ul>
+	</div>
+	<div class="row" style="background-color: #f1f1f1;">
+		<div class="col-2 leftnav">
+			<img src='/Images/man.jpg' alt='' id='topImageAjax1' style='width: 95%; margin-left: 2.5%;'>
+			<ul>
+				<li id='inbox'><a href="/getInboxpage"><i class="fa fa-envelope-open" style="font-size:15px;"></i>Request!</a></li>
+				<li><a href="/getAnouncementpage"><i class="fa fa-bullhorn" style="font-size:15px;" id='announcement'></i>Anouncement</a></li>
+				<li><a href="/getBiographypage"><i class='fa fa-book' style='font-size: 15px;' id='biography'></i>Biography</a></li>
+
+				<li id="chatting" onclick="displayChatInterface()"><i class="fa fa-commenting" style="font-size:15px;" id='çhat'></i>Chat</li>
+				<li><a href="/getGrouppage"><i class="fa fa-users" style="font-size:15px;" id='group'></i>Group</a></li>
+				<li><a href="/getlogpage"><i class='fa fa-user' style='font-size: 15px;' id='log'></i>Log</a></li>
+				<li><a href="/getPeoplepage"><i class='fa fa-users' style='font-size: 15px;'id='mypeople'></i>My People</a></li>
+				<li><a href="/getSharingpage"><i class='fa fa-users' style='font-size: 15px;' id='sharing'></i>Sharing</a></li>
+				<li><a href="/getTimeSchdulepage"><i class="fa fa-clock-o" style="font-size:15px;" id='schdule'></i>Time Schdule</a></li>
+				<li><a href="/getWebhistorypage"><i class='fa fa-globe' style='font-size: 15px; padding-bottom:20px;' id='history'></i>Web history</a></li>
+			</ul>
+
+		</div>
+		<div class="col-7 midsection">
+
+			<div id="ajaxSection">
+				<div id="outerCover">
+				<p id="firstP">online</p>
+				<p id="SecondP">Sam Wise Grandji</p>
+				<div class="row" id="innerRow">
+					<div id="pictureDiv" class="col-3">
+                               pix
+					</div>
+					<div id="ratingDiv" class="col-9">
+
+
+                           <p id="ratingNumber1" style="visibility: hidden;">70</p>
+                           <p id="ratingNumber2" style="visibility: hidden;">80</p>
+                           <p id="mainReview" style="visibility:  hidden;">reviews</p>
+					</div>
+				</div>
+				<p id="thirdP">Guitar for biginners</p>
+
+				<button id="connectButton">Family</button>
+
+			</div>
+			</div>
+			<footer>
+				<div id="footerItem1"  class='foot'>
+					<ul>
+						<li>Monday</li>
+						<li>Tuesday</li>
+						<li>Wednesday</li>
+						<li>Thursday</li>
+						<li>Friday</li>
+					</ul>
+				</div>
+				<div id="footerItem2"  class='foot'><ul>
+					<li>Fruit</li>
+					<li>Mango</li>
+					<li>Pawpaw</li>
+					<li>Bananas</li>
+					<li>Orange</li>
+				</ul></div>
+				<div id="footerItem3"  class='foot'><ul>
+					<li>Cars</li>
+					<li>Toyota</li>
+					<li>Mercedes</li>
+					<li>BMW</li>
+					<li>Rollsroyce</li>
+				</ul></div>
+				<div id="footerItem4"  class='foot'><ul>
+					<li><a id='footerItem4'>Planet</a></li>
+					<li><a>Earth</a></li>
+					<li><a>Jupiter</a></li>
+					<li><a>Mars</a></li>
+					<li><a>Mercury</a></li>
+				</ul></div>
+			</footer>
+			<div id="menu" style="display: none;">
+				<ul>
+					<li id='nenanena'>Emmanuel Adeoye</li><hr>
+					<li><i class="material-icons" style="font-size:20px;">mail</i>Inbox</li>
+					<li><i class="material-icons" style="font-size:20px;">announcement</i>Anouncement</li>
+					<li><i class='fa fa-book' style='font-size: 20px;'></i>Biography</li>
+					<li><i class='fa fa-file' style='font-size: 20px;'></i>Blog</li>
+					<li><i class="material-icons" style="font-size:20px;">chat</i>Chat</li>
+					<li><i class="material-icons" style="font-size:20px;">group</i>Group</li>
+					<li><i class='fa fa-user' style='font-size: 20px;'></i>Log</li>
+					<li><i class='fa fa-users' style='font-size: 20px;'></i>People</li>
+					<li><i class='fa fa-television' style='font-size: 20px;'></i>Media</li>
+					<li><i class='fa fa-users' style='font-size: 20px;'></i>Sharing</li>
+					<li><i class='fa fa-book' style='font-size: 20px;'></i>Library</li>
+					<li><i class="material-icons" style="font-size:20px;">watch</i>Time Schdule</li>
+					<li><i class='fa fa-globe' style='font-size: 20px;'></i>Web history</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-3 advert">
+
+			<p style="color: black">advert section</p>
+		</div>
+	</div>
+	<div class="reachOutDiv modal" id="mode">
+		<div id="modal1">
+			<div style="position: fixed; width: 100%; background-color: transparent;">
+				<i onClick="hideReachOut()" class="material-icons"style="float: right;color: red; cursor: pointer; font-weight: bold;font-size:50px;padding: 10px;" id="close1">close</i>
+			</div>
+			<div class="row" id="mainRow">
+				<div class="col-3" id="clientNames">
+					<ul>
+						<li>Adeoye Emmanuel</li>
+						<li>Prince birmingham</li>
+						<li>Elijah Falode</li>
+						<li>Mathew Math</li>
+						<li>Ajanaku Moses</li>
+						<li>Olaiya Bababatunde</li>
+						<li>French England</li>
+						<li>Wilconsin Stephen</li>
+						<li>Angelina Jolie</li>
+						<li>Math Spencer</li>
+					</ul>
+				</div>
+				<div class="col-6" id="chatSection">
+					<button id="connectionButton">Connect!!</button>
+					<input type="text" id="textInput">
+				</div>
+				<div class="col-3" id="Time">
+					<p>00:00<br>remaining</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<div class="reachOutDiv1 modal2" id="mode1">
+		<div id="modal1">
+			<div style="position: fixed; width: 100%; background-color: transparent;">
+				<i onClick="displayChatInterfaceHide()"class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px;padding: 10px;" id="close2">close</i>
+			</div>
+			<div class="row" id="mainRow1">
+				<div class="col-3" id="clientNames">
+					<ul>
+						<li>Olatunji Odelade</li>
+					</ul>
+				</div>
+				<div class="col-6" id="chatSection">
+					<button id="connectionButton">Connected!!</button>
+					<input type="text" id="textInput">
+				</div>
+				<div class="col-3" id="Time">
+					<p>00:00</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="loadingDiv">
+       <p id="loader"></p>
+	</div>
+	<div>
+		     <% include ./partials/logOutModal %>
+	</div>
+	<div>
+		     <% include ./partials/SearchHint %>
+	</div>
+	<script>
+
+		function displayChatInterface(){
+            $('.modal2').show();
+		}
+
+		function displayChatInterfaceHide(){
+            $('.modal2').hide();
+		}
+
+		function hideReachOut(){
+				 document.getElementById('mode').style.display = "none";
+		}
+		function close2(){
+				 document.getElementById('mode1').style.display = "none";
+		}
+
+		 function getCookie(cname) {
+				var name = cname + "=";
+				var decodedCookie = decodeURIComponent(document.cookie);
+				var ca = decodedCookie.split(';');
+				for(var i = 0; i < ca.length; i++) {
+				    var c = ca[i];
+				    while (c.charAt(0) == ' ') {
+				        c = c.substring(1);
+				    }
+				    if (c.indexOf(name) == 0) {
+				        return c.substring(name.length, c.length);
+				    }
+				}
+       }
+
+	  function checkCookie() {
+			var user=getCookie("daises");
+			return user;
+	  }
+
+     var mycookie = checkCookie();
+     console.log(mycookie + "  inbox email");
+
+          function gettingLogPeople(url, data, success) {
+             
+              	        console.log('Someeeeeeeeeeeeeeeeeeeeeeee');
+						var params = typeof data == 'string' ? data : Object.keys(data).map(
+						        function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+						    ).join('&');
+
+						var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+						xhr.open('POST', url);
+						xhr.onreadystatechange = function() {
+						    if (xhr.readyState>3 && xhr.status==200) { 
+						    	success(xhr.responseText); 
+						     }
+						};
+						xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+						xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+						xhr.send(params);
+						return xhr;
+          }
+
+  function outPuttingLogPeople(data){
+		    	var generatedHTML;
+		        
+		    	if(data.message == 'you have no people log!!'){
+		    	      // do something!
+		        }
+
+
+		        //ajaxSectionDynamic1
+		        if(data.message != 'you have no people log!!'){
+		        	for(var i=0; i < data.message.length; i++){
+		        		     generatedHTML = '<div id="ajaxSectionDynamic1" class="' + data.message[i].FriendEmail + '">' + '<div id="outerCoverDynamic">' + '<p id="firstPDynamic">' + data.message[i].onlineStatus + '</p>' + '<p id="SecondP">' + data.message[i].FriendFirstName + " " + data.message[i].FriendLastName + '</p>' + '<div class="row" id="innerRowDynamic">' + '<div id="pictureDivDynamic" class="col-3">' + '<img src="http://beloveddais.win/Images/'+ data.message[i].FriendPicture + '"' + 'style="' + 'width:80%;"' + '/>' + '</div>' + '<div id="ratingDivDynamic" class="col-9">' + '<p id="ratingNumber1" style="visibility: hidden;">70</p>' + '<p id="ratingNumber2" style="visibility: hidden;">80</p>' + '<p id="mainReviewDynamic" style="visibility:  hidden;">reviews</p>' + '</div>' + '</div>' + '<p id="thirdPDynamic">' + data.message[i].Alaise + '</p>' + '<button id="connectButtonDynamic" onClick = "" data-custom ="' + data.message[i].FriendEmail + '"' + 'class="' + data.message[i].FriendEmail + '"' + '>Log!</button>' + '</div>' + '</div>' + '<input type="text"/ style = "display: none;' + 'value="' + data.message[i].FriendEmail + '"' + " " +'/>';
+		                         // dynamic insertion!
+			                     $(generatedHTML).insertBefore('#ajaxSection');
+		        	}
+		                   
+		            $('#loadingSharing').hide();
+		        }	        
+  }
+		$(document).ready(function(){
+			    // $('#loadingDiv').hide();
+			    $('#loadingSharing').show();
+               gettingLogPeople('/gettingLogPeople', ({'personalEmail': mycookie}), function(passParam){
+                        var data = JSON.parse(passParam);
+                    	console.log('checking if something ran here!!!');
+                    	//alert(data.message);
+                    	console.log(data.message);
+                    	outPuttingLogPeople(data);     
+              });
+
+            $('.headerForm1').keyup(function(event){
+        	  $('.SearchHintp').hide();
+        	  var searchQuery = document.getElementsByClassName('search1')[0].value;
+        	  var theType = typeof searchQuery;
+        	  if(theType == 'number') theType = 'number';
+        	  if(searchQuery == '' || theType == 'number') return;
+        	  var value = document.getElementById('hiddenFieldForm').value;
+              $.ajax({
+			        url: "http://beloveddais.win/homepageSearchQuery",
+			        type: 'POST',
+			        data: JSON.stringify({'searchQuery': searchQuery, 'hiddenFieldForm': value}),
+                    crossDomain: true,
+			        async: true,
+			        cache: false,
+			        contentType: "application/json; charset=utf-8",
+			        processData: false,
+			        success: function (data) {
+			        	console.log(data);
+			        	var arrayData = [];
+			        	var onlineCounter = 0;
+			            var onlineCounter1 = 0;
+			            var offlineCounter = 0;
+			            var offlineCounter1 = 0;
+			        	if(data.message == 'No Result Found!'){
+			        		var searchHint = "No Result, Continue Searching!";
+			        		showHint(searchHint);
+			        		return
+			        	};
+
+			            if(data.online != "" && data.offline != ''){
+                              for(var i=0; i < data.online.length; i++){
+                              	   onlineCounter++;
+                                   arrayData.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                   arrayData.push(data.online[i].Daises);
+                                   if(onlineCounter == data.online.length){
+                                        // do something
+                                        break;
+                                   }
+                              }
+
+                              for(var i=0; i < data.offline.length; i++){
+                              	   offlineCounter++;
+                                   arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
+                                   arrayData.push(data.offline[i].Daises);
+                                   if(offlineCounter == data.offline.length){
+                                   	    setTimeout(function(){
+                                   	    	showHint(arrayData);
+                                   	    },50);
+                                        return;
+                                   }
+                              }
+			            }
+
+			            if(data.online == "" && data.offline >= 1){
+                                   for(var i=0; i < data.online.length; i++){
+                                   	    offlineCounter1++;
+                                   	    //console.log('was this function called! ' +  );
+                                        arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName); 
+                                        arrayData.push(data.offline[i].Daises);
+                                        if(offlineCounter1 == data.online.length){
+                                        	//console.log('was this function called!');
+                                            showHint(arrayData);
+                                        }
+                                   }
+			            }
+			            if(data.online != "" && data.offline == ''){
+                                   console.log('was this function called!');
+                                   for(var i=0; i < data.online.length; i++){
+                                   	console.log('was this function called!22');
+                                   	   onlineCounter1++;
+                                       arrayData.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                       arrayData.push(data.online[i].Daises);
+                                       if(onlineCounter1 == data.online.length){
+                                       	    console.log('Code block Entered!');
+                                            showHint(arrayData);
+                                       }
+                                   }
+			            }
+
+			            function showHint(searchHint){
+				            	if(searchHint == 'No Result, Continue Searching!'){
+				                    var generatedHTML = "<p class='SearchHintp'>No Result, Continue Searching!<br><br>Search with key words!</p>";
+				                    $(generatedHTML).insertBefore('#SearchHint');
+				                     $('.SearchHint').show();
+				                     return;
+				            	}
+				                console.log(searchHint);
+				                console.log('that is search hint above');
+				            	var searchCounter = 0;
+				            	//var uniqueId = abac;
+				            	for(var i=0; i < searchHint.length; i++){
+				            	    searchCounter++;
+				                    var generatedHTML = "<p class='SearchHintp'><a href='http://beloveddais.com/homepageSearchQuery/" + searchHint[i] + "'" + " style='color: white; text-decoration: none; width: 100%; background-color: transparent;'>" + searchHint[i] + "</a></p>";
+				                   // var generatedHTML = "<p onload='setOnlisterner()' class='SearchHintp'>" + searchHint[i] + "</p>";
+				                   //var generatedHTML = "<a href='http://beloveddais.com/homepageSearchQuery/" + searchHint[i] + "'" + ' ' + " style='' class='SearchHintp'>" + searchHint[i] + "</a><br>";
+				                    $(generatedHTML).insertBefore('#SearchHint');
+				                    if(searchCounter == searchHint.length){
+				                         $('.SearchHint').show();
+				                         return;
+				                    }
+				                }
+			            }	            
+			        },
+			        error: function(data){
+                        alert("Please Check your server! <br> something is wrong!");
+			        }
+			       
+			    });
+            });
+		})
+	</script>
+    <script type="text/javascript" src='/JavaScript/log.js'></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!--videoChatInterface.ejs-->
+<div class="videoChatInterface" style="width: 100%; top: 0px; display: none; position: fixed; z-index: 2000;">
+	<div>
+		<div class="videoFriendsMainContainer" style="display: block; z-index: 2001;width: 20%;position: fixed; left: 0px; top: 0px; background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0,0.5); height: 700px;">
+			<i id="hideFriends" class="material-icons" style="background-color: white;color: black; cursor: pointer; margin-left: 10px; margin-top: 10px; font-size:40px; padding: 3px; border-radius: 5px; border: 1px solid green;" id="close5">close</i>
+			<ul class="videoFriends" style="padding-top: 0px;">
+				<p id="forVideoChat"></p>
+			</ul>
+		</div>
+		<div style="position: fixed; width: 100%;padding: 0px;background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0,0.5); height: 700px;">
+			<i id="closeVideoModal"class="material-icons" style="background-color: red;float: right;color: white; cursor: pointer; font-size:30px; padding: 3px; margin-right: 8px; margin-top: 8px;" id="" onclick="closingVideoChatInterface()">close</i>
+			<i id="displayFriends" class="material-icons" style="position: fixed; top: 10px;background-color: white; color: black; cursor: pointer; font-size:40px; padding: 2px; border-radius: 5px; border: 1px solid green; margin-left: 10px;" id="closeSomething">menu</i>
+			<i class="material-icons" style="position: fixed; top: 50px; left: 20%;z-index: 2002;background-color: transparent;color: white; cursor: pointer; font-size:100px; margin-left: 10px; id="">videocam</i>
+			<button id="videoMessage" style="padding-left: 10px;padding-top: 10px; padding-bottom: 10px; padding-right: 10px; border-radius: 5px; position: fixed; top: 220px; z-index: 2002;color: white; border: 1px solid yellow; margin-left: 44%; text-align: center; background-color: #110033;">want to Connect with:</button>
+
+			<p id="showingFriend" data-videoFriend="" style="position: fixed; top: 270px; z-index: 2002;width: 100%; text-align: center; font-size: 25px; background-color: none;"></p>
+			<button id="videoConnectingButton1" style="background-color: black; color: white; position: fixed;z-index: 2003; padding: 10px; border: 1px solid green; border-radius: 30px; top: 400px; color: white; left: 45%;">start video chat!!</button>
+			
+			<button id="videoConnectingButton3" style="background-color: #c60000; color: white; position: fixed;z-index: 2003; padding: 40px; border: 1px solid orange; border-radius: 50%; top: 70px; left: 90%; font-weight: bold; margin-right: 10px;">End Video Chat!!</button>
+			<video src="" style="border: 1px solid orange; border-radius: 5px; left: 12.5%;width: 75%;position: fixed; z-index: 2001;top: 45px; background-color: transparent;" autoplay></video>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>landingpage</title>
+	<link rel="shortcut icon" type="image/jpg" href="a.jpg">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href='/StyleSheets/landingpage.css'/>
+	<base href = "http://127.0.0.1:9000/">
+    <script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
+</head>
+<body>
+	<header>
+		<p>LoveDaises</p>
+		<button onclick="displaySignUpModal()">signup</button>
+		<button onclick="displayLoginModal()">login</button>
+	</header>
+	<img src="/Images/man office.jpg" id="headerImage">
+
+
+
+	<div class='row' id='footermain'>
+        <% include ./partials/footer %>
+	</div>
+
+	<div id='lastDivSection' style="">
+	    <p>	LoveDaises Copyright 2017</p>
+	</div>
+	<div>
+				 <% include ./partials/loginModal %>
+	</div>
+	<div>
+				 <% include ./partials/signUpModal %>
+	</div>
+	<div>
+				 <% include ./partials/retriveDetails %>
+	</div>
+	
+	<div>
+				 <% include ./partials/retriveModal1 %>
+	</div>
+	<div>
+				 <% include ./partials/loaderlanding %>
+	</div>
+	<div>
+				 <% include ./partials/rejectionModal2 %>
+	</div>
+	<div>
+				 <% include ./partials/rejectionModal %>
+	</div>
+	<script>
+	      // this code are to be used on the server side!!!
+         var email = document.getElementById("loginEmail").value;
+         var password = document.getElementById("loginPassword").value;
+    function hideModals(){
+			//hidding the modals
+			document.getElementsByClassName("loginModal")[0].style.display = "none";
+			document.getElementsByClassName("retriveModal")[0].style.display = "none";
+			document.getElementsByClassName("retriveModal1")[0].style.display = "none";
+			document.getElementsByClassName("signUpModal")[0].style.display = "none";
+		}
+    hideModals();
+
+			function displaySignUpModal(){
+				document.getElementsByClassName("signUpModal")[0].style.display =
+				 "block";
+			}
+			function displayLoginModal(){
+				  document.getElementsByClassName("loginModal")[0].style.display =
+					"block";
+			}
+    function hideLoginModal(){
+				document.getElementsByClassName("loginModal")[0].style.display =
+				 "none";
+		}
+
+		function hideSignUpModal(){
+			document.getElementsByClassName("signUpModal")[0].style.display =
+			 "none";
+		}
+
+		function displaySignUp(){
+			document.getElementsByClassName("loginModal")[0].style.display =
+			"none";
+			document.getElementsByClassName("signUpModal")[0].style.display =
+			 "block";
+		}
+
+		function hideRetriveModal(){
+			document.getElementsByClassName("retriveModal")[0].style.display =
+			 "none";
+			document.getElementsByClassName("retriveModal1")[0].style.display =
+ 			 "block";
+		}
+
+		function showForgotModal(){
+			document.getElementsByClassName("loginModal")[0].style.display =
+			 "none";
+			document.getElementsByClassName("retriveModal")[0].style.display =
+			 "block";
+		}
+
+		function hideRetriveModal1() {
+			document.getElementsByClassName("retriveModal1")[0].style.display =
+			 "none";
+		}
+     
+$('document').ready(function(){
+
+      $('#loginForm').submit(function(event){
+       	       	    event.preventDefault();
+                  var email = document.getElementById('loginEmail').value;
+                  var password = document.getElementById('loginPassword').value;
+                  $.ajax({
+                  	    url: "/landingpage/login",
+				        type: 'POST',
+				        data: JSON.stringify({ "Email": email, "Password": password}),
+				        crossDomain: true,
+				        async: true,
+				        cache: false,
+				        dataType: "json",
+				        contentType: "application/json; charset=utf-8",
+				        processData: false, 
+				        success: function (data) {
+				        	//alert(data);
+				        	if(data.message == 'Not registered!');
+				        		$('.rejectionModal2').show();  // showing rejection modal!
+
+				            if(data.message == 'render information'){
+				            	$('.rejectionModal2').hide();
+				            	document.getElementById('loginForm').setAttribute('action', '/landingpage/login2');
+				            	document.getElementsByClassName('loginForm')[0].submit();
+				            }
+				            	
+				            if(data.message == 'render profileSetUp'){
+				            	 $('.rejectionModal2').hide();
+				            	document.getElementById('loginForm').setAttribute('action', '/landingpage/login3');
+				            	document.getElementsByClassName('loginForm')[0].submit();
+				            }
+				            	
+
+				            if(data.message == 'render homepage'){
+				            	$('.rejectionModal2').hide();
+				            	document.getElementById('loginForm').setAttribute('action', '/landingpage/login1');
+				            	document.getElementsByClassName('loginForm')[0].submit();
+                            }
+
+				            setTimeout(function(){
+                                $('.rejectionModal2').hide();
+				            }, 3000);
+				      
+				        },
+
+				        error: function (data){
+					        	alert("Something went wrong!!");
+					    }   
+				      
+                  }); 
+       	       	    return false;
+       })
+
+
+     $('#signUpForm').submit(function(event){
+       	   event.preventDefault();
+                    var email = document.getElementById('signUpEmail').value;
+                    var password = document.getElementById('signUpPassword').value;
+
+                       $('#loaderInterfaceRequestlanding').show(); //Displaying loader
+
+                  $.ajax({
+                  	    url: "/landingpage/signup",
+				        type: 'POST',
+				        data: JSON.stringify({ "Email": email, "Password": password}),
+				        crossDomain: true,
+				        async: true,
+				        cache: false,
+				        dataType: "json",
+				        contentType: "application/json; charset=utf-8",
+				        processData: false, 
+				        success: function (data) {
+				        	//alert(data.message);
+				        	if(data.message == 'This Account Exist Already!!'){
+				        		$('#loaderInterfaceRequestlanding').hide(); // hiding loader!
+				        		$('.rejectionModal').show();  // This Account Exist Already!!!
+				             }
+
+				            setTimeout(function(){
+                                $('.rejectionModal').hide();
+				            }, 3000);
+                             
+                            if(data.message == "New User!!!"){
+                            	$('#loaderInterfaceRequestlanding').hide();
+                                document.getElementById('signUpForm').submit();
+                                	
+                            }        
+				        },
+
+				        error: function (data){
+					        	alert("Something Went Wrong!!!");
+					        	console.log('something went wrong!!!')
+					    }   
+				      
+                  }); 
+       	       	    return false;
+       	 })
+		    	 
+  });
+
+	</script>
+</body>
+</html>

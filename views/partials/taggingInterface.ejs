@@ -1,0 +1,42 @@
+<div class="taggingFriends">
+  <div style="background-color: transparent;position: fixed; top: 0px;width: 100%;">
+    <i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px; padding: 10px;" id="closeEnterDaises">close</i>
+  </div>
+  <div id="taggingDiv">
+     <form id="connectingForm" action="" method="POST" enctype="multipart/form-data" name='connectingForm'>
+          <div class="row">
+            <div class="col-5" style="padding: 0px;">
+               <img src="" id="">
+            </div>
+            <div class="col-7" style="padding-left: 0px;">
+
+               <select name="taggingselectDaises" id="taggingSelection" style="width: 100%; padding: 20px;">
+                      <option value="Tag Friend">Tag Friend</option>
+                      <option value="Friends">Friends</option>
+                      <option value="Acquaintance">Acquaintance</option>
+                      <option value="Colleague">Colleague</option>
+                      <option value="Sharing">Sharing</option>
+                      <option value="Group">Group</option>
+                      <option value="Family">Family</option>
+                      <option value="Love">Love</option>
+                      <option value="Log">Log</option>
+                </select>
+               <p id="errorMessageTag" style="color: red;"></p>
+            <div class="row" style="padding-top: 10px;">
+              <div class="col-6" style="padding-top: 0px;">
+                  <p id="taggingconnectButton" onClick = 'hiddingTaggingSection();'>
+                    Cancell!</p>
+              </div>
+              <div class="col-6" style="padding-top: 0px;">
+                  <!-- <input type="submit" value="Submit!" id="taggingconnectButton" readonly>-->
+                  <button id="taggingconnectButton" onclick="">
+                    Submit!</button>
+              </div>
+              <input type="text" name="theIdentity" id="taggingSoHidden1" value="" style="display: none;">
+              <input type="text" name="personalEmail" id="taggingSoHidden" value="" style="display: none;>
+          </div>
+            </div>
+          </div>
+     </form>
+   </div>
+</div>

@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' >
+	<title>meetpeople</title>
+	<link rel="shortcut icon" type="image/jpg" href="a.jpg">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/rateFinal.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/messaging.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/chat.css">
+    <link rel="stylesheet" type="text/css" href="/StyleSheets/meetpeople.css">
+	<script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
+	<base href = "http://127.0.0.1:8000/">
+</head>
+<body>
+	<div id='upmostHeader'>
+		<button id='upmostHeaderButton1'>Settings</button>
+		<button id='upmostHeaderButton3'>Daises</button>
+		<form action="" class="headForm">
+			<input type="text" id="headerInput" value="search for more">
+		</form>
+	</div>
+   
+   
+	<!-- this hidden p element is used to imidiately set a value 
+	for ajax Call to get the search result from the server!-->
+
+    <div class="searchFilter">
+    	<p>Search Filter</p>
+    	<ul>
+    		<li><button style="color: green;" id="onlineButton">Online</button></li>
+    		<li><button style="color: red;" id="offlineButton">offline</button></li>
+    	</ul>
+    	 <select name="statusTag" class='search1' style="border: none; background-color: white;">
+             <option value="Please Select Type of Search!!!">Please Select Type of Search!!!</option>
+             <option value="filter by Beloved">filter by Beloved</option>
+             <option value="filter by Saviour">filter by Saviour</option>
+             <option value="filter by Professional">filter by Professional</option>
+         </select>
+         <p style="color: red; margin-top: 5px; display: none;" id="warnmsg1">Please Select Type of Search!</p>
+    </div>
+
+    <p id="lovedaisesHeading">LoveDaises</p>
+
+    <form action="" method="GET" class="liveSearch" id="headerForm">
+	   <input type="text" class="homeSearch searchDaises" value="Search For Services OR Get Help">
+	   	<div>
+		     <% include ./partials/SearchHint %>
+		     <% include ./partials/SearchWarning %>
+	    </div>
+	   <p id="subCaption">Recieve or Give Anything for Free || Also Hire A Professional</p>
+	   <input type="text" id="hiddenFieldForm" style="display: none;">
+    </form>
+
+    <div class="navigationDynamic">
+    	<div>
+    		<img src="" alt="">
+    	</div>
+    	<i class="fa fa-video-camera" id="videoCameraIcon" onclick="showVideoInterface()"></i><br>
+    	<i class="fa fa-comments" id="chatIcon" onclick="showChattingInterface()"></i><br>
+    	<i class="fa fa-envelope-open" id="envelopeIcon"></i>
+    </div>
+	<p style="display: none;" id="hiddenAlways"></p>
+	<div class="singleSection" style="width: 100%;">
+		 <p id='amountOfData' style="padding-top: 20px; font-weight: bold; margin-top: 70px; padding-left: 30%; color: white;"></p>
+		 <div class="noResultSetFound"><p id="noResultSetFound"></p><p>now lets do it again!</p></div>
+	</div>
+
+	<div class="row firstRow" style="width: 100%;">
+		 <div class="col-6">
+		 	   <p id='amountOfData1' style="padding-top: 20px; font-weight: bold; margin-top: 70px; padding-left: 30%; color: white;">people found online!</p>
+		 </div>
+		 <div class="col-6">
+		 	   <p id='amountOfData2' style="padding-top: 20px; font-weight: bold; margin-top: 70px; padding-left: 30%; color: white;">people found offline!</p>
+		 </div>
+	</div>
+
+	<div>
+		     <% include ./partials/loaderInterfaceMeetPeople %>
+	</div>
+	 <div>
+     	 <% include ./partials/ratingFinal %>
+     </div>
+	<div>
+		     <% include ./partials/returnedRatingsEveryOneMeetPeople %>
+	</div>
+
+	<div>
+		     <% include ./partials/chattingFromFirstHomepage %>
+	</div>
+
+	<div>
+		     <% include ./partials/videoChatInterface %>
+	</div>
+	<div>
+		     <% include ./partials/videoModalMessage %>
+	</div>
+    <div>
+		     <% include ./partials/returnedRating %>
+	</div>
+
+	<div style="display: none;">
+		 <form action="http://127.0.0.1:9000/firsthomepage/daises" method="GET" class="goingToFirstHomePage">
+		 	  
+		 </form>
+	</div>
+	<div style="display: none;">
+		 <form action="http://127.0.0.1:9000/settings" method="GET" class="goingToSettings">
+		 	  
+		 </form>
+	</div>
+	<div style="display: none;">
+		 <form action="http://127.0.0.1:9000" method="GET" class="displayingFinalResultSearch">
+		 	  
+		 </form>
+	</div>
+	<div style="display: none;">
+		 <form action="http://127.0.0.1:9000/getInboxpage" method="GET" class="displayRequest">
+		 	  
+		 </form>
+	</div>
+	<div class='row' id='footermain'>
+	<div class="col-3" id='footer'>
+		<ul>
+			<li>Mango</li>
+			<li>Apple</li>
+			<li>Cashew</li>
+			<li>Pawpaw</li>
+			<li>Orange</li>
+		</ul>
+	</div>
+	<div class="col-3" id='footer'>
+		<ul>
+			<li>Lemon</li>
+			<li>Bananas</li>
+			<li>grape</li>
+			<li>bitterlemon</li>
+			<li>sourgrape</li>
+		</ul>
+	</div>
+	<div class="col-3" id='footer'>
+		<ul>
+			<li>waterlemon</li>
+			<li>groundnut</li>
+			<li>corn</li>
+			<li>rice</li>
+			<li>cereals</li>
+		</ul>
+	</div>
+	<div class="col-3" id='footer'>
+		<ul>
+			<li>benzen</li>
+			<li>methane</li>
+			<li>ethane</li>
+			<li>ethanol</li>
+			<li>gasoline</li>
+		</ul>
+	</div>
+</div>
+
+<div id='lastDivSection' style="">
+	<p>	LoveDaises Copyright 2017</p>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script type="application/javascript">
+
+	      $('#lovedaisesHeading').css('background-color', 'black');
+          $('.liveSearch').css('background-color', 'black');
+          $('document').ready(function(event){
+            
+          });
+
+
+          function displayRatingForm(passedId){
+                $('.returnedRating').hide();
+                $('.parentForRateCover').show();
+          }
+
+	      $('#returnedForm').submit(function(event){
+	         	event.preventDefault();
+	      });
+
+          function closeReturnedRatingModal(){
+              $('#returnedRatingModal').hide();
+              console('closing the rating modal');
+          }
+
+	      $('#returnedFormModal').submit(function(event){
+	      	 event.preventDefault();
+	      });
+
+          $('.videoModal').hide();
+          document.getElementById('textInput2').value = "start chatting!";
+          function closingVideoChatInterface(){
+               $('.videoChatInterface').hide();
+          }
+
+          function showChattingInterface(){
+          	  $('#mode1').show();
+          	  console.log();
+          }
+         
+          function showVideoInterface(){
+          	  $('.videoChatInterface').show();
+          	  $('#mode1').hide();
+          }
+
+          function closeChattingInterface(){
+               $('#mode1').hide();
+          }
+	     //going to inbox page!
+	     $('#envelopeIcon').click(function(event){
+	     	  $('.displayRequest').submit();
+	     });
+
+         var onlineSearchFilter, offlineSearchFilter, onlineSwitch, offlineSwitch;
+
+		 $('#upmostHeaderButton1').click(function(){
+		 	 console.log("this function triggered");
+		 	 $('.goingToSettings').submit();
+		 });
+
+		 $('#upmostHeaderButton3').click(function(){
+		 	 console.log("Function Ran");
+		 	 $('.goingToFirstHomePage').submit();
+		 });
+         
+         $('#onlineButton').click(function(){
+         	 var color = document.getElementById('onlineButton').style.backgroundColor;
+         	 if(color == 'white'){
+                  document.getElementById('onlineButton').style.backgroundColor = 'green';
+                  document.getElementById('onlineButton').style.color = 'white';
+                  document.getElementById('onlineButton').style.border = '1px solid black';
+                  onlineSearchFilter = "green";
+                  onlineSwitch = "on";
+
+         	 }else{
+                  document.getElementById('onlineButton').style.backgroundColor = 'white';
+                  document.getElementById('onlineButton').style.color = 'green';
+                  document.getElementById('onlineButton').style.border = '1px solid black';
+                  onlineSearchFilter = "white";
+                  onlineSwitch = "off";
+         	 }
+
+             document.getElementById('offlineButton').style.backgroundColor = 'white';
+             document.getElementById('offlineButton').style.border = '1px solid black';
+             document.getElementById('offlineButton').style.color = 'red';
+         });
+
+         $('#offlineButton').click(function(){
+         	 var color = document.getElementById('offlineButton').style.backgroundColor;
+
+             if(color == "white"){
+                 document.getElementById('offlineButton').style.backgroundColor = 'green';
+                 document.getElementById('offlineButton').style.color = 'white';
+                 document.getElementById('offlineButton').style.border = '1px solid black';
+                 offlineSearchFilter = "green";
+                 offlineSwitch = 'on';
+             }else{
+             	 document.getElementById('offlineButton').style.backgroundColor = 'white';
+                 document.getElementById('offlineButton').style.color = 'red';
+                 document.getElementById('offlineButton').style.border = '1px solid black';
+                 offlineSearchFilter = "white";
+                 offlineSwitch = 'off';
+             }
+
+             document.getElementById('onlineButton').style.backgroundColor = 'white';
+             document.getElementById('onlineButton').style.border = '1px solid black';
+             document.getElementById('onlineButton').style.color = 'green';
+         });
+
+		    function getCookie(cname) {
+			 var name = cname + "=";
+			 var decodedCookie = decodeURIComponent(document.cookie);
+			 var ca = decodedCookie.split(';');
+			 for(var i = 0; i < ca.length; i++) {
+			     var c = ca[i];
+			     while (c.charAt(0) == ' ') {
+			          c = c.substring(1);
+			     }
+			     if(c.indexOf(name) == 0) {
+			         return c.substring(name.length, c.length);
+			     }
+			    }
+			   // return "";
+			}
+
+			function checkCookie() {
+			    var user=getCookie("daises");
+			    //alert(user);
+			    return user;
+			}
+
+			var mycookie = checkCookie();
+			console.log(mycookie);
+			// setting email for form ratings
+			document.getElementById('myEmailhidden').style.value = mycookie;
+	        console.log(document.getElementById('myEmailhidden').style.value)
+         
+         var postUniqueId;  // used for identifying a particular post, thi
+         //is set when a rating is clicked
+
+         $('#formRating').submit(function(event){
+                  event.preventDefault();
+                  var myEmail = document.getElementById("myEmailhidden").value;
+                  document.getElementById("myEmailhidden").value = myEmail + " " + postUniqueId;
+		   	      var formData2 = new FormData(this);
+
+		    	   $.ajax({
+				        url: "http://127.0.0.1:8000/rating",
+				        type: 'POST',
+				        data: formData2,
+                        crossDomain: true,
+				        async: true,
+				        cache: false,
+				        contentType: false,
+				        processData: false,
+				        success: function (data) {
+				        	$('.ratingModalForm1').hide();
+				            //alert(data.myName);
+				            updateRatingFrontEnd();
+				        },
+				        error: function(data){
+                            alert("Something is Wrong!");
+				        }
+				       
+				   });
+		    	   
+		    	    // function is just to update a perticular rating!
+		    	   function updateRatingFrontEnd(){
+		    	   	   var sentData = document.getElementById('myEmailhidden').value;
+		    	   	     $.ajax({
+							        url: "http://127.0.0.1:8000/updateRatingFrontEnd",
+							        type: 'POST',
+							        data: JSON.stringify({'sentData': sentData}),
+			                        crossDomain: true,
+							        async: true,
+							        cache: false,
+							        contentType: "application/json; charset=utf-8",
+							        processData: false,
+							        success: function (data) {
+							            console.log(data.message);
+							            if((data.typeOfRater = 'close person')){
+							            	   document.getElementById(rateUniqueId).innerHTML = data.message;
+							            	   document.getElementById('theRate').innerHTML = data.message;
+
+                                                
+							            	   setTimeout(function(){
+                                                   document.getElementsByClassName('ratingPopUp')[0].style.display = 'block';
+							            	   }, 3000);
+							            	   setTimeout(function(){
+                                                   $('.ratingPopUp').hide();
+							            	   }, 8000);
+                                        }
+
+                                        if(data.typeOfRater == 'not close person'){
+                                        	   document.getElementsByClassName(rateUniqueId)[0].innerHTML = data.message;
+                                               document.getElementById('theRate').innerHTML = data.message;
+                                           
+                                               setTimeout(function(){
+                                                   document.getElementsByClassName('ratingPopUp')[0].style.display = 'block';
+							            	   }, 3000);
+							            	   setTimeout(function(){
+                                                   $('.ratingPopUp').hide();
+							            	   }, 8000);
+                                        } 
+							        	
+							        },
+							        error: function(data){
+			                            alert("Something is Wrong!");
+							        }
+				         });
+		    	   }
+                   
+                   $('.parentForRateCover').hide();
+                   return false;
+		    });
+
+
+		 $('.firstRow').hide();
+		 $('#loaderInterfaceRequest').hide();
+         $('.liveSearch').submit(function(event){
+             event.preventDefault();
+             var value = document.getElementsByClassName('search')[0].value;
+             if(value.length == 0){ return; }
+             if(value == ''){ return; }
+             $('#loaderInterfaceRequest').show();
+              $.ajax({
+				        url: "http://127.0.0.1:8000/liveSearch",
+				        type: 'POST',
+				        data: JSON.stringify({'value': value}),
+                        crossDomain: true,
+				        async: true,
+				        cache: false,
+				        contentType: "application/json; charset=utf-8",
+				        processData: false,
+				        success: function(data){
+				        	console.log(data);
+				        	var dataCounter = 0;
+				        	var generatedHTML;
+				        	var onlineCounter = 0;
+				            var onlineCounter1 = 0;
+				        	var offlineCounter = 0;
+				        	var offlineCounter1 = 0;
+				        	var personalPicture, personalPicture1, personalPicture2, personalPicture3,personalPicture4;
+                            $('.noResultSetFound').show();
+				        	if(data.message == 'No Result Found!'){
+                                 // do something!
+                                 $('#amountOfData').hide();
+                                 document.getElementById('noResultSetFound').innerHTML = 'Ooops!! no results found in Database! try Searching with key Words';
+                                 $('.firstRow').hide();
+                                 //$('.secondRow').hide();
+                                 $('.noResultSetFound').show();
+                                 $('#loaderInterfaceRequest').hide();
+                                 $('.outerCovergenerated').hide();
+                                 return;
+				        	}
+				        	if(data.online != '' && data.offline != ''){
+				        		  document.getElementById('amountOfData1').innerHTML = 'people found Online';
+				        		  $('.outerCovergenerated').hide();
+                                  for(var i=0; i < data.online.length; i++){
+                                  	   onlineCounter++;
+                                  	   if(data.online[i].PersonalPicture == ''){
+                                            personalPicture = 'man.jpg';
+                                  	   }
+                                       var generatedHTML = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                                       $(generatedHTML).insertBefore('#amountOfData1');
+                                       if(onlineCounter == data.online.length){
+                                       	   $('#loaderInterfaceRequest').hide();
+                                           document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                                       }
+                                  }
+
+                                  for(var i=0; i < data.offline.length; i++){
+                                  	   offlineCounter++;
+                                  	   document.getElementById('amountOfData2').innerHTML = 'persons found Offline';
+                                  	   if(data.offline[i].PersonalPicture == ''){
+                                            personalPicture1 = 'man.jpg';
+                                  	   }
+
+                                       var generatedHTML1 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                                       $(generatedHTML1).insertBefore('#amountOfData2');
+                                       if(offlineCounter == data.offline.length){
+                                       	   $('#loaderInterfaceRequest').hide();
+                                           document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                                       }
+                                  }
+				        	}
+
+				        	if(data.online != '' && data.offline == ''){
+				        		 $('.outerCovergenerated').hide();
+				        		 $('#amountOfData').show();
+                                 for(var i=0; i < data.online.length; i++){
+                                  	   onlineCounter1++;
+                                  	   document.getElementById('amountOfData').innerHTML = 'persons found online';
+                                  	   if(data.online[i].PersonalPicture == ''){
+                                            personalPicture3 = 'man.jpg';
+                                  	   }
+                                       var generatedHTML3 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                                       $(generatedHTML3).insertAfter('#amountOfData');
+                                       if(onlineCounter1 == data.online.length){
+                                       	   $('#loaderInterfaceRequest').hide();
+                                       	   $('.noResultSetFound').hide();
+                                           document.getElementsByClassName('firstRow')[0].style.display = 'none';
+                                       }
+                                  }
+				        	}
+
+				        	if(data.online == '' && data.offline != ''){
+				        		 $('.outerCovergenerated').hide();
+				        		 $('#amountOfData').show();
+                                 for(var i=0; i < data.offline.length; i++){
+                                  	   offlineCounter1++;
+                                  	   document.getElementById('amountOfData').innerHTML = 'persons found offline';
+                                  	   if(data.offline[i].PersonalPicture == ''){
+                                            personalPicture4 = 'man.jpg';
+                                  	   }
+                                       var generatedHTML4 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                                       $(generatedHTML4).insertBefore('#amountOfData');
+                                       if(offlineCounter1 == data.offline.length){
+                                       	   $('#loaderInterfaceRequest').hide();
+                                           document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                                       }
+                                 }
+				        	}
+				        },
+				        error: function(data){
+                            alert("Something is Wrong!");
+				        }	       
+			 });
+         }); 
+          
+       
+/**
+ * something new stated here
+ * @param  {String}
+ * @return {[type]}
+ *
+ *    
+ */ 
+
+       $('.headForm').hide();
+      /* $('.headForm').keyup(function(event){
+       	      //document.getElementById('lovedaisesHeading').style.marginTop = "10px";
+       	      //document.getElementsByClassName('homeSearch')[0].style.width = "98%";
+       	      //document.getElementsByClassName('homeSearch')[0].style.marginLeft = "1%";
+       	      //document.getElementsByClassName('homeSearch')[0].style.backgroundColor = "black";
+       	      //document.getElementsByClassName('homeSearch')[0].style.color = "white";
+        	 // $('.SearchHintp').hide();
+        	  var searchQuery = document.getElementById('headerInput').value;
+        	  var theType = typeof searchQuery;
+        	  if(theType == 'number') theType = 'number';
+        	  if(searchQuery == '' || theType == 'number') return;
+        	  var value = document.getElementById('hiddenFieldForm').value;
+
+              $.ajax({
+			        url: "http://127.0.0.1:8000/homepageSearchQuery",
+			        type: 'POST',
+			        data: JSON.stringify({'searchQuery': searchQuery, 'hiddenFieldForm': value}),
+                    crossDomain: true,
+			        async: true,
+			        cache: false,
+			        contentType: "application/json; charset=utf-8",
+			        processData: false,
+			        success: function (data) {
+			        	console.log(data);
+			        	var arrayData = [];
+			        	var onlineCounter = 0;
+			            var onlineCounter1 = 0;
+			            var offlineCounter = 0;
+			            var offlineCounter1 = 0;
+			        	if(data.message == 'No Result Found!'){
+			        		var searchHint = "No Result, Continue Searching!";
+			        		showHint(searchHint);
+			        		return
+			        	};
+
+			            if(data.online != "" && data.offline != ''){
+                              for(var i=0; i < data.online.length; i++){
+                              	   onlineCounter++;
+                                   arrayData.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                   arrayData.push(data.online[i].Daises);
+                                   if(onlineCounter == data.online.length){
+                                        // do something
+                                        break;
+                                   }
+                              }
+
+                              for(var i=0; i < data.offline.length; i++){
+                              	   offlineCounter++;
+                                   arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
+                                   arrayData.push(data.offline[i].Daises);
+                                   if(offlineCounter == data.offline.length){
+                                   	    setTimeout(function(){
+                                   	    	showHint(arrayData);
+                                   	    },50);
+                                        return;
+                                   }
+                              }
+			            }
+
+			            if(data.online == "" && data.offline >= 1){
+                                   for(var i=0; i < data.online.length; i++){
+                                   	    offlineCounter1++;
+                                   	    //console.log('was this function called! ' +  );
+                                        arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName); 
+                                        arrayData.push(data.offline[i].Daises);
+                                        if(offlineCounter1 == data.online.length){
+                                        	//console.log('was this function called!');
+                                            showHint(arrayData);
+                                        }
+                                   }
+			            }
+			            if(data.online != "" && data.offline == ''){
+                                   console.log('was this function called!');
+                                   for(var i=0; i < data.online.length; i++){
+                                   	console.log('was this function called!22');
+                                   	   onlineCounter1++;
+                                       arrayData.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                       arrayData.push(data.online[i].Daises);
+                                       if(onlineCounter1 == data.online.length){
+                                       	    console.log('Code block Entered!');
+                                            showHint(arrayData);
+                                       }
+                                   }
+			            }
+
+			            function showHint(searchHint){
+				            	if(searchHint == 'No Result, Continue Searching!'){
+				                    var generatedHTML = "<p class='SearchHintp'>No Result, Continue Searching!<br><br>Search with key words!</p>";
+				                    $(generatedHTML).insertBefore('#SearchHint');
+				                     $('.SearchHint').show();
+				                     return;
+				            	}
+				                console.log(searchHint);
+				                console.log('that is search hint above');
+				            	var searchCounter = 0;
+				            	//var uniqueId = abac;
+				            	for(var i=0; i < searchHint.length; i++){
+				            	    searchCounter++;
+				                    var generatedHTML = "<p class='SearchHintp' onclick='displayingFoundDaisesFinal(this)' data-val='" + searchHint[i] + "' style='color: black; text-decoration: none; width: 100%;'>" + searchHint[i] + "</p>";
+
+
+				                    /**
+				                     * var generatedHTML = "<p class='SearchHintp'><a href='http://127.0.0.1:8000/homepageSearchQuery/" + searchHint[i] + "'" + " style='color: black; text-decoration: none; width: 100%; background-color: transparent;'>" + searchHint[i] + "</a></p>";
+				                     */
+				                   // var generatedHTML = "<p onload='setOnlisterner()' class='SearchHintp'>" + searchHint[i] + "</p>";
+				                   //var generatedHTML = "<a href='http://127.0.0.1:8000/homepageSearchQuery/" + searchHint[i] + "'" + ' ' + " style='' class='SearchHintp'>" + searchHint[i] + "</a><br>";
+				                    /* var generatedHTML = "<p class='SearchHintp'><a href='http://127.0.0.1:9000/homepageSearchQuery/" + searchHint[i] + "'" + " style='color: black; text-decoration: none; width: 100%; background-color: transparent;'>" + searchHint[i] + "</a></p>";
+				                     */
+				                   // var generatedHTML = "<p onload='setOnlisterner()' class='SearchHintp'>" + searchHint[i] + "</p>";
+				                   //var generatedHTML = "<a href='http://127.0.0.1:9000/homepageSearchQuery/" + searchHint[i] + "'" + ' ' + " style='' class='SearchHintp'>" + searchHint[i] + "</a><br>";
+				/*                    $(generatedHTML).insertBefore('#SearchHint');
+				                    if(searchCounter == searchHint.length){
+				                         $('.SearchHint').show();
+				                         return;
+				                    }
+				                }
+			            }	            
+			        },
+			        error: function(data){
+                        alert("Please Check your server! <br> something is wrong!");
+			        }
+			       
+			    });
+        });*/
+
+      
+        $('#headerInput').keyup(function(event){
+        	  var inputtedValue = $('#headerInput').val();
+        	  $('.searchDaises').val(inputtedValue);
+              $('.searchFilter').css('display', 'block');
+              $('#lovedaisesHeading').css('display', 'block');
+              $('#headerForm').css('display', 'block');
+              $('#headerInput').css('display', 'none');
+              $('.searchDaises').focus();
+              console.log(inputtedValue);
+        });
+
+       $('#headerForm').keyup(function(event){
+       	      
+       	     
+       	      $('.navigationDynamic').css("left", '93%');
+       	      var warnmsg = document.getElementsByClassName('search1')[0].value;
+       	      console.log(warnmsg);
+       	      console.log("thats the value above");
+       	      if(warnmsg == "Please Select Type of Search!!!"){
+       	      	 $('#warnmsg1').show();
+       	      	  document.getElementsByClassName('search1')[0].style.border = '1px solid red';
+       	      	 setTimeout(function(){
+                    $('#warnmsg1').hide();
+                    document.getElementsByClassName('search1')[0].style.border = 'none';
+       	      	 }, 300);
+       	      	 return;
+       	      }
+       	      document.getElementById('lovedaisesHeading').style.marginTop = "10px";
+       	      document.getElementsByClassName('homeSearch')[0].style.width = "98%";
+       	      document.getElementsByClassName('homeSearch')[0].style.marginLeft = "1%";
+       	      document.getElementsByClassName('homeSearch')[0].style.backgroundColor = "black";
+       	      document.getElementsByClassName('homeSearch')[0].style.color = "white";
+        	  $('.SearchHintp').hide();
+        	  var searchQuery = document.getElementsByClassName('searchDaises')[0].value;
+        	  var theType = typeof searchQuery;
+        	  if(theType == 'number') theType = 'number';
+        	  if(searchQuery == '' || theType == 'number') return;
+        	  var value = document.getElementById('hiddenFieldForm').value;
+
+        	  if(searchQuery == ""){
+                   document.getElementById('lovedaisesHeading').style.marginTop = "100px";
+       	           document.getElementsByClassName('homeSearch')[0].style.width = "50%";
+       	           document.getElementsByClassName('homeSearch')[0].style.marginLeft = "25%";
+        	  }
+
+              $.ajax({
+			        url: "http://127.0.0.1:8000/homepageSearchQuery",
+			        type: 'POST',
+			        data: JSON.stringify({'searchQuery': searchQuery, 'hiddenFieldForm': value}),
+                    crossDomain: true,
+			        async: true,
+			        cache: false,
+			        contentType: "application/json; charset=utf-8",
+			        processData: false,
+			        success: function (data) {
+			        	console.log(data);
+			        	console.log('good check');
+			        	var arrayData = [];
+			        	var onlineCounter = 0;
+			            var onlineCounter1 = 0;
+			            var offlineCounter = 0;
+			            var offlineCounter1 = 0;
+			            //somthing
+			            var valueOfSearchFilterSelection;
+		        	    var professionalCounter= 0;
+		        	    var professionalArray = [];
+		        	    var saviourCounter = 0;
+		        	    var saviourArray = [];
+		        	    var belovedCounter = 0;
+		        	    var belovedArray = [];
+		        	    //something
+                        valueOfSearchFilterSelection = document.getElementsByClassName('search1')[0].value;
+
+			        	if(data.message == 'No Result Found!'){
+			        		var searchHint = "No Result, Continue Searching!";
+			        		showHint(searchHint);
+			        		return
+			        	};
+
+			            if(data.online != "" && data.offline != ''){
+			            	console.log("code got here online");
+                            for(var i=0; i < data.online.length; i++){
+                               onlineCounter++;
+                               arrayData.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                               arrayData.push(data.online[i].Daises);
+
+                               if(valueOfSearchFilterSelection == "filter by Professional"){
+                                     if(data.online[i].DaisesType == "professional"){
+                                          professionalCounter++;
+                                          professionalArray.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                          professionalArray.push(data.online[i].Daises);
+                          	         }
+                               }
+                               
+                               //checking for typeo daises entered saviour
+                               if(valueOfSearchFilterSelection == "filter by Saviour"){
+                                     if(data.online[i].DaisesType == "saviour"){
+                                          saviourCounter++;
+                                          saviourArray.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                          saviourArray.push(data.online[i].Daises);
+                          	         }
+
+                               }
+                               
+                                //checking for typeo daises entered beloved
+                                if(valueOfSearchFilterSelection == "filter by Beloved"){
+                                     if(data.online[i].DaisesType == "beloved"){
+                                          belovedCounter++;
+                                          belovedArray.push(data.online[i]);
+                                          belovedArray.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                          belovedArray.push(data.online[i].Daises);
+                          	         }
+                               }
+
+	                           if(onlineCounter == data.online.length){
+	                           	    if(valueOfSearchFilterSelection == "filter by Beloved"){
+	                                       if(belovedArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(belovedArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+
+	                           	    if(valueOfSearchFilterSelection == "filter by Saviour"){
+	                           	    	if(saviourArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(saviourArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+
+	                           	    if(valueOfSearchFilterSelection == 'filter by Professional'){
+	                           	    	if(professionalArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(professionalArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+	                           }
+                            }
+
+                            for(var i=0; i < data.offline.length; i++){
+                               offlineCounter++;
+                               arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
+                               arrayData.push(data.offline[i].Daises);
+                                    
+                               if(valueOfSearchFilterSelection == "filter by Professional"){
+                                     if(data.offline[i].DaisesType == "professional"){
+                                          professionalCounter++;
+                                          professionalArray.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
+                                          professionalArray.push(data.offline[i].Daises);
+                          	         }
+                               }
+                               
+                               //checking for typeo daises entered saviour
+                               if(valueOfSearchFilterSelection == "filter by Saviour"){
+                                     if(data.offline[i].DaisesType == "saviour"){
+                                          saviourCounter++;
+                                          saviourArray.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
+                                          saviourArray.push(data.offline[i].Daises);
+                          	         }
+
+                               }
+                               
+                                //checking for typeo daises entered beloved
+                                if(valueOfSearchFilterSelection == "filter by Beloved"){
+                                     if(data.offline[i].DaisesType == "beloved"){
+                                          belovedCounter++;
+                                          belovedArray.push(data.offline[i].FirstName + ' ' + data.online[i].LastName);
+                                          belovedArray.push(data.offline[i].Daises);
+                          	         }
+                                }
+                               
+	                           if(offlineCounter == data.offline.length){
+	                           	   if(valueOfSearchFilterSelection == "filter by Beloved"){
+	                                       if(belovedArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(belovedArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+
+	                           	    if(valueOfSearchFilterSelection == "filter by Saviour"){
+	                           	    	if(saviourArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(saviourArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+
+	                           	    if(valueOfSearchFilterSelection == 'filter by Professional'){
+	                           	    	if(professionalArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(professionalArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+	                           }
+                            }
+                              
+                        }			   
+
+			            if(data.online == "" && data.offline.length >= 1){
+			            	console.log('code got here offline');
+			            	console.log('this particular offline');
+                            for(var i=0; i < data.offline.length; i++){
+                               console.log('code entered offline loop');
+                               console.log(valueOfSearchFilterSelection);
+                               offlineCounter++;
+                               arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
+                               arrayData.push(data.offline[i].Daises);
+                               console.log(valueOfSearchFilterSelection);
+                               if(valueOfSearchFilterSelection == "filter by Professional"){
+                               	     console.log('code got to this point');
+                                     if(data.offline[i].DaisesType == "professional"){
+                                          professionalCounter++;
+                                          professionalArray.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
+                                          professionalArray.push(data.offline[i].Daises);
+                          	         }
+                               }
+                               
+                               //checking for typeo daises entered saviour
+                               if(valueOfSearchFilterSelection == "filter by Saviour"){
+                               	     console.log('checking saviour');
+                                     if(data.offline[i].DaisesType == "saviour"){
+                                     	console.log('saviour entered if statement');
+                                          saviourCounter++;
+                                          saviourArray.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
+                                          saviourArray.push(data.offline[i].Daises);
+                          	         }
+
+                               }
+                               
+                                //checking for typeo daises entered beloved
+                                if(valueOfSearchFilterSelection == "filter by Beloved"){
+                                     if(data.offline[i].DaisesType == "beloved"){
+                                          belovedCounter++;
+                                          belovedArray.push(data.offline[i].FirstName + ' ' + data.online[i].LastName);
+                                          belovedArray.push(data.offline[i].Daises);
+                          	         }
+                                }
+                               
+	                           if(offlineCounter == data.offline.length){
+	                           	    if(valueOfSearchFilterSelection == "filter by Beloved"){
+	                                    if(belovedArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(belovedArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+
+	                           	    if(valueOfSearchFilterSelection == "filter by Saviour"){
+	                           	    	console.log('saviour 1');
+	                           	    	if(saviourArray.length == 0){ 
+                                             console.log('saviour 2');
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	 	  console.log('saviour 3');
+	                           	    	      showHint(saviourArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+
+	                           	    if(valueOfSearchFilterSelection == 'filter by Professional'){
+	                           	    	if(professionalArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(professionalArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+	                           }
+                            }
+			            }
+
+			            if(data.online != "" && data.offline == ''){
+                           console.log('was this function called!');
+                           for(var i=0; i < data.online.length; i++){
+                               onlineCounter++;
+                               arrayData.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                               arrayData.push(data.online[i].Daises);
+
+                               if(valueOfSearchFilterSelection == "filter by Professional"){
+                                     if(data.online[i].DaisesType == "professional"){
+                                          professionalCounter++;
+                                          professionalArray.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                          professionalArray.push(data.online[i].Daises);
+                          	         }
+                               }
+                               
+                               //checking for typeo daises entered saviour
+                               if(valueOfSearchFilterSelection == "filter by Saviour"){
+                                     if(data.online[i].DaisesType == "saviour"){
+                                          saviourCounter++;
+                                          saviourArray.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                          saviourArray.push(data.online[i].Daises);
+                          	         }
+
+                               }
+                               
+                                //checking for typeo daises entered beloved
+                                if(valueOfSearchFilterSelection == "filter by Beloved"){
+                                     if(data.online[i].DaisesType == "beloved"){
+                                          belovedCounter++;
+                                          belovedArray.push(data.online[i]);
+                                          belovedArray.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                          belovedArray.push(data.online[i].Daises);
+                          	         }
+                               }
+
+	                           if(onlineCounter == data.online.length){
+	                           	    if(valueOfSearchFilterSelection == "filter by Beloved"){
+	                                       if(belovedArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(belovedArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+
+	                           	    if(valueOfSearchFilterSelection == "filter by Saviour"){
+	                           	    	if(saviourArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(saviourArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+
+	                           	    if(valueOfSearchFilterSelection == 'filter by Professional'){
+	                           	    	if(professionalArray.length == 0){ 
+
+                                             $('#loaderInterfaceRequest').hide();
+                                             $('.warningMessage').show();
+                                             setTimeout(function(){
+                                                $('.warningMessage').hide();
+                                             }, 3000);
+
+	                           	    	 }else{
+	                           	    	      showHint(professionalArray);
+	                                          return;
+	                           	    	 }
+	                           	    }
+	                           }
+                           }
+			            }
+
+			            function showHint(searchHint){
+				            	if(searchHint == 'No Result, Continue Searching!'){
+				                    var generatedHTML = "<p class='SearchHintp'>No Result, Continue Searching!<br><br>Search with key words!</p>";
+				                    $(generatedHTML).insertBefore('#SearchHint');
+				                     $('.SearchHint').show();
+				                     return;
+				            	}
+				                console.log(searchHint);
+				                console.log('that is search hint above');
+				            	var searchCounter = 0;
+				            	//var uniqueId = abac;
+				            	for(var i=0; i < searchHint.length; i++){
+				            	    searchCounter++;
+				                    var generatedHTML = "<p class='SearchHintp' onclick='displayingFoundDaisesFinal(this)' data-val='" + searchHint[i] + "' style='color: black; text-decoration: none; width: 100%;'>" + searchHint[i] + "</p>";
+
+				                    $(generatedHTML).insertBefore('#SearchHint');
+				                    if(searchCounter == searchHint.length){
+				                         $('.SearchHint').show();
+				                         return;
+				                    }
+				                }
+			            }	            
+			        },
+			        error: function(data){
+                        alert("Please Check your server! <br> something is wrong!");
+			        }
+			       
+			    });
+        });
+
+       function displayingFoundDaisesFinal(pElement){
+              $('.searchFilter').css('display', 'none');
+              $('#lovedaisesHeading').css('display', 'none');
+              $('#headerForm').css('display', 'none');
+              $('#headerInput').css('display', 'block');
+              $('.SearchHint').css('display', 'none');
+              $(".searchDaises").val("");
+              $('searchDaises').focus();
+              $('.headForm').show();
+              $('#headerInput').val('');
+              $('.singleSection').css('display', 'none');
+              //$('.SearchHint').hide();
+              //$('#headerForm').hide();
+              var searchValue = pElement.getAttribute("data-val");
+              console.log(searchValue);
+              //console.log(pElement);
+              $.ajax({
+		        url: "http://127.0.0.1:8000/liveSearch1",
+		        type: 'POST',
+		        data: JSON.stringify({'value': searchValue}),
+                crossDomain: true,
+		        async: true,
+		        cache: false,
+		        contentType: "application/json; charset=utf-8",
+		        processData: false,
+		        success: function(data){
+		        	console.log(data);
+		        	var dataCounter = 0;
+		        	var generatedHTML;
+		        	var onlineCounter = 0;
+		            var onlineCounter1 = 0;
+		        	var offlineCounter = 0;
+		        	var offlineCounter1 = 0;
+		        	var personalPicture, personalPicture1, personalPicture2, personalPicture3,personalPicture4;
+                    $('.noResultSetFound').show();
+		        	if(data.message == 'No Result Found!'){
+                         // do something!
+                         $('#amountOfData').hide();
+                         document.getElementById('noResultSetFound').innerHTML = 'Ooops!! no results found in Database! try Searching with key Words';
+                         $('.firstRow').hide();
+                         //$('.secondRow').hide();
+                         $('.noResultSetFound').show();
+                         $('#loaderInterfaceRequest').hide();
+                         $('.outerCovergenerated').hide();
+                         return;
+		        	}
+		        	if(data.online != '' && data.offline != ''){
+		        		  if(onlineSwitch == "on" || offlineSwitch == "on"){
+                               return;
+		        		  }
+		        		  document.getElementById('amountOfData1').innerHTML = 'people found Online';
+		        		  $('.outerCovergenerated').hide();
+                          for(var i=0; i < data.online.length; i++){
+                          	   onlineCounter++;
+                          	   if(data.online[i].PersonalPicture == ''){
+                                    personalPicture = 'man.jpg';
+                          	   }
+                               var generatedHTML = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+                               $(generatedHTML).insertBefore('#amountOfData1');
+                               $('.firstRow').css('background-color', 'azure');
+                               $('.singleSection').css('background-color', 'azure');
+                               if(onlineCounter == data.online.length){
+                               	   $('#loaderInterfaceRequest').hide();
+                                   $(".outerCovergenerated").css("width", "90%");
+                               	   $(".outerCovergenerated").css("margin-left", "5%");
+                                   document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                               }
+                          }
+                          for(var i=0; i < data.offline.length; i++){
+                          	   offlineCounter++;
+                          	   document.getElementById('amountOfData2').innerHTML = 'persons found Offline';
+                          	   if(data.offline[i].PersonalPicture == ''){
+                                    personalPicture1 = 'man.jpg';
+                          	   }
+                               var generatedHTML1 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+                               $(generatedHTML1).insertBefore('#amountOfData2');
+                               $('.firstRow').css('background-color', 'azure');
+                               $('.singleSection').css('background-color', 'azure');
+                               if(offlineCounter == data.offline.length){
+                               	   $('#loaderInterfaceRequest').hide();
+                               	   $(".outerCovergenerated").css("width", "90%");
+                               	   $(".outerCovergenerated").css("margin-left", "5%");
+                                   document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                               }
+                          }
+		        	}
+		        	if(data.online != '' && data.offline == ''){
+		        		 if(offlineSwitch == 'on'){
+                             return;
+		        		 }
+		        		 $('.outerCovergenerated').hide();
+		        		 $('#amountOfData').show();
+                         for(var i=0; i < data.online.length; i++){
+                          	   onlineCounter1++;
+                          	   document.getElementById('amountOfData').innerHTML = 'persons found online';
+                          	   if(data.online[i].PersonalPicture == ''){
+                                    personalPicture3 = 'man.jpg';
+                          	   }
+                               var generatedHTML3 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+                               $(generatedHTML3).insertAfter('#amountOfData');
+                               $('.firstRow').css('background-color', 'azure');
+                               $('.singleSection').css('background-color', 'azure');
+                               if(onlineCounter1 == data.online.length){
+                               	   $('#loaderInterfaceRequest').hide();
+                               	   $('.noResultSetFound').hide();
+                               	   $(".outerCovergenerated").css("width", "47%");
+                               	   $(".outerCovergenerated").css("margin-left", "27%");
+                                   document.getElementsByClassName('firstRow')[0].style.display = 'none';
+                               }
+                          }
+		        	}
+		        	if(data.online == '' && data.offline != ''){
+		        		 if(onlineSwitch == 'on'){
+		        		 	return;
+		        		 }
+		        		 $('.outerCovergenerated').hide();
+		        		 $('#amountOfData').show();
+                         for(var i=0; i < data.offline.length; i++){
+                          	   offlineCounter1++;
+                          	   document.getElementById('amountOfData').innerHTML = 'persons found offline';
+                          	   if(data.offline[i].PersonalPicture == ''){
+                                    personalPicture4 = 'man.jpg';
+                          	   }
+                               var generatedHTML4 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+                               $(generatedHTML4).insertBefore('#amountOfData');
+                               $('.firstRow').css('background-color', 'azure');
+                               $('.singleSection').css('background-color', 'azure');
+                               if(offlineCounter1 == data.offline.length){
+                               	   $('#loaderInterfaceRequest').hide();
+                               	   $(".outerCovergenerated").css("width", "47%");
+                               	   $(".outerCovergenerated").css("margin-left", "27%");
+                                   document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                               }
+                         }
+		        	}
+		        },
+		        error: function(data){
+                    alert("Something is Wrong!");
+		        }	       
+	      });
+        }
+
+		function outputtingRating(value){
+			 // displayLoadingInterface();
+			
+			   var value = value;
+		       postUniqueId = value;
+			       console.log(value + "   .............................");
+		                  //rateUniqueId = value;
+		                  
+		     			   $.ajax({
+					        url: "http://127.0.0.1:8000/gettingRating",
+					        type: 'POST',
+					        data: JSON.stringify({ sentData: value }),
+		                    crossDomain: true,
+					        async: true,
+					        cache: false,
+					        dataType: "json",
+					        contentType: "application/json; charset=utf-8",
+					        processData: false,
+					        success: function (data) {
+		                            //console.log(data.myName);
+		                            //console.log('pppppppppppppppppp');
+		                            var objectKey = Object.keys(data.myName)[0];
+		                            var dataValue = data.myName[objectKey].split(' ')[0];
+		                            console.log(dataValue + "         this is dataValue");
+					           if(dataValue > 1){
+					        		
+		        	                document.getElementById('returnedMessage').innerHTML = "";
+		        	                document.getElementById('returnedMessage').innerHTML = "Average Total Rating";
+		        	                var dynamicPicture;
+					        	    var dynamicVirtue;
+					        	    var dynamicRate;
+					        	    var dataCounter = 0;
+					        	    var dataSum = 0;
+					        	    var returnedDataLength  = Object.keys(data.myName).length;
+		    	                       var generatedHTML1;
+		    	                    for(x in data.myName){
+		                                  dataCounter++;
+		                                 // dataSum += Number(data.myName[x].split(' ')[0]);
+		                                              generatedHTML1 = '<p class="generatedPRatings" style="padding-bottom: 20px; border-bottom: 1px solid #eeeeee; text-align: center;"><span>' + '<img src="http://127.0.0.1:9000/Images/' + data.myName[x].split(' ')[1] + '" style="width: 20%;"/></span><span style="padding-bottom: 10px;">' + data.myName[x].split(' ')[2] + '    ' + '</span><span style="padding: 10px; border-radius: 50%; color: white; background-color: green; border: 7px solid orange;">' + data.myName[x].split(' ')[0] + '</span></p>';
+		                                              $(generatedHTML1).insertBefore(".someAttribute");
+
+		                                              if(dataCounter == returnedDataLength){
+		                                              	   //averageRate = dataSum / dataCounter;
+		                                              	   displayTheDynamicGeneratedRating();
+		                                              };
+						        	}
+		                                         
+		                            function displayTheDynamicGeneratedRating(){
+		                                $('.returnedRatingModal').show();
+		                            };
+
+		                            console.log('this function just ran!')
+						                           
+					            }
+					        	
+		                         if(data.myName == "No Rating Yet!!"){
+		                         	document.getElementById('returnedMessage').innerHTML = "";
+		                         	//document.getElementsByClassName('dynamic').style.display = "none";
+		                         	document.getElementById('returnedMessage2').innerHTML = "No Rating Yet!!";
+		                         	displayingReturnedRating(); // this function will display the rating
+		                         }
+					              
+					             function displayingReturnedRating(){
+	                                $('.returnedRatingModal').show();
+	                             };
+					            
+					            //alert(Object.keys(data.myName) + '  this is alert box is for debugging purpose!!!');
+
+
+					            setTimeout(function(){
+		                            $('.returnedRating').hide();
+					            }, 5000)
+					        },
+					        error: function(data){
+		                        alert("Something is not wright!!!");
+
+					        }
+					       
+					    });
+		}
+
+      // the function outputtingSecondRating is for the other rating!
+
+      function outputtingSecondRating(value){
+   	               var value = value;
+   	               var postUniqueId = value;
+ 	       console.log(value + "   .............................");
+         			   $.ajax({
+				        url: "http://127.0.0.1:8000/gettingRatingsOfClosePeople",
+				        type: 'POST',
+				        data: JSON.stringify({sentData: value}),
+                        crossDomain: true,
+				        async: true,
+				        cache: false,
+				        dataType: "json",
+				        contentType: "application/json; charset=utf-8",
+				        processData: false,
+				        success: function (data) {
+				                console.log(data.message);
+				                function displayingReturnedRating(){
+                                    $('.returnedRating').show();
+				                }
+
+				                if(data.message == 'No Rating Yet!'){
+				                	 document.getElementById('returnedMessage').innerHTML = "";
+                             	     document.getElementById('returnedMessage2').innerHTML = "No Rating Yet!!";
+                             	     displayingReturnedRating(); // this function will display the rating
+
+                             	     setTimeout(function(){
+                                        document.getElementsByClassName('returnedRating')[0].style.display = 'none';
+                             	     }, 4000);
+
+                                     return;
+				                }
+                                console.log('pppppppppppppppppp');
+                                var objectKey = Object.keys(data.myName)[0];
+                                var dataValue = data.myName[objectKey].split(' ')[0];
+                                       console.log(dataValue + "  this is dataValue");
+				           if(dataValue > 1){
+	        	                document.getElementById('returnedMessage').innerHTML = "";
+	        	                document.getElementById('returnedMessage').innerHTML = "Average Total Rating";
+	        	                var dynamicPicture;
+				        	    var dynamicVirtue;
+				        	    var dynamicRate;
+				        	    var dataCounter = 0;
+				        	    var returnedDataLength  = Object.keys(data.myName).length;
+	    	                       var generatedHTML1;
+	    	                    for(x in data.myName){
+                                      dataCounter++;
+                                                  generatedHTML1 = '<p class="generatedPRatings" style="padding-bottom: 20px; border-bottom: 1px solid #eeeeee; text-align: center;"><span>' + '<img src="http://127.0.0.1:9000/Images/' + data.myName[x].split(' ')[1] + '" style="width: 20%;"/></span><span style="padding-bottom: 10px;">' + data.myName[x].split(' ')[2] + '    ' + '</span><span style="padding: 10px; border-radius: 50%; color: white; background-color: green; border: 7px solid orange;">' + data.myName[x].split(' ')[0] + '</span></p>';
+                                                  $(generatedHTML1).insertBefore(".someAttribute");
+
+                                                  if(dataCounter == returnedDataLength){
+                                                  	   displayTheDynamicGeneratedRating();
+                                                  };
+					        	}
+                                             
+	                            function displayTheDynamicGeneratedRating(){
+	                                $('.returnedRatingModal').show();
+	                            };
+
+
+
+                                console.log('this function just ran!')
+					                           
+				            }
+				        	
+				            //alert(Object.keys(data.myName) + '  this is alert box is for debugging purpose!!!');
+                            
+				            setTimeout(function(){
+                                $('.returnedRating').hide();
+				            }, 5000)
+				        },
+				        error: function(data){
+                            alert("Something is not wright!!!");
+
+				        }
+				       
+				    });
+      }
+
+      function closeReturnedRatingModal(){
+      	  $('.returnedRatingModal').hide();
+      }
+</script>
+<script src="http://127.0.0.1:9000/JavaScript/textChatting.js" type="application/javascript"></script>
+<script src="/JavaScript/videoChatting.js" type="application/javascript"></script>
+</body>
+</html>

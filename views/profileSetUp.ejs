@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' >
+	<title>meetpeople</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/jpg" href="a.jpg">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/profileSetUp.css">
+	<base href = "http://127.0.0.1:9000/">
+	<style type='text/css'>
+	</style>
+</head>
+<body>
+	<div id='upmostHeader'>
+		<button id='upmostHeaderButton1'>Logout</button>
+		<button id='upmostHeaderButton2'>Logout</button>
+		<button id='upmostHeaderButton3'>Go Back</button>
+	</div>
+	<div id="outerDiv">
+		<div id="Daisesp">
+			<p>Daises >></p>
+		</div>
+		<div class="row" id="midSection">
+			<div class='col-2'>
+
+			</div>
+			<div class='col-8' id="belovedSaviourProfessionalDivOuter">
+				<form action="/profileSetUp" method="post" name="my-form" enctype="" id="profileFormId" class="profileFormClass">
+				<div class='row' id="belovedSaviourProfessionalDiv">
+					<div class='col-4' id="belovedId" onclick='hiddingElement()'>
+						<p onclick='hiddingElement()' id="belovedID">Beloved</p>
+					</div>
+					<div class='col-4' id="saviourId" onclick="showSaviour()">
+						<p onclick="showSaviour()" id="SaviouIdentity">Saviour</p>
+					</div>
+					<div class='col-4' id="professionalId" onClick="showProfessional()">
+						<p onClick="showProfessional()" id="professionalIdentity">Professional</p>
+					</div>
+				</div>
+				<div id="saviourHint">
+					<p id="beloved"><span style="padding: 10px; border-radius: 5px; color: yellow; font-size: 20px; background-color: black">hint</span> <br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus sagittis massa at blandit. Praesent dapibus luctus ex, at pulvinar felis malesuada non. Fusce mollis ut enim a facilisis. Curabitur mattis felis at tortor blandit accumsan. Sed vestibulum felis quis ipsum aliquet, maximus porta nisi cursus. Vivamus pharetra augue ut varius hendrerit. Nullam sed maximus diam, non placerat massa. Suspendisse iaculis vestibulum maximus. massa nibh, commodo a tortor in, ultricies aliquam  </p>
+				</div>
+				<div class="row beloved" id="YourId">
+					<div class="col-1">
+						<p style="margin-top: 7px;">Aliase:</p>
+					</div>
+					<div class="col-11">
+						<input type="text" name="alaise1" id="firstInput" style="padding: 10px; width: 50%" value="Amateur Guitarist (your identity for this Entry Point)">
+					</div>
+				</div>
+				<div class="row beloved" id="DaisesAndTag">
+					<div class="col-9">
+						<p>Daises</p>
+					</div>
+					<div class="col-3">
+						<p>Tag</p>
+					</div>
+				</div>
+				<div class='row beloved' id="BelovedD">
+					<div class='col-9'>
+						<textarea name="message1" id="daisesMessage">I need Someone to teach me guitar!</textarea>
+					</div>
+					<div class='col-3' >
+						<select name="Daises1" id="daisesTag">
+							<option value="NILL" name="nill">Nill</option>
+							<option value="Health" name="health">Health</option>
+							<option value="Security" name="security">Security</option>
+							<option value="Spiritual" name="spiritual">Spiritual</option>
+							<option value="Relationship" name="relationship">Relationship</option>
+							<option value="Nutrition" name="nutrition">Nutrition</option>
+							<option value="Art" name="art">Art</option>
+							<option value="Music" name="music">Music</option>
+							<option value="Sport" name="sport">Sport</option>
+							<option value="Technology" name="technology">Technology</option>
+							<option value="Finance" name="finance">Finance</option>
+							<option value="Academic" name="academics">Academics</option>
+							<option value="News" name="news">News</option>
+							<option value="3M" name="miscellanious">3M</option>
+							<option value="How to" name="howto">How to</option>
+						</select>
+					</div>
+				</div>
+				<p id="nextButton" onclick="movingToSaviourFormSection()">Next1</p>
+				<div id="saviourHint1">
+					<p id="saviourP"><span id="saviourS"style="padding: 10px; border-radius: 5px; color: yellow; font-size: 20px; background-color: black">hint</span> <br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus sagittis massa at blandit. Praesent dapibus luctus ex, at pulvinar felis malesuada non. Fusce mollis ut enim a facilisis. Curabitur mattis felis at tortor blandit accumsan. Sed vestibulum felis quis ipsum aliquet, maximus porta nisi cursus. Vivamus pharetra augue ut varius hendrerit. Nullam sed maximus diam, non placerat massa. Suspendisse iaculis vestibulum maximus. massa nibh, commodo a tortor in, ultricies aliquam  </p>
+				</div>
+				<div class="row yourId" id="YourId1">
+					<div class="col-1">
+						<p style="margin-top: 7px;">Aliase:</p>
+					</div>
+					<div class="col-11">
+						<input type="text" name="aliase2" id="saviourAlaise" style="padding: 10px; width: 50%;" value="Guitar Guru (your identity for this Entry Point)">
+					</div>
+				</div>
+				<div class="row saviour" id="DaisesAndTag">
+					<div class="col-9">
+						<p>Daises</p>
+					</div>
+					<div class="col-3">
+						<p>Tag</p>
+					</div>
+				</div>
+				<div class='row saviour' id="BelovedD">
+					<div class='col-9'>
+						<textarea name="message2" id="daisesMessage1">I need Someone to teach me guitar!</textarea>
+					</div>
+					<div class='col-3' >
+						<select name="Daises2" id="daisesTag1">
+							<option value="NILL" name="nill">Nill</option>
+							<option value="Health" name="health">Health</option>
+							<option value="Security" name="security">Security</option>
+							<option value="Spiritual" name="spiritual">Spiritual</option>
+							<option value="Relationship" name="relationship">Relationship</option>
+							<option value="Nutrition" name="nutrition">Nutrition</option>
+							<option value="Art" name="art">Art</option>
+							<option value="Music" name="music">Music</option>
+							<option value="Sport" name="sport">Sport</option>
+							<option value="Technology" name="technology">Technology</option>
+							<option value="Finance" name="finance">Finance</option>
+							<option value="Academic" name="academics">Academics</option>
+							<option value="News" name="news">News</option>
+							<option value="3M" name="miscellanious">3M</option>
+							<option value="How to" name="howto">How to</option>
+						</select>
+					</div>
+				</div>
+				<p id="nextButton1" onclick="movingToProfessional()">Next</p>
+				<div id="saviourHint2">
+					<p id="professionalP"><span style="padding: 10px; border-radius: 5px; color: yellow; font-size: 20px; background-color: black">hint</span> <br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus sagittis massa at blandit. Praesent dapibus luctus ex, at pulvinar felis malesuada non. Fusce mollis ut enim a facilisis. Curabitur mattis felis at tortor blandit accumsan. Sed vestibulum felis quis ipsum aliquet, maximus porta nisi cursus. Vivamus pharetra augue ut varius hendrerit. Nullam sed maximus diam, non placerat massa. Suspendisse iaculis vestibulum maximus. massa nibh, commodo a tortor in, ultricies aliquam  </p>
+				</div>
+				<div class="row professional" id="YourId">
+					<div class="col-1">
+						<p style="margin-top: 7px;">Aliase:</p>
+					</div>
+					<div class="col-11">
+						<input type="text" name="aliase3" id="secondInput" style="padding: 10px; width: 50%" value="Amateur Guitarist (your identity for this Entry Point)">
+						<p id="rejectionMessage" style="display: none; color: red;">please enter an Alaise</p>
+					</div>
+				</div>
+				<div class="row professional" id="DaisesAndTag">
+					<div class="col-9">
+						<p>Daises</p>
+					</div>
+					<div class="col-3">
+						<p>Tag</p>
+					</div>
+				</div>
+				<div class='row professional' id="BelovedD">
+					<div class='col-7'>
+						<textarea name="message3" id="daisesMessage2">I need Someone to teach me guitar!</textarea>
+						<p id="rejectionMessage1" style="color: red; display: none;">please enter a valid daises</p>
+					</div>
+
+					<div class="col-3">
+			              <select name="daises3" id="daisesTag2" style="width: 100%;">
+											<option value="NILL" name="nill">Nill</option>
+											<option value="Health" name="health">Health</option>
+											<option value="Security" name="security">Security</option>
+											<option value="Spiritual" name="spiritual">Spiritual</option>
+											<option value="Relationship" name="relationship">Relationship</option>
+											<option value="Nutrition" name="nutrition">Nutrition</option>
+											<option value="Art" name="art">Art</option>
+											<option value="Music" name="music">Music</option>
+											<option value="Sport" name="sport">Sport</option>
+											<option value="Technology" name="technology">Technology</option>
+											<option value="Finance" name="finance">Finance</option>
+											<option value="Academic" name="academics">Academics</option>
+											<option value="News" name="news">News</option>
+											<option value="3M" name="miscellanious">3M</option>
+											<option value="How to" name="howto">How to</option>
+						</select>
+						<p id="rejectionMessage2" style="display: none; color: red;">Tag cannot be Nill</p>
+					</div>
+					<div class="col-2">
+					<input type="text" name="amount" id="amount"style="padding: 10px; width: 100%" value="20">
+					</div>
+
+				</div>
+				<input type="submit" id="moreButton" value="submit">
+		     </form>
+			</div>
+			<div class='col-2'>
+
+			</div>
+		</div>
+		<div class='row'>
+
+		</div>
+		<div class='row' id='footermain'>
+			<div class="col-3" id='footer'>
+				<ul>
+					<li>Mango</li>
+					<li>Apple</li>
+					<li>Cashew</li>
+					<li>Pawpaw</li>
+					<li>Orange</li>
+				</ul>
+			</div>
+			<div class="col-3" id='footer'>
+				<ul>
+					<li>Lemon</li>
+					<li>Bananas</li>
+					<li>grape</li>
+					<li>bitterlemon</li>
+					<li>sourgrape</li>
+				</ul>
+			</div>
+			<div class="col-3" id='footer'>
+				<ul>
+					<li>waterlemon</li>
+					<li>groundnut</li>
+					<li>corn</li>
+					<li>rice</li>
+					<li>cereals</li>
+				</ul>
+			</div>
+			<div class="col-3" id='footer'>
+				<ul>
+					<li>benzen</li>
+					<li>methane</li>
+					<li>ethane</li>
+					<li>ethanol</li>
+					<li>gasoline</li>
+				</ul>
+			</div>
+		</div>
+		<div id='lastDivSection' style="">
+			<p>	LoveDaises Copyright 2017</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+
+	function hiddingElement(){
+				//hidding of saviour elements
+				document.getElementById('saviourHint1').style.display = "none";
+				document.getElementById('YourId1').style.display = "none";
+				document.getElementById('saviourP').style.display = "none";
+				document.getElementsByClassName('saviour')[0].style.display = "none";
+				document.getElementsByClassName('saviour')[1].style.display = "none";
+				document.getElementById('nextButton1').style.display = "none";
+         //hidding of professional elements
+       document.getElementsByClassName('professional')[0].style.display = "none";
+       document.getElementsByClassName('professional')[1].style.display = "none";
+       document.getElementsByClassName('professional')[2].style.display = "none";
+       document.getElementById('professionalP').style.display = "none";
+       document.getElementById('saviourHint2').style.display = "none";
+       document.getElementById('moreButton').style.display = "none";
+			//showing beloved element
+				document.getElementsByClassName('beloved')[0].style.display = "block";
+				document.getElementsByClassName('beloved')[1].style.display = "block";
+				document.getElementsByClassName('beloved')[2].style.display = "block";
+				document.getElementById('beloved').style.display = "block";
+				document.getElementById('nextButton').style.display = "block";
+	}
+	
+	hiddingElement();
+
+			function showSaviour(){
+								//showing saviour element
+							document.getElementById('belovedID').style.border = "3px solid green;";
+							document.getElementById('saviourHint1').style.display = "block";
+							document.getElementById('YourId1').style.display = "block";
+							document.getElementById('saviourP').style.display = "block";
+							document.getElementById('saviourAlaise').style.display = "block";
+							document.getElementsByClassName('yourId')[0].style.display = "block";
+							document.getElementsByClassName('saviour')[0].style.display = "block";
+							document.getElementsByClassName('saviour')[1].style.display = "block";
+							document.getElementById('nextButton1').style.display = "block";
+            //hiding professional
+              document.getElementsByClassName('professional')[0].style.display = "none";
+              document.getElementsByClassName('professional')[1].style.display = "none";
+              document.getElementsByClassName('professional')[2].style.display = "none";
+              document.getElementById('professionalP').style.display = "none";
+              document.getElementById('saviourHint2').style.display = "none";
+              document.getElementById('moreButton').style.display = "none";
+
+								//hiding beloved
+							document.getElementsByClassName('beloved')[0].style.display = "none";
+							document.getElementsByClassName('beloved')[1].style.display = "none";
+							document.getElementsByClassName('beloved')[2].style.display = "none";
+							document.getElementById('beloved').style.display = "none";
+							document.getElementById('nextButton').style.display = "none";
+		  }
+
+		function showProfessional(){
+								//displaying professional element
+								document.getElementsByClassName('professional')[0].style.display = "block";
+								document.getElementsByClassName('professional')[1].style.display = "block";
+								document.getElementsByClassName('professional')[2].style.display = "block";
+								document.getElementById('professionalP').style.display = "block";
+								document.getElementById('saviourHint2').style.display = "block";
+								document.getElementById('moreButton').style.display = "block";
+
+			                               //hidding saviour Element
+			         document.getElementById('saviourHint1').style.display = "none";
+			         document.getElementById('YourId1').style.display = "none";
+			         document.getElementById('saviourP').style.display = "none";
+			         document.getElementsByClassName('saviour')[0].style.display = "none";
+			         document.getElementsByClassName('saviour')[1].style.display = "none";
+			         document.getElementById('nextButton1').style.display = "none";
+
+										//hiding beloved
+							document.getElementsByClassName('beloved')[0].style.display = "none";
+							document.getElementsByClassName('beloved')[1].style.display = "none";
+							document.getElementsByClassName('beloved')[2].style.display = "none";
+							document.getElementById('beloved').style.display = "none";
+							document.getElementById('nextButton').style.display = "none";
+				}
+       // getting the value of input fields to use for the validation of form
+       var input = 'Amateur Guitarist (your identity for this Entry Point)';
+       var Input2 = "I need Someone to teach me guitar!";
+       var input3 = "Guitar Guru (your identity for this Entry Point)";
+       var daisesTagging = 'NILL';
+       var amount = 20;
+       var empty = "";
+       var daiseWasPresent;
+
+       var firstInput = document.getElementById('firstInput').value;
+       var secondInput = document.getElementById('daisesMessage').value;
+       var thirdInput = document.getElementById('daisesTag').value;
+       var firstMessage = document.getElementById('saviourAlaise').value;
+       var secondMessage = document.getElementById('daisesMessage1').value;
+       var thirdMessage = document.getElementById('daisesTag1').value;
+       var firstTag = document.getElementById('secondInput').value;
+       var secondTag = document.getElementById('daisesMessage').value;
+       var thirdTag = document.getElementById('daisesTag2').value;
+       var getAmount = document.getElementById('amount').value;
+
+         //getting cookies stored in the client
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+   // return "";
+}
+
+function checkCookie() {
+    var user=getCookie("daises");
+    //alert(user);
+    return user;
+}
+
+var mycookie = checkCookie();
+console.log(mycookie + "   checking the value of cookies");
+        // validating the beloved Daises!!
+function movingToSaviourFormSection(){
+	                /* the reason for emptying the fields is to make sure 
+	                gibbrish is not submitted to the database; */
+                   var element1 = document.forms["my-form"]['alaise1'].value;
+                   var element2 = document.forms["my-form"]['message1'].value;
+                   var element3 = document.forms['my-form']['Daises1'].value;
+                   console.log(element2);
+                   
+                   if(element2 != Input2 && element2 != ""){
+                          if(element1 == input || element1 == ""){
+                          	document.getElementById("firstInput").value = "";
+                          	alert('Please enter a valid Aliase!!')
+                          	return false;
+                          }   
+                          if(element3 == daisesTagging){
+                          	alert("Your Tag Cannot Be NILL");
+                          	return false;
+                          }  
+                   }
+
+                   if(element2 == "" || element2 == Input2){
+                   	     document.getElementById("firstInput").value = ""; 
+                   	     document.getElementById("daisesMessage").value = "";
+                   	     document.getElementById("daisesTag").value = "NILL";  	     
+                   }
+
+                   if(element2 != Input2 && element2 != '' && element1 != '' && element1 != input 
+                   	&& element3 != daisesTagging){
+                                $.ajax({
+
+			                  	    url: "/profileSetUp",
+							        type: 'POST',
+							        data: JSON.stringify({ "Email": mycookie, 'message1': element2, 'alaise1': element1, 'daises1': element3}),
+							        crossDomain: true,
+							        async: true,
+							        cache: false,
+							        dataType: "json",
+							        contentType: "application/json; charset=utf-8",
+							        processData: false, 
+							        success: function (data) {
+							        	//alert(data.message);
+							        	daiseWasPresent = data.message;
+							        },
+
+							        error: function (data){
+								        	alert("Something Went Wrong!!!");
+								        	console.log('something went wrong!!!')
+								    }   
+							      
+			                  }); 
+                   }
+
+        showSaviour();
+}       
+
+function movingToProfessional(){
+
+	                /* the reason for emptying the fields is to make sure 
+	                gibbrish is not submitted to the database when the user
+	                enter any value in the input fields; */
+                   
+	               var element4 = document.forms["my-form"]['aliase2'].value;
+                   var element5 = document.forms["my-form"]['message2'].value;
+                   var element6 = document.forms['my-form']['Daises2'].value;
+
+                   if(element5 != Input2 && element5 != ""){
+                          if(element4 == input3 || element4 == ""){
+                          	document.getElementById("saviourAlaise").value = "";
+                          	alert('Please enter a valid Aliase!!')
+                          	return false;
+                          }   
+                          if(element6 == daisesTagging){
+                          	alert("Your Tag Cannot Be NILL");
+                          	return false;
+                          }  
+                   }
+
+                   if(element5 == "" || element5 == Input2){
+                   	     document.getElementById("saviourAlaise").value = ""; 
+                   	     document.getElementById("daisesMessage1").value = "";
+                   	     document.getElementById("daisesTag1").value = "NILL";  	     
+                   }
+
+
+              if(element5 != "" && element5 != Input2 && element4 != input && element4 != '' && element6 != daisesTagging ){
+                              // run ajax!
+			                  $.ajax({
+
+			                  	    url: "/profileSetUp",
+							        type: 'POST',
+							        data: JSON.stringify({ "Email": mycookie, 'message2': element5, 'alaise2': element4, 'daises2': element6}),
+							        crossDomain: true,
+							        async: true,
+							        cache: false,
+							        dataType: "json",
+							        contentType: "application/json; charset=utf-8",
+							        processData: false, 
+							        success: function (data) {
+							        	alert(data.message);
+							        	daiseWasPresent = data.message;
+							        },
+
+							        error: function (data){
+								        	alert("Something Went Wrong!!!");
+								        	console.log('something went wrong!!!')
+								    }   
+							      
+			                  }); 
+                     
+               }
+
+          showProfessional();
+}     
+
+function submittingTheForm(){
+
+	                /* the reason for emptying the fields is to make sure 
+	                gibbrish is not submitted to the database when the user
+	                enter any value in the input fields; */
+                   
+	               var element7 = document.forms["my-form"]['aliase3'].value;
+                   var element8 = document.forms["my-form"]['message3'].value;
+                   var element9 = document.forms['my-form']['daises3'].value;
+
+                   if(element8 != Input2 && element8 != ""){
+                          if(element7 == input || element7 == ""){
+                          	document.getElementById("secondInput").value = "";
+                           // $('#rejectionMessage').show();
+                          	alert('Please enter a valid Aliase!!')
+                          	return false;
+                          }   
+                          if(element9 == daisesTagging){
+                          	alert("Your Tag Cannot Be NILL");
+                          	return false;
+                          }  
+                   }
+
+                   if(element8 == "" || element8 == Input2){
+                   	     document.getElementById("secondInput").value = ""; 
+                   	     document.getElementById("daisesMessage2").value = "";
+                   	     document.getElementById("daisesTag2").value = "NILL";  	     
+                   }
+   
+}
+
+$(document).ready(function(){
+
+    $("#profileFormId").submit(function(event){
+           event.preventDefault();
+                       console.log('it entered this code block')
+                       console.log(daiseWasPresent + '   BBBBBBBBBBBBBBBBBBb');
+                     /* the reason for emptying the fields is to make sure 
+	                gibbrish is not submitted to the database when the user
+	                enter any value in the input fields; */
+ 
+                   var element7 = document.forms["my-form"]['aliase3'].value;
+                   var element8 = document.forms["my-form"]['message3'].value;
+                   var element9 = document.forms['my-form']['daises3'].value;
+
+                   if(daiseWasPresent == "Daises was created!"){
+                   	        console.log('this function never ran ///////////////////');
+                            document.getElementById('profileFormId').setAttribute('action', '/profileSetUp1');
+                            document.getElementsByClassName('profileFormClass')[0].submit();
+                            return;
+                   }
+
+                   if(element8 != Input2 && element8 != ""){
+                          if(element7 == input || element7 == ""){
+                          	document.getElementById("secondInput").value = "";
+                          	 $('#rejectionMessage').show();
+                           	 return false;
+                          }   
+                          if(element9 == daisesTagging){
+                          	$('#rejectionMessage2').show();
+                          	return false;
+                          }  
+                   }
+
+                   if(element8 == "" || element8 == Input2){
+                   	     $('#rejectionMessage1').show();
+                   	     /*document.getElementById("secondInput").value = ""; */
+                   	     document.getElementById("daisesMessage2").value = "";
+                   	     document.getElementById("daisesTag2").value = "NILL";
+                   	     return false;  	     
+                   }
+
+                   setTimeout(function(){
+                   	     $('#rejectionMessage').hide();
+                   	     $('#rejectionMessage1').hide();
+                   	     $('#rejectionMessage2').hide();
+                   }, 3000);
+                   
+                  
+               if(element8 != '' && element8 != Input2){
+               	   console.log('this function ran');
+               	   document.getElementById('profileFormId').setAttribute('action', '/profileSetUp1');
+                   document.getElementsByClassName('profileFormClass')[0].submit();
+                }
+                   
+
+          return false;
+    });
+});
+
+	</script>
+</body>
+</html>
+
+
+
+

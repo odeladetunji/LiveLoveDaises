@@ -1,0 +1,19 @@
+<div class="loginModal">
+  <div>
+       	<i onClick="hideLoginModal()" class="material-icons" style=
+        "float: right;color: red; cursor: pointer;
+         font-weight: bold;font-size:50px;padding: 10px;"
+          id="close1">close</i>
+  </div>
+  	<div id="loginOutterModalDiv">
+      <!--validate the data before submitting it-->
+       <form action="" method="post" id="loginForm" class="loginForm" enctype="application/x-www-form-urlencoded">
+         <p id="formTitle"><strong>LoveDaises</strong></p>
+         <input type="email" value="Email" name="email" id="loginEmail">
+         <input type="password" value="password" name="password" id="loginPassword">
+         <input type="submit" value="login">
+         <p onClick="displaySignUp()" id="signUp">SignUp</p>
+         <p id="forgotPassword" onClick="showForgotModal()">forgot password</p>
+       </form>
+    </div>
+</div>

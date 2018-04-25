@@ -1,0 +1,56 @@
+<div class="enterDaises1">
+  <div style="background-color: transparent;position: fixed; top: 0px;width: 100%;">
+    <i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px; padding: 10px;" id="closeEnterDaises">close</i>
+  </div>
+  <div id="enterDaisesDiv">
+     <form id="enterDaisesForm" action="" method="POST" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-2" style="padding: 0px;">
+               <img src="/Images/<%= data %>" id="textInputPicture2">
+            </div>
+            <div class="col-10" style="padding-left: 0px;">
+              <textarea type="text" name="daisesinput" id="DaisesInput1" value="Enter Your Daises"
+              rows="5" autofocus>Enter Your Daises</textarea>
+            </div>
+          </div>
+          <div class="row" style="padding-top: 0px;">
+              <div class="col-3" style="padding: 0px;">
+                <label for="imageFile" class="daisesFormLabel" id="labelForImage">picture</label>
+                  <input type="file" name="imagefile" id="imageFile" class="inputFile">
+              </div>
+              <div class="col-3" style="padding: 4px 0px 0px 2px;">
+                 <label for="videoFile" class="daisesFormLabel" id="labelForVideo">video</label>
+                  <input type="file" name="videofile" id="videoFile" class="inputFile" id="labelForVideo">
+              </div>
+              <input type="text" name="email" id="hiddenInput">
+              <div class="col-4" id="selectionDaises" style="padding-top: 0px;">
+                <select name="selectDaises" id="selectDaises1">
+                      <option value="NILL">Tag Daises</option>
+                      <option value="Health">Health</option>
+                      <option value="Security">Security</option>
+                      <option value="Spiritual">Spiritual</option>
+                      <option value="Relationship">Relationship</option>
+                      <option value="Art">Art</option>
+                      <option value="Nutrition">Nutrition</option>
+                      <option value="Pet">Pet</option>
+                      <option value="Sport">Sport</option>
+                      <option value="Music">Music</option>
+                      <option value="Technology">Technology</option>
+                      <option value="Finance">Finance</option>
+                      <option value="Academics">Academics</option>
+                      <option value="News">News</option>
+                      <option value="How to">How to</option>
+                      <option value="Religion">Religion</option>
+                      <option value="Culture">Culture</option>
+                      <option value="People">People</option>
+                      <option value="Socials">Socials</option>
+                </select>
+              </div>
+              <div class="col-2" style="padding-top: 0px;">
+                  <button id="postButton" onclick="closeEnterDaises()">
+                    POST</button>
+              </div>
+          </div>
+     </form>
+   </div>
+</div>

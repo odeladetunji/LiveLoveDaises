@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' >
+	<title>meetpeople</title>
+	<link rel="shortcut icon" type="image/jpg" href="a.jpg">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/meetpeople.css">
+	<script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
+	<base href = "http://beloveddais.com/">
+
+	<style type='text/css'>
+	</style>
+</head>
+<body>
+	<div id='upmostHeader'>
+		<button id='upmostHeaderButton1'>Settings</button>
+		<button id='upmostHeaderButton3'>Daisets</button>
+	</div>
+
+	<header>
+
+		<ul>
+			<li>
+				<form action="" method="GET" class="liveSearch" id="headerForm">
+				<select name="statusTag" class='search1' style="border: none; background-color: #eeeeee;">
+					<option value="beloved">Filter Your Search!!!</option>
+					<option value="beloved">filter by Beloved</option>
+					<option value="saviour">filter by Savours</option>
+					<option value="Professional">filter by Professional</option>
+				</select>
+				<input type="text" class='search' value="Reach Out and meet people!!"/>
+				<input type="text" id="hiddenFieldForm" style="display: none;">
+				</form>
+			</li>
+
+		</ul>
+	</header>
+	<!-- this hidden p element is used to imidiately set a value 
+	for ajax Call to get the search result from the server!-->
+	<p style="display: none;" id="hiddenAlways"></p>
+	<div class="singleSection" style="width: 100%; background-color: #1d353e;">
+		 <p id='amountOfData' style="padding-top: 20px; font-weight: bold; margin-top: 70px; padding-left: 30%; color: white; background-color: #1d353e;"></p>
+		 <div class="noResultSetFound"><p id="noResultSetFound"></p><p>now lets do it again!</p></div>
+	</div>
+
+	<div class="row firstRow" style="width: 100%;">
+		 <div class="col-6">
+		 	   <p id='amountOfData1' style="padding-top: 20px; font-weight: bold; margin-top: 70px; padding-left: 30%; color: white;">people found online!</p>
+		 </div>
+		 <div class="col-6">
+		 	   <p id='amountOfData2' style="padding-top: 20px; font-weight: bold; margin-top: 70px; padding-left: 30%; color: white;">people found offline!</p>
+		 </div>
+	</div>
+
+	<div>
+		     <% include ./partials/loaderInterfaceMeetPeople %>
+	</div>
+	<div>
+		     <% include ./partials/returnedRatingsEveryOneMeetPeople %>
+	</div>
+	<div>
+		     <% include ./partials/SearchHint %>
+	</div>
+	<div class='row' id='footermain'>
+	<div class="col-3" id='footer'>
+		<ul>
+			<li>Mango</li>
+			<li>Apple</li>
+			<li>Cashew</li>
+			<li>Pawpaw</li>
+			<li>Orange</li>
+		</ul>
+	</div>
+	<div class="col-3" id='footer'>
+		<ul>
+			<li>Lemon</li>
+			<li>Bananas</li>
+			<li>grape</li>
+			<li>bitterlemon</li>
+			<li>sourgrape</li>
+		</ul>
+	</div>
+	<div class="col-3" id='footer'>
+		<ul>
+			<li>waterlemon</li>
+			<li>groundnut</li>
+			<li>corn</li>
+			<li>rice</li>
+			<li>cereals</li>
+		</ul>
+	</div>
+	<div class="col-3" id='footer'>
+		<ul>
+			<li>benzen</li>
+			<li>methane</li>
+			<li>ethane</li>
+			<li>ethanol</li>
+			<li>gasoline</li>
+		</ul>
+	</div>
+</div>
+
+<div id='lastDivSection' style="">
+	<p>	LoveDaises Copyright 2017</p>
+</div>
+<script>
+	$(document).ready(function(){
+		 function getCookie(cname) {
+			 var name = cname + "=";
+			 var decodedCookie = decodeURIComponent(document.cookie);
+			 var ca = decodedCookie.split(';');
+			 for(var i = 0; i < ca.length; i++) {
+			     var c = ca[i];
+			     while (c.charAt(0) == ' ') {
+			          c = c.substring(1);
+			     }
+			     if(c.indexOf(name) == 0) {
+			         return c.substring(name.length, c.length);
+			     }
+			    }
+			   // return "";
+			}
+
+			function checkCookie() {
+			    var user=getCookie("theSearchQuery");
+			    //alert(user);
+			    return user;
+			}
+
+			var mycookie = checkCookie();
+			console.log(mycookie);
+		 $('#upmostHeaderButton3').click(function(){
+               
+		 });
+
+		 $('.firstRow').hide();
+        
+		 $('#loaderInterfaceRequest').hide();
+         $('.liveSearch').submit(function(event){
+             event.preventDefault();
+             var value = document.getElementsByClassName('search')[0].value;
+             if(value.length == 0){ return; }
+             if(value == ''){ return; }
+             $('#loaderInterfaceRequest').show();
+              $.ajax({
+				        url: "http://beloveddais.win/liveSearch",
+				        type: 'POST',
+				        data: JSON.stringify({'value': value}),
+                        crossDomain: true,
+				        async: true,
+				        cache: false,
+				        contentType: "application/json; charset=utf-8",
+				        processData: false,
+				        success: function(data){
+				        	console.log(data);
+				        	var dataCounter = 0;
+				        	var generatedHTML;
+				        	var onlineCounter = 0;
+				            var onlineCounter1 = 0;
+				        	var offlineCounter = 0;
+				        	var offlineCounter1 = 0;
+				        	var personalPicture, personalPicture1, personalPicture2, personalPicture3,personalPicture4;
+                            $('.noResultSetFound').show();
+				        	if(data.message == 'No Result Found!'){
+                                 // do something!
+                                 $('#amountOfData').hide();
+                                 document.getElementById('noResultSetFound').innerHTML = 'Ooops!! no results found in Database! try Searching with key Words';
+                                 $('.firstRow').hide();
+                                 //$('.secondRow').hide();
+                                 $('.noResultSetFound').show();
+                                 $('#loaderInterfaceRequest').hide();
+                                 $('.outerCovergenerated').hide();
+                                 return;
+				        	}
+				        	if(data.online != '' && data.offline != ''){
+				        		  document.getElementById('amountOfData1').innerHTML = 'people found Online';
+				        		  $('.outerCovergenerated').hide();
+                                  for(var i=0; i < data.online.length; i++){
+                                  	   onlineCounter++;
+                                  	   if(data.online[i].PersonalPicture == ''){
+                                            personalPicture = 'man.jpg';
+                                  	   }
+                                       var generatedHTML = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                                       $(generatedHTML).insertBefore('#amountOfData1');
+                                       if(onlineCounter == data.online.length){
+                                       	   $('#loaderInterfaceRequest').hide();
+                                           document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                                       }
+                                  }
+
+                                  for(var i=0; i < data.offline.length; i++){
+                                  	   offlineCounter++;
+                                  	   document.getElementById('amountOfData2').innerHTML = 'persons found Offline';
+                                  	   if(data.offline[i].PersonalPicture == ''){
+                                            personalPicture1 = 'man.jpg';
+                                  	   }
+
+                                       var generatedHTML1 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                                       $(generatedHTML1).insertBefore('#amountOfData2');
+                                       if(offlineCounter == data.offline.length){
+                                       	   $('#loaderInterfaceRequest').hide();
+                                           document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                                       }
+                                  }
+				        	}
+
+				        	if(data.online != '' && data.offline == ''){
+				        		 $('.outerCovergenerated').hide();
+				        		 $('#amountOfData').show();
+                                 for(var i=0; i < data.online.length; i++){
+                                  	   onlineCounter1++;
+                                  	   document.getElementById('amountOfData').innerHTML = 'persons found online';
+                                  	   if(data.online[i].PersonalPicture == ''){
+                                            personalPicture3 = 'man.jpg';
+                                  	   }
+                                       var generatedHTML3 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                                       $(generatedHTML3).insertAfter('#amountOfData');
+                                       if(onlineCounter1 == data.online.length){
+                                       	   $('#loaderInterfaceRequest').hide();
+                                       	   $('.noResultSetFound').hide();
+                                           document.getElementsByClassName('firstRow')[0].style.display = 'none';
+                                       }
+                                  }
+				        	}
+
+				        	if(data.online == '' && data.offline != ''){
+				        		 $('.outerCovergenerated').hide();
+				        		 $('#amountOfData').show();
+                                 for(var i=0; i < data.offline.length; i++){
+                                  	   offlineCounter1++;
+                                  	   document.getElementById('amountOfData').innerHTML = 'persons found offline';
+                                  	   if(data.offline[i].PersonalPicture == ''){
+                                            personalPicture4 = 'man.jpg';
+                                  	   }
+                                       var generatedHTML4 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                                       $(generatedHTML4).insertBefore('#amountOfData');
+                                       if(offlineCounter1 == data.offline.length){
+                                       	   $('#loaderInterfaceRequest').hide();
+                                           document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                                       }
+                                 }
+				        	}
+				        },
+				        error: function(data){
+                            alert("Something is Wrong!");
+				        }	       
+			 });
+         }); 
+          
+       $.ajax({
+		        url: "http://beloveddais.win/liveSearch1",
+		        type: 'POST',
+		        data: JSON.stringify({'value': mycookie}),
+                crossDomain: true,
+		        async: true,
+		        cache: false,
+		        contentType: "application/json; charset=utf-8",
+		        processData: false,
+		        success: function(data){
+		        	console.log(data);
+		        	var dataCounter = 0;
+		        	var generatedHTML;
+		        	var onlineCounter = 0;
+		            var onlineCounter1 = 0;
+		        	var offlineCounter = 0;
+		        	var offlineCounter1 = 0;
+		        	var personalPicture, personalPicture1, personalPicture2, personalPicture3,personalPicture4;
+                    $('.noResultSetFound').show();
+		        	if(data.message == 'No Result Found!'){
+                         // do something!
+                         $('#amountOfData').hide();
+                         document.getElementById('noResultSetFound').innerHTML = 'Ooops!! no results found in Database! try Searching with key Words';
+                         $('.firstRow').hide();
+                         //$('.secondRow').hide();
+                         $('.noResultSetFound').show();
+                         $('#loaderInterfaceRequest').hide();
+                         $('.outerCovergenerated').hide();
+                         return;
+		        	}
+		        	if(data.online != '' && data.offline != ''){
+		        		  document.getElementById('amountOfData1').innerHTML = 'people found Online';
+		        		  $('.outerCovergenerated').hide();
+                          for(var i=0; i < data.online.length; i++){
+                          	   onlineCounter++;
+                          	   if(data.online[i].PersonalPicture == ''){
+                                    personalPicture = 'man.jpg';
+                          	   }
+                               var generatedHTML = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                               $(generatedHTML).insertBefore('#amountOfData1');
+                               if(onlineCounter == data.online.length){
+                               	   $('#loaderInterfaceRequest').hide();
+                                   document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                               }
+                          }
+
+                          for(var i=0; i < data.offline.length; i++){
+                          	   offlineCounter++;
+                          	   document.getElementById('amountOfData2').innerHTML = 'persons found Offline';
+                          	   if(data.offline[i].PersonalPicture == ''){
+                                    personalPicture1 = 'man.jpg';
+                          	   }
+
+                               var generatedHTML1 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                               $(generatedHTML1).insertBefore('#amountOfData2');
+                               if(offlineCounter == data.offline.length){
+                               	   $('#loaderInterfaceRequest').hide();
+                                   document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                               }
+                          }
+		        	}
+
+		        	if(data.online != '' && data.offline == ''){
+		        		 $('.outerCovergenerated').hide();
+		        		 $('#amountOfData').show();
+                         for(var i=0; i < data.online.length; i++){
+                          	   onlineCounter1++;
+                          	   document.getElementById('amountOfData').innerHTML = 'persons found online';
+                          	   if(data.online[i].PersonalPicture == ''){
+                                    personalPicture3 = 'man.jpg';
+                          	   }
+                               var generatedHTML3 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                               $(generatedHTML3).insertAfter('#amountOfData');
+                               if(onlineCounter1 == data.online.length){
+                               	   $('#loaderInterfaceRequest').hide();
+                               	   $('.noResultSetFound').hide();
+                                   document.getElementsByClassName('firstRow')[0].style.display = 'none';
+                               }
+                          }
+		        	}
+
+		        	if(data.online == '' && data.offline != ''){
+		        		 $('.outerCovergenerated').hide();
+		        		 $('#amountOfData').show();
+                         for(var i=0; i < data.offline.length; i++){
+                          	   offlineCounter1++;
+                          	   document.getElementById('amountOfData').innerHTML = 'persons found offline';
+                          	   if(data.offline[i].PersonalPicture == ''){
+                                    personalPicture4 = 'man.jpg';
+                          	   }
+                               var generatedHTML4 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+
+                               $(generatedHTML4).insertBefore('#amountOfData');
+                               if(offlineCounter1 == data.offline.length){
+                               	   $('#loaderInterfaceRequest').hide();
+                                   document.getElementsByClassName('firstRow')[0].style.display = 'block';
+                               }
+                         }
+		        	}
+		        },
+		        error: function(data){
+                    alert("Something is Wrong!");
+		        }	       
+		 });
+
+       $('#headerForm').keyup(function(event){
+        	  $('.SearchHintp').hide();
+        	  var searchQuery = document.getElementsByClassName('search')[0].value;
+        	  var theType = typeof searchQuery;
+        	  if(theType == 'number') theType = 'number';
+        	  if(searchQuery == '' || theType == 'number') return;
+        	  var value = document.getElementById('hiddenFieldForm').value;
+              $.ajax({
+			        url: "http://beloveddais.win/homepageSearchQuery",
+			        type: 'POST',
+			        data: JSON.stringify({'searchQuery': searchQuery, 'hiddenFieldForm': value}),
+                    crossDomain: true,
+			        async: true,
+			        cache: false,
+			        contentType: "application/json; charset=utf-8",
+			        processData: false,
+			        success: function (data) {
+			        	console.log(data);
+			        	var arrayData = [];
+			        	var onlineCounter = 0;
+			            var onlineCounter1 = 0;
+			            var offlineCounter = 0;
+			            var offlineCounter1 = 0;
+			        	if(data.message == 'No Result Found!'){
+			        		var searchHint = "No Result, Continue Searching!";
+			        		showHint(searchHint);
+			        		return
+			        	};
+
+			            if(data.online != "" && data.offline != ''){
+                              for(var i=0; i < data.online.length; i++){
+                              	   onlineCounter++;
+                                   arrayData.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                   arrayData.push(data.online[i].Daises);
+                                   if(onlineCounter == data.online.length){
+                                        // do something
+                                        break;
+                                   }
+                              }
+
+                              for(var i=0; i < data.offline.length; i++){
+                              	   offlineCounter++;
+                                   arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
+                                   arrayData.push(data.offline[i].Daises);
+                                   if(offlineCounter == data.offline.length){
+                                   	    setTimeout(function(){
+                                   	    	showHint(arrayData);
+                                   	    },50);
+                                        return;
+                                   }
+                              }
+			            }
+
+			            if(data.online == "" && data.offline >= 1){
+                                   for(var i=0; i < data.online.length; i++){
+                                   	    offlineCounter1++;
+                                   	    //console.log('was this function called! ' +  );
+                                        arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName); 
+                                        arrayData.push(data.offline[i].Daises);
+                                        if(offlineCounter1 == data.online.length){
+                                        	//console.log('was this function called!');
+                                            showHint(arrayData);
+                                        }
+                                   }
+			            }
+			            if(data.online != "" && data.offline == ''){
+                                   console.log('was this function called!');
+                                   for(var i=0; i < data.online.length; i++){
+                                   	console.log('was this function called!22');
+                                   	   onlineCounter1++;
+                                       arrayData.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                       arrayData.push(data.online[i].Daises);
+                                       if(onlineCounter1 == data.online.length){
+                                       	    console.log('Code block Entered!');
+                                            showHint(arrayData);
+                                       }
+                                   }
+			            }
+
+			            function showHint(searchHint){
+				            	if(searchHint == 'No Result, Continue Searching!'){
+				                    var generatedHTML = "<p class='SearchHintp'>No Result, Continue Searching!<br><br>Search with key words!</p>";
+				                    $(generatedHTML).insertBefore('#SearchHint');
+				                     $('.SearchHint').show();
+				                     return;
+				            	}
+				                console.log(searchHint);
+				                console.log('that is search hint above');
+				            	var searchCounter = 0;
+				            	//var uniqueId = abac
+				            	for(var i=0; i < searchHint.length; i++){
+				            	    searchCounter++;
+				                    var generatedHTML = "<p class='SearchHintp'><a href='http://beloveddais.com/homepageSearchQuery/" + searchHint[i] + "'" + " style='color: white; text-decoration: none; width: 100%; background-color: transparent;'>" + searchHint[i] + "</a></p>";
+				                   // var generatedHTML = "<p onload='setOnlisterner()' class='SearchHintp'>" + searchHint[i] + "</p>";
+				                   //var generatedHTML = "<a href='http://beloveddais.com/homepageSearchQuery/" + searchHint[i] + "'" + ' ' + " style='' class='SearchHintp'>" + searchHint[i] + "</a><br>";
+				                    $(generatedHTML).insertBefore('#SearchHint');
+				                    if(searchCounter == searchHint.length){
+				                         $('.SearchHint').show();
+				                         return;
+				                    }
+				                }
+			            }	            
+			        },
+			        error: function(data){
+                        alert("Please Check your server! <br> something is wrong!");
+			        }
+			       
+			    });
+        });
+
+
+		function outputtingRating(value){
+			 // displayLoadingInterface();
+			   var value = value;
+			       console.log(value + "   .............................");
+		                  //rateUniqueId = value;
+		                  
+		     			   $.ajax({
+					        url: "http://beloveddais.win/gettingRating",
+					        type: 'POST',
+					        data: JSON.stringify({ sentData: value }),
+		                    crossDomain: true,
+					        async: true,
+					        cache: false,
+					        dataType: "json",
+					        contentType: "application/json; charset=utf-8",
+					        processData: false,
+					        success: function (data) {
+		                            //console.log(data.myName);
+		                            //console.log('pppppppppppppppppp');
+		                            var objectKey = Object.keys(data.myName)[0];
+		                            var dataValue = data.myName[objectKey].split(' ')[0];
+		                            console.log(dataValue + "         this is dataValue");
+					           if(dataValue > 1){
+					        		
+		        	                document.getElementById('returnedMessage').innerHTML = "";
+		        	                document.getElementById('returnedMessage').innerHTML = "Average Total Rating";
+		        	                var dynamicPicture;
+					        	    var dynamicVirtue;
+					        	    var dynamicRate;
+					        	    var dataCounter = 0;
+					        	    var dataSum = 0;
+					        	    var returnedDataLength  = Object.keys(data.myName).length;
+		    	                       var generatedHTML1;
+		    	                    for(x in data.myName){
+		                                  dataCounter++;
+		                                 // dataSum += Number(data.myName[x].split(' ')[0]);
+		                                              generatedHTML1 = '<p class="generatedPRatings" style="padding-bottom: 20px; border-bottom: 1px solid #eeeeee; text-align: center;"><span>' + '<img src="http://beloveddais.com/Images/' + data.myName[x].split(' ')[1] + '" style="width: 20%;"/></span><span style="padding-bottom: 10px;">' + data.myName[x].split(' ')[2] + '    ' + '</span><span style="padding: 10px; border-radius: 50%; color: white; background-color: green; border: 7px solid orange;">' + data.myName[x].split(' ')[0] + '</span></p>';
+		                                              $(generatedHTML1).insertBefore(".someAttribute");
+
+		                                              if(dataCounter == returnedDataLength){
+		                                              	   //averageRate = dataSum / dataCounter;
+		                                              	   displayTheDynamicGeneratedRating();
+		                                              };
+						        	}
+		                                         
+		                            function displayTheDynamicGeneratedRating(){
+		                                $('.returnedRatingModal').show();
+		                            };
+
+		                            console.log('this function just ran!')
+						                           
+					            }
+					        	
+		                         if(data.myName == "No Rating Yet!!"){
+		                         	document.getElementById('returnedMessage').innerHTML = "";
+		                         	//document.getElementsByClassName('dynamic').style.display = "none";
+		                         	document.getElementById('returnedMessage2').innerHTML = "No Rating Yet!!";
+		                         	displayingReturnedRating(); // this function will display the rating
+		                         }
+					              
+					            
+					            //alert(Object.keys(data.myName) + '  this is alert box is for debugging purpose!!!');
+
+
+					            setTimeout(function(){
+		                            $('.returnedRating').hide();
+					            }, 5000)
+					        },
+					        error: function(data){
+		                        alert("Something is not wright!!!");
+
+					        }
+					       
+					    });
+		}
+
+
+  // the function outputtingSecondRating is for the other rating!
+
+      function outputtingSecondRating(value){
+   	               var value = value;
+ 	       console.log(value + "   .............................");
+         			   $.ajax({
+				        url: "http://beloveddais.win/gettingRatingsOfClosePeople",
+				        type: 'POST',
+				        data: JSON.stringify({sentData: value}),
+                        crossDomain: true,
+				        async: true,
+				        cache: false,
+				        dataType: "json",
+				        contentType: "application/json; charset=utf-8",
+				        processData: false,
+				        success: function (data) {
+				                console.log(data.message);
+				                if(data.message == 'No Rating Yet!'){
+				                	 document.getElementById('returnedMessage').innerHTML = "";
+                             	     document.getElementById('returnedMessage2').innerHTML = "No Rating Yet!!";
+                             	     displayingReturnedRating(); // this function will display the rating
+
+                             	     setTimeout(function(){
+                                        document.getElementsByClassName('returnedRating')[0].style.display = 'none';
+                             	     }, 4000);
+
+                                     return;
+				                }
+                                console.log('pppppppppppppppppp');
+                                var objectKey = Object.keys(data.myName)[0];
+                                var dataValue = data.myName[objectKey].split(' ')[0];
+                                       console.log(dataValue + "  this is dataValue");
+				           if(dataValue > 1){
+				        		
+	        	                document.getElementById('returnedMessage').innerHTML = "";
+	        	                document.getElementById('returnedMessage').innerHTML = "Average Total Rating";
+	        	                var dynamicPicture;
+				        	    var dynamicVirtue;
+				        	    var dynamicRate;
+				        	    var dataCounter = 0;
+				        	    var returnedDataLength  = Object.keys(data.myName).length;
+	    	                       var generatedHTML1;
+	    	                    for(x in data.myName){
+                                      dataCounter++;
+                                                  generatedHTML1 = '<p class="generatedPRatings" style="padding-bottom: 20px; border-bottom: 1px solid #eeeeee; text-align: center;"><span>' + '<img src="http://beloveddais.com/Images/' + data.myName[x].split(' ')[1] + '" style="width: 20%;"/></span><span style="padding-bottom: 10px;">' + data.myName[x].split(' ')[2] + '    ' + '</span><span style="padding: 10px; border-radius: 50%; color: white; background-color: green; border: 7px solid orange;">' + data.myName[x].split(' ')[0] + '</span></p>';
+                                                  $(generatedHTML1).insertBefore(".someAttribute");
+
+                                                  if(dataCounter == returnedDataLength){
+                                                  	   displayTheDynamicGeneratedRating();
+                                                  };
+					        	}
+                                             
+	                            function displayTheDynamicGeneratedRating(){
+	                                $('.returnedRatingModal').show();
+	                            };
+
+                                console.log('this function just ran!')
+					                           
+				            }
+				        	
+				            //alert(Object.keys(data.myName) + '  this is alert box is for debugging purpose!!!');
+
+				            setTimeout(function(){
+                                $('.returnedRating').hide();
+				            }, 5000)
+				        },
+				        error: function(data){
+                            alert("Something is not wright!!!");
+
+				        }
+				       
+				    });
+      }
+
+      function closeReturnedRatingModal(){
+      	  $('.returnedRatingModal').hide();
+      }
+
+	});
+</script>
+</body>
+</html>

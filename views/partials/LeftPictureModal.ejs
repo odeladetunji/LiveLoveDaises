@@ -1,0 +1,24 @@
+<div id="changeProfilepix">
+  <div style="background-color: transparent;position: fixed; top: 0px;width: 100%;">
+    <i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px; padding: 10px;" id="closeEnterDaises" onclick="closingIdentityPicture()">close</i>
+  </div>
+  <div id="changeMyPictureDiv">
+     <form id="pictureinform" action="" method="POST" enctype="multipart/form-data">
+        
+             <img src="/Images/<%= data %>" id="textInputPicture1">
+              <input type="text" name="email" id="hiddenInput2">
+
+          <div class="row" style="padding-top: 0px;">
+              <div class="col-6" style="padding: 0px; margin-top: 30px;">
+
+          <label for="imagefileleft" class="daisesFormLabel" id="labelForImage">UpLoad Picture</label>
+                <input type="file" name="imagefileleft" id="imagefileleft" class="inputFile">
+              </div>
+              <div class="col-6" style="padding-top: 0px; margin-top: 30px;">
+                  <button  id="postButton" style="width: 50%;" onclick="closingIdentityPicture();">SUBMIT</button>
+                  
+              </div>
+          </div>
+     </form>
+   </div>
+</div>

@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' >
+	<title></title>
+	<link rel="shortcut icon" type="image/jpg" href="a.jpg">
+	<!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
+  <link rel="stylesheet" type="text/css" href="/StyleSheets/ratingModalForm1.css">
+    <link rel="stylesheet" type="text/css" href="/StyleSheets/inbox.css">
+	  <link rel="stylesheet" type="text/css" href="/StyleSheets/pictureModal.css">
+   <link rel="stylesheet" type="text/css" href="/StyleSheets/Discursion.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/ratingModalForm.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/reachOut1.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/homepage.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/reachOut.css">
+	<base href = "http://127.0.0.1:9000/">
+
+</head>
+<body>
+	<div id='upmostHeader'>
+	    <% include ./partials/upperMostHeader %>
+	</div>
+	<header>
+		<ul>
+			<li>
+				<form action="/homepage" method="POST" name="headerForm" class="headerForm1">
+					<select name="statusTag" class='search' style="background-color: #eeeeee" >
+						<option value="general">filter by General</option>
+						<option value="beloved">filter by Beloved</option>
+						<option value="saviour">filter by Savours</option>
+						<option value="Professional">filter by Professional</option>
+					</select>
+					<input type="text" class='search1' value="filter Search Query!!"/>
+					<input type="text" value="" name="hiddenFieldForm" id="hiddenFieldForm" style="display: none;">
+				</form>
+				<a id="toggleDaises"><i class='fa fa-envelope-open' style='font-size: 14px; color: white;padding-right: 5px;'></i>Request</a>
+
+				<a  class='search3' id="reachingOut"><i class='fa fa-users' style='color: white;font-size: 14px; padding-right: 5px;'></i>Reach Out</a>
+			</li>
+		</ul>
+	</header>
+	<p id="inboxPage">Inbox</p>
+	<div id="daiseOutterDiv" style="display:none;">
+		<ul>
+			<li>All Daises</li>
+			<li onclick="gettingThisDaise('health')"><i class="fa fa-medkit" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('health')"></i>Health</li>
+			<li onclick="gettingThisDaise('security')"><i class="fa fa-shield" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('security')"></i>Security</li>
+			<li onclick="gettingThisDaise('Spiritual')"><i class="fa fa-diamond" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Spiritual')"></i>Spiritual</li>
+			<li onclick="gettingThisDaise('Relationship')"><i class="fa fa-handshake-o" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Relationship')"></i>Relationship</li>
+			<li onclick="gettingThisDaise('Nutrition')"><i class="fa fa-cutlery" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Nutrition')"></i>Nutrition</li>
+			<li onclick="gettingThisDaise('Arts')"><i class="fa fa-picture-o" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Arts')"></i>Arts</li>
+			<li onclick="gettingThisDaise('Music')"><i class="fa fa-music" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Music')"></i>Music</li>
+			<li onclick="gettingThisDaise('music')"><i class="fa fa-video-camera" style="font-size:15px; padding-right: 15px" onclick="gettingThisDaise('music')"></i>Video</li>
+			<li onclick="gettingThisDaise('games')"><i class="fa fa-gamepad" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('games')"></i>Sports</li>
+			<li onclick="gettingThisDaise('Pet')"><i class="fa fa-paw" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Pet')"></i>Pet</li>
+			<li onclick="gettingThisDaise('Technology')"><i class="fa fa-television" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('Technology')"></i>Technology</li>
+			<li onclick="gettingThisDaise('Finance')"><i class="fa fa-book" style="font-size:0px; padding-right: 5px;" onclick="gettingThisDaise('Finance')"></i>Academics</li>
+			<li onclick="gettingThisDaise('Finance')"><i class="fa fa-credit-card-alt" style="font-size:0px; padding-right: 5px;" onclick="gettingThisDaise('Finance')"></i>Finance</li>
+			<li onclick="gettingThisDaise('News')"><i class="fa fa-newspaper-o" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('News')"></i>News</li>
+			<li onclick="gettingThisDaise('3M')"><i class="material-icons" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('3M')"></i>3M</li>
+			<li onclick="gettingThisDaise('info')"><i class="material-icons" style="font-size:15px; padding-right: 15px;" onclick="gettingThisDaise('info')"></i>How to</li>
+		</ul>
+	</div>
+	<div class="row" style="background-color: #f1f1f1;">
+		<div class="col-2 leftnav">
+			<img src='/Images/man.jpg' alt='' id="topImageAjax1" style='width:95%;
+			 margin-left: 2.5px;'>
+			<ul>
+
+				<li id='inbox'><a href="/getInboxpage"><i class="fa fa-envelope-open" style="font-size:15px;"></i>Request!</a></li>
+				<li><a href="/getAnouncementpage"><i class="fa fa-bullhorn" style="font-size:15px;" id='announcement'></i>Anouncement</a></li>
+				<li><a href="/getBiographypage"><i class='fa fa-book' style='font-size: 15px;' id='biography'></i>Biography</a></li>
+
+				<li id="chatting"><i class="fa fa-commenting" style="font-size:15px;" id='çhat'></i>Chat</li>
+				<li><a href="/getGrouppage"><i class="fa fa-users" style="font-size:15px;" id='group'></i>Group</a></li>
+				<li><a href="/getlogpage"><i class='fa fa-user' style='font-size: 15px;' id='log'></i>Log</a></li>
+				<li><a href="/getPeoplepage"><i class='fa fa-users' style='font-size: 15px;'id='mypeople'></i>My People</a></li>
+				<li><a href="/getSharingpage"><i class='fa fa-users' style='font-size: 15px;' id='sharing'></i>Sharing</a></li>
+				<li><a href="/getTimeSchdulepage"><i class="fa fa-clock-o" style="font-size:15px;" id='schdule'></i>Time Schdule</a></li>
+				<li><a href="/getWebhistorypage"><i class='fa fa-globe' style='font-size: 15px; padding-bottom:20px;' id='history'></i>Web history</a></li>
+			</ul>
+
+		</div>
+
+		<div class="col-7 midsection">
+            <p id='nofriendAvailable'>... so sorry, you <br>don't have any friend request yet!!<br>... more friends, more influence!!!</p><br>
+	         <p id='nofriendAvailable1'>... so sorry, you <br>don't have any friend request yet!!<br>... more friends, more influence!!!</p>
+			<div id="ajaxSectionDynamic" style='display: none;'>
+				<div id="outerCoverDynamic">
+				<p id="firstPDynamic">online</p>
+				<p id="SecondP">Sam Wise Grandji</p>
+				<div class="row" id="innerRowDynamic">
+					<div id="pictureDivDynamic" class="col-3">
+                               pix
+					</div>
+					<div id="ratingDivDynamic" class="col-9">
+                           <p id="ratingNumber1" style="visibility: hidden;">70</p>
+                           <p id="ratingNumber2" style="visibility: hidden;">80</p>
+                           <p id="mainReviewDynamic" style="visibility:  hidden;">reviews</p>
+					</div>
+				</div>
+				<p id="thirdPDynamic">Guitar for biginners</p>
+
+				<button id="connectButtonDynamic">Connect!</button>
+
+			</div>
+			</div>
+			<div id="ajaxSection" style="display: none">
+				<p id='caption'>Excellence!!!!!!!!!!!</p>
+				<hr>
+				<p id='caption1'>Itohan Egobarmeh</p>
+				<div class="row" style="width: 95%;">
+				<div class="col-3" style="padding:0px;">
+				<img src='/Images/itohanpix.jpg' alt='' id='AjaxImage'>
+                </div>
+                <div class="col-9" style="background-color: #1a9875;">
+					<p id='circleTipris1'>40</p>
+					<p id='circleTipris'>91</p>
+					<p id="reviews">reviews</p>
+				</div>
+                </div>
+
+				<p style="width: 95%;margin-left: 2.5%; cursor: pointer;" id="discoarse">Discursion of post will be here! Lorem ipsum dolor sit amet,  Praesent dapibus luctus ex, at pulvinar felis malesuada non. Fusce mollis ut enim a facilisis......</p>
+				<div id="innerAjaxDiv">
+					<img src="" alt=''>
+				</div>
+				<div id="innerAjaxDiv1">
+					<p>further discription of post will be here!!!</p>
+				</div>
+				<hr id='secondrule'/>
+				<div id="sharelikeComment">
+					<!--<p><i class="fa fa-thumbs-up" aria-hidden="true" style="margin-left: 20px; font-size: 17px;">Recomend</i></p><p style="color: white;">Recomend</p>--><button id='ajaxRecieveButton' style='background-color: #183148; color:white;
+					border: 2px solid orange; padding:5px; border-radius: 5px; float: right;
+					margin-right: 18px; padding-left: 6px;
+					padding-right: 6px;'>Recomend!</button>
+				</div>
+			</div>
+			<button id='loadbutton'>
+				more >>>
+			</button>
+			<footer>
+				<div id="footerItem1"  class='foot'>
+					<ul>
+						<li>Monday</li>
+						<li>Tuesday</li>
+						<li>Wednesday</li>
+						<li>Thursday</li>
+						<li>Friday</li>
+					</ul>
+				</div>
+				<div id="footerItem2"  class='foot'><ul>
+					<li>Fruit</li>
+					<li>Mango</li>
+					<li>Pawpaw</li>
+					<li>Bananas</li>
+					<li>Orange</li>
+				</ul></div>
+				<div id="footerItem3"  class='foot'><ul>
+					<li>Cars</li>
+					<li>Toyota</li>
+					<li>Mercedes</li>
+					<li>BMW</li>
+					<li>Rollsroyce</li>
+				</ul></div>
+				<div id="footerItem4"  class='foot'><ul>
+					<li><a id='footerItem4'>Planet</a></li>
+					<li><a>Earth</a></li>
+					<li><a>Jupiter</a></li>
+					<li><a>Mars</a></li>
+					<li><a>Mercury</a></li>
+				</ul></div>
+			</footer>
+			<div id="menu" style="display: none;">
+				<ul>
+					<li id='nenanena'>Emmanuel Adeoye</li><hr>
+					<li><i class="material-icons" style="font-size:20px;">mail</i>Inbox</li>
+					<li><i class="material-icons" style="font-size:20px;">announcement</i>Anouncement</li>
+					<li><i class='fa fa-book' style='font-size: 20px;'></i>Biography</li>
+					<li><i class='fa fa-file' style='font-size: 20px;'></i>Blog</li>
+					<li><i class="material-icons" style="font-size:20px;">chat</i>Chat</li>
+					<li><i class="material-icons" style="font-size:20px;">group</i>Group</li>
+					<li><i class='fa fa-user' style='font-size: 20px;'></i>Log</li>
+					<li><i class='fa fa-users' style='font-size: 20px;'></i>People</li>
+					<li><i class='fa fa-television' style='font-size: 20px;'></i>Media</li>
+					<li><i class='fa fa-users' style='font-size: 20px;'></i>Sharing</li>
+					<li><i class='fa fa-book' style='font-size: 20px;'></i>Library</li>
+					<li><i class="material-icons" style="font-size:20px;">watch</i>Time Schdule</li>
+					<li><i class='fa fa-globe' style='font-size: 20px;'></i>Web history</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-3 advert">
+
+			<p style="color: black">advert section</p>
+		</div>
+	</div>
+
+	<div class="reachOutDiv modal" id="mode">
+		<div id="modal1">
+			<div style="position: fixed; width: 100%; background-color: transparent;">
+				<i class="material-icons" style="float: right;color: red; cursor: pointer; font-weight: bold;font-size:50px;padding: 10px;" id="close1">close</i>
+			</div>
+			<div class="row" id="mainRow">
+				<div class="col-3" id="clientNames">
+					<ul>
+						<li>Adeoye Emmanuel</li>
+						<li>Prince birmingham</li>
+						<li>Elijah Falode</li>
+						<li>Mathew Math</li>
+						<li>Ajanaku Moses</li>
+						<li>Olaiya Bababatunde</li>
+						<li>French England</li>
+						<li>Wilconsin Stephen</li>
+						<li>Angelina Jolie</li>
+						<li>Math Spencer</li>
+					</ul>
+				</div>
+				<div class="col-6" id="chatSection">
+					<button id="connectionButton">Connect!!</button>
+					<input type="text" id="textInput">
+				</div>
+				<div class="col-3" id="Time">
+					<p>00:00<br>remaining</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="reachOutDiv1 modal2" id="mode1">
+		<div id="modal1">
+			<div style="position: fixed; width: 100%; background-color: transparent;">
+				<i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px;padding: 10px;" id="close2">close</i>
+			</div>
+			<div class="row" id="mainRow1">
+				<div class="col-3" id="clientNames">
+					<ul>
+						<li>Olatunji Odelade</li>
+					</ul>
+				</div>
+				<div class="col-6" id="chatSection">
+					<button id="connectionButton">Connected!!</button>
+					<input type="text" id="textInput">
+				</div>
+				<div class="col-3" id="Time">
+					<p>00:00</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ratingModalForm" id="ratingModalForm">
+    <div id="modal3">
+      <div style="background-color: transparent;position: fixed; top: 0px;width: 100%;">
+        <i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px; padding: 10px;" id="close4">close</i>
+      </div>
+      <div class="row" id="modalContainer">
+        <p style="background-color: white; text-align: center; padding: 15px; font-weight: bold;
+        color: #110033; border-radius: 30px; padding-top: 40px;">11Rating was from 1-10<br><br>
+        <div class="col-3" id="checkboxDiv">
+          <input type="checkbox" style="margin-top: 30px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 80px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 95px;">
+          <input type="checkbox" style="margin-top: 75px;">
+          <input type="checkbox" style="margin-top: 45px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 78px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 50px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 70px;">
+          <input type="checkbox" style="margin-top: 75px;">
+          <input type="checkbox" style="margin-top: 75px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 55px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 62px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 90px;">
+          <input type="checkbox" style="margin-top: 95px;">
+          <input type="checkbox" style="margin-top: 75px;">
+          <input type="checkbox" style="margin-top: 90px;">
+          <input type="checkbox" style="margin-top: 85px;">
+          <input type="checkbox" style="margin-top: 85px;">
+          <input type="checkbox" style="margin-top: 85px;">
+          <input type="checkbox" style="margin-top: 90px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 70px;">
+          <input type="checkbox" style="margin-top: 70px;">
+          <input type="checkbox" style="margin-top: 95px;">
+          <input type="checkbox" style="margin-top: 95px;">
+          <input type="checkbox" style="margin-top: 95px;">
+          <input type="checkbox" style="margin-top: 68px;">
+          <input type="checkbox" style="margin-top: 62px;">
+          <input type="checkbox" style="margin-top: 62px;">
+          <input type="checkbox" style="margin-top: 82px;">
+          <input type="checkbox" style="margin-top: 87px;">
+        </div>
+        <div class="col-2" id="pictureDiv">
+          <ul>
+            <li><img src="/Images/Apple(Love).jpg" id=""></li>
+            <li><img src="/Images/Banana(Creativity).jpg" id=""></li>
+            <li><img src="/Images/Durian(Confidence).jpg" id=""></li>
+            <li><img src="/Images/Cucumber(Caring).jpg" id=""></li>
+            <li><img src="/Images/Date(Consistency).jpg" id=""></li>
+            <li><img src="/Images/Dragonfruit(Knowledge).jpg" id=""></li>
+            <li><img src="/Images/Blackberry(Experience).jpg" id=""></li>
+            <li><img src="/Images/Olive(Faithfulness).jpg" id=""></li>
+            <li><img src="/Images/Coconut(Intelligence).jpg" id=""></li>
+            <li><img src="/Images/Lemon(Thoroughness).jpg" id=""></li>
+            <li><img src="/Images/Tangerine(Cooperation).jpg" id=""></li>
+            <li><img src="/Images/Passionfruit(Passion).jpg" id=""></li>
+            <li><img src="/Images/Walnut(Humour).jpg" id=""></li>
+            <li><img src="/Images/Starfruit(Leadership).jpg" id=""></li>
+            <li><img src="/Images/Fig(Wisdom).jpg" id=""></li>
+            <li><img src="/Images/Pomengranate(Resourcefulness).jpg" id=""></li>
+            <li><img src="/Images/Orange(Insight).jpg" id=""></li>
+            <li><img src="/Images/Cherry(Holiness).jpg" id=""></li>
+            <li><img src="/Images/Watermelon(Generosity).jpg" id=""></li>
+            <li><img src="/Images/Guava(Sincerity).jpg" id=""></li>
+            <li><img src="/Images/Kiwifruit(Kindness).jpg" id=""></li>
+            <li><img src="/Images/Cantaloupe(Humility).jpg" id=""></li>
+            <li><img src="/Images/Breadfruit(Expertise).jpg" id=""></li>
+            <li><img src="/Images/Papaya(Openness).jpg" id=""></li>
+            <li><img src="/Images/Miraclefruit(Helpfulness).jpg" id=""></li>
+            <li><img src="/Images/Huckleberry(Friendliness).jpg" id=""></li>
+            <li><img src="/Images/Pineapple(Patience).jpg" id=""></li>
+            <li><img src="/Images/Grape(Innocence).jpg" id=""></li>
+            <li><img src="/Images/Tamarind(Trustworthiness).jpg" id=""></li>
+            <li><img src="/Images/Blueberry(Empathy).jpg" id=""></li>
+            <li><img src="/Images/Blackcurrant(Brilliance).jpg" id=""></li>
+            <li><img src="/Images/Jackfruit(Capacity).jpg" id=""></li>
+            <li><img src="/Images/Kolanut(Courtesy).jpg" id=""></li>
+            <li><img src="/Images/Longan(Emotional Intelligence).jpg" id=""></li>
+            <li><img src="/Images/Bitter Kola(Honour).jpg" id=""></li>
+            <li><img src="/Images/Peach(Excellence).jpg" id=""></li>
+            <li><img src="/Images/Lychee(Loyalty).jpg" id=""></li>
+            <li><img src="/Images/Damson(Honesty).jpg" id=""></li>
+            <li><img src="/Images/Cashew(Optimism).jpg" id=""></li>
+            <li><img src="/Images/Mango(Fairness).jpg" id=""></li>
+            <li><img src="/Images/Avocado(Compassion).jpg" id=""></li>
+            <li><img src="/Images/Pear(Grace).jpg" id=""></li>
+            <li><img src="/Images/Loquat(Reliability).jpg" id=""></li>
+            <li><img src="/Images/Jujube(Tolerance).jpg" id=""></li>
+            <li><img src="/Images/Lime(Frankness).jpg" id=""></li>
+          </ul>
+        </div>
+        <div class="col-3" id="wordDiv">
+          <ul>
+            <li>(love)</li>
+            <li>(Creativity)</li>
+            <li>(Confidence)</li>
+            <li>(Caring)</li>
+            <li>(Consistency)</li>
+            <li>(Knowledge)</li>
+            <li>(Experience)</li>
+            <li>(Faithfulness)</li>
+            <li>(Intelligence)</li>
+            <li>(Thoroughness)</li>
+            <li>(Cooperation)</li>
+            <li>(Passion)</li>
+            <li>(Humour)</li>
+            <li>(Leadership)</li>
+            <li>(Wisdom)</li>
+            <li>(Resourcefulness)</li>
+            <li>(Insight)</li>
+            <li>(Holiness)</li>
+            <li>(Generosity)</li>
+            <li>(Sincerity)</li>
+            <li>(Kindness)</li>
+            <li>(Humility)</li>
+            <li>(Expertise)</li>
+            <li>(Openness)</li>
+            <li>(Helpfulness)</li>
+            <li>(Friendliness)</li>
+            <li>(Patience)</li>
+            <li>(Innocence)</li>
+            <li>(Trustworthiness)</li>
+            <li>(Empathy)</li>
+            <li>(Brilliance)</li>
+            <li>(Capacity)</li>
+            <li>(Courtesy)</li>
+            <li>(Emotional Intelligence)</li>
+            <li>(Honour)</li>
+            <li>(Excellence)</li>
+            <li>(Loyalty)</li>
+            <li>(Honesty)</li>
+            <li>(Optimism)</li>
+            <li>(Fairness)</li>
+            <li>(Compassion)</li>
+            <li>(Grace)</li>
+            <li>(Reliability)</li>
+            <li>(Tolerance)</li>
+            <li>(Frankness)</li>
+          </ul>
+        </div>
+        <div class="col-4" id="rangeDiv">
+          <ul>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 15px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 50px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 60px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 50px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 78px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 60px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 30px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 50px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 70px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 52px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 54px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 38px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 45px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 58px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 60px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 60px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 45px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 40px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 45px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 50px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 45px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 48px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 80px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 80px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 62px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 80px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 75px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 68px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 68px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 75px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 82px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 82px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 84px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 50px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 62px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 75px;"></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+	</div>
+
+	<div class="ratingModalForm1" id="ratingModalForm1">
+    <div id="modal1">
+      <div style="background-color: transparent;position: fixed; top: 0px;width: 100%;">
+        <i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px; padding: 10px;" id="close5">close</i>
+      </div>
+      <div class="row" id="modalContainer">
+        <p style="background-color: white; text-align: center; padding: 15px; font-weight: bold;
+        color: #110033; border-radius: 30px; padding-top: 40px;">Rating is from 1-10</p>
+        <div class="col-3" id="checkboxDiv">
+          <input type="checkbox" style="margin-top: 30px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 80px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 95px;">
+          <input type="checkbox" style="margin-top: 75px;">
+          <input type="checkbox" style="margin-top: 45px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 78px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 50px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 70px;">
+          <input type="checkbox" style="margin-top: 75px;">
+          <input type="checkbox" style="margin-top: 75px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 55px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 62px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 65px;">
+          <input type="checkbox" style="margin-top: 90px;">
+          <input type="checkbox" style="margin-top: 95px;">
+          <input type="checkbox" style="margin-top: 75px;">
+          <input type="checkbox" style="margin-top: 90px;">
+          <input type="checkbox" style="margin-top: 85px;">
+          <input type="checkbox" style="margin-top: 85px;">
+          <input type="checkbox" style="margin-top: 85px;">
+          <input type="checkbox" style="margin-top: 90px;">
+          <input type="checkbox" style="margin-top: 60px;">
+          <input type="checkbox" style="margin-top: 70px;">
+          <input type="checkbox" style="margin-top: 70px;">
+          <input type="checkbox" style="margin-top: 95px;">
+          <input type="checkbox" style="margin-top: 95px;">
+          <input type="checkbox" style="margin-top: 95px;">
+          <input type="checkbox" style="margin-top: 68px;">
+          <input type="checkbox" style="margin-top: 62px;">
+          <input type="checkbox" style="margin-top: 62px;">
+          <input type="checkbox" style="margin-top: 82px;">
+          <input type="checkbox" style="margin-top: 87px;">
+        </div>
+        <div class="col-2" id="pictureDiv">
+          <ul>
+            <li><img src="/Images/Apple(Love).jpg" id=""></li>
+            <li><img src="/Images/Banana(Creativity).jpg" id=""></li>
+            <li><img src="/Images/Durian(Confidence).jpg" id=""></li>
+            <li><img src="/Images/Cucumber(Caring).jpg" id=""></li>
+            <li><img src="/Images/Date(Consistency).jpg" id=""></li>
+            <li><img src="/Images/Dragonfruit(Knowledge).jpg" id=""></li>
+            <li><img src="/Images/Blackberry(Experience).jpg" id=""></li>
+            <li><img src="/Images/Olive(Faithfulness).jpg" id=""></li>
+            <li><img src="/Images/Coconut(Intelligence).jpg" id=""></li>
+            <li><img src="/Images/Lemon(Thoroughness).jpg" id=""></li>
+            <li><img src="/Images/Tangerine(Cooperation).jpg" id=""></li>
+            <li><img src="/Images/Passionfruit(Passion).jpg" id=""></li>
+            <li><img src="/Images/Walnut(Humour).jpg" id=""></li>
+            <li><img src="/Images/Starfruit(Leadership).jpg" id=""></li>
+            <li><img src="/Images/Fig(Wisdom).jpg" id=""></li>
+            <li><img src="/Images/Pomengranate(Resourcefulness).jpg" id=""></li>
+            <li><img src="/Images/Orange(Insight).jpg" id=""></li>
+            <li><img src="/Images/Cherry(Holiness).jpg" id=""></li>
+            <li><img src="/Images/Watermelon(Generosity).jpg" id=""></li>
+            <li><img src="/Images/Guava(Sincerity).jpg" id=""></li>
+            <li><img src="/Images/Kiwifruit(Kindness).jpg" id=""></li>
+            <li><img src="/Images/Cantaloupe(Humility).jpg" id=""></li>
+            <li><img src="/Images/Breadfruit(Expertise).jpg" id=""></li>
+            <li><img src="/Images/Papaya(Openness).jpg" id=""></li>
+            <li><img src="/Images/Miraclefruit(Helpfulness).jpg" id=""></li>
+            <li><img src="/Images/Huckleberry(Friendliness).jpg" id=""></li>
+            <li><img src="/Images/Pineapple(Patience).jpg" id=""></li>
+            <li><img src="/Images/Grape(Innocence).jpg" id=""></li>
+            <li><img src="/Images/Tamarind(Trustworthiness).jpg" id=""></li>
+            <li><img src="/Images/Blueberry(Empathy).jpg" id=""></li>
+            <li><img src="/Images/Blackcurrant(Brilliance).jpg" id=""></li>
+            <li><img src="/Images/Jackfruit(Capacity).jpg" id=""></li>
+            <li><img src="/Images/Kolanut(Courtesy).jpg" id=""></li>
+            <li><img src="/Images/Longan(Emotional Intelligence).jpg" id=""></li>
+            <li><img src="/Images/Bitter Kola(Honour).jpg" id=""></li>
+            <li><img src="/Images/Peach(Excellence).jpg" id=""></li>
+            <li><img src="/Images/Lychee(Loyalty).jpg" id=""></li>
+            <li><img src="/Images/Damson(Honesty).jpg" id=""></li>
+            <li><img src="/Images/Cashew(Optimism).jpg" id=""></li>
+            <li><img src="/Images/Mango(Fairness).jpg" id=""></li>
+            <li><img src="/Images/Avocado(Compassion).jpg" id=""></li>
+            <li><img src="/Images/Pear(Grace).jpg" id=""></li>
+            <li><img src="/Images/Loquat(Reliability).jpg" id=""></li>
+            <li><img src="/Images/Jujube(Tolerance).jpg" id=""></li>
+            <li><img src="/Images/Lime(Frankness).jpg" id=""></li>
+
+      </ul>
+        </div>
+        <div class="col-3" id="wordDiv">
+          <ul>
+            <li>(love)</li>
+            <li>(Creativity)</li>
+            <li>(Confidence)</li>
+            <li>(Caring)</li>
+            <li>(Consistency)</li>
+            <li>(Knowledge)</li>
+            <li>(Experience)</li>
+            <li>(Faithfulness)</li>
+            <li>(Intelligence)</li>
+            <li>(Thoroughness)</li>
+            <li>(Cooperation)</li>
+            <li>(Passion)</li>
+            <li>(Humour)</li>
+            <li>(Leadership)</li>
+            <li>(Wisdom)</li>
+            <li>(Resourcefulness)</li>
+            <li>(Insight)</li>
+            <li>(Holiness)</li>
+            <li>(Generosity)</li>
+            <li>(Sincerity)</li>
+            <li>(Kindness)</li>
+            <li>(Humility)</li>
+            <li>(Expertise)</li>
+            <li>(Openness)</li>
+            <li>(Helpfulness)</li>
+            <li>(Friendliness)</li>
+            <li>(Patience)</li>
+            <li>(Innocence)</li>
+            <li>(Trustworthiness)</li>
+            <li>(Empathy)</li>
+            <li>(Brilliance)</li>
+            <li>(Capacity)</li>
+            <li>(Courtesy)</li>
+            <li>(Emotional Intelligence)</li>
+            <li>(Honour)</li>
+            <li>(Excellence)</li>
+            <li>(Loyalty)</li>
+            <li>(Honesty)</li>
+            <li>(Optimism)</li>
+            <li>(Fairness)</li>
+            <li>(Compassion)</li>
+            <li>(Grace)</li>
+            <li>(Reliability)</li>
+            <li>(Tolerance)</li>
+            <li>(Frankness)</li>
+          </ul>
+        </div>
+        <div class="col-4" id="rangeDiv">
+          <ul>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 15px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 50px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 60px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 50px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 78px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 60px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 30px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 50px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 70px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 52px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 54px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 38px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 45px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 58px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 60px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 60px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 45px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 40px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 45px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 50px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 45px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 48px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 80px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 80px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 62px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 80px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 75px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 68px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 68px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 75px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 82px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 82px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 84px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 50px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 55px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 62px;"></li>
+            <li><input type="number" max="10" min="1" value="0" style="margin-top: 75px;"></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+	</div>
+	<div id="modal5">
+		<div style="background-color: transparent;position: fixed; top: 0px;width: 100%;">
+			<i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:20px; padding: 10px;" id="close6">close</i>
+		</div>
+
+		<div class="row" id=modalContainer5>
+
+			<div class="col-12" id="checkboxDiv" style="border-radius: 10px;">
+			<p style="text-align: center; font-weight: bold; padding: 10px;">Topic of discursion</p>
+				<p id="discurse" style="width: 95%;margin-left: 2.5%; cursor: pointer;">Discursion of post will be here! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus sagittis massa at blandit. Praesent dapibus luctus ex, at pulvinar felis malesuada non. Fusce mollis ut enim a facilisis. luctus ex, at pulvinar felis malesuada non. Fusce mollis ut enim a facilisis.....</p>
+				<p id="modalRate">14</p>
+				<p id="modalRate1">50</p>
+				<p id="modalReview1">review!</p>
+			</div>
+
+		</div>
+
+	</div>
+	<div id="modal7">
+		<div style="background-color: transparent;position: fixed; top: 0px;width: 100%;">
+			<i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:20px; padding: 10px;" id="close7">close</i>
+		</div>
+
+		<div class="row" id=modalContainer7>
+
+			<div class="col-12" id="checkboxDiv">
+				<img src='/Images/itohanpix.jpg' alt='' id='topImageAjax2' style='width: 100%;')
+				'>
+			</div>
+
+		</div>
+
+	</div>
+	<div id="loadingDiv">
+       <p id="loader"></p>
+	</div>
+	<div>
+		     <% include ./partials/LoadingRequest %>
+	</div>
+	<div>
+		     <% include ./partials/SearchHint %>
+	</div>
+	<div>
+		     <% include ./partials/taggingWasSuccessfull %>
+	</div>
+	<div>
+		     <% include ./partials/taggingInterface %>
+	</div>
+	<div>
+		     <% include ./partials/connectionConfirmed %>
+	</div>
+	<div>
+		     <% include ./partials/logOutModal %>
+	</div>
+	<script>
+		function displayLogOutModal(){
+			document.getElementsByClassName('logoutModal')[0].style.display = "block";
+		}
+
+		function exitLogOutModal(){
+			document.getElementsByClassName('logoutModal')[0].style.display = "none";
+		}
+		console.log("I am ready!!!!!!!!!!!! Number 4");
+
+		 document.getElementById("toggleDaises").addEventListener("mouseenter", showMeNav);
+		 document.getElementById("toggleDaises").addEventListener("click", hideByClick);
+		 document.getElementById("daiseOutterDiv").addEventListener("mouseleave", hideMeNav);
+
+			function showMeNav (){
+					document.getElementById("daiseOutterDiv").style.display = "block";
+			}
+			function hideByClick(){
+				 var jinta = document.getElementById("daiseOutterDiv").style.display;
+				 if(jinta == "block"){
+				 document.getElementById("daiseOutterDiv").style.display = "none";
+				 }
+				 else{
+					document.getElementById("daiseOutterDiv").style.display = "block";
+				 }
+			}
+			function hideMeNav (){
+					document.getElementById("daiseOutterDiv").style.display = "none";
+			}
+
+document.getElementById('mode').style.display = "none";
+var getReachoutpage = document.getElementById('reachingOut');
+getReachoutpage.addEventListener('click', reachOutDisplay);
+
+function reachOutDisplay (){
+		 document.getElementById('mode').style.display = "block";
+}
+
+document.getElementById('close1').addEventListener('click', close);
+function close(){
+	document.getElementById('mode').style.display = "none";
+}
+
+// toggling out the other one
+document.getElementById('mode1').style.display = "none";
+var chatting = document.getElementById('chatting');
+chatting.addEventListener('click', reachOutDisplay2);
+
+function reachOutDisplay2 (){
+		 document.getElementById('mode1').style.display = "block";
+}
+
+document.getElementById('close2').addEventListener('click', close2);
+function close2(){
+	document.getElementById('mode1').style.display = "none";
+}
+
+// rating reviews/////////////
+document.getElementById('ratingModalForm').style.display = "none";
+var circleTipris1 = document.getElementById('circleTipris1');
+circleTipris1.addEventListener('click', showRating);
+
+function showRating (){
+		 document.getElementById('ratingModalForm').style.display = "block";
+}
+
+document.getElementById('close4').addEventListener('click', closeRating);
+function closeRating(){
+	document.getElementById('ratingModalForm').style.display = "none";
+}
+
+var circleTipris = document.getElementById('circleTipris');
+circleTipris.addEventListener('click', showRating);
+
+/*var reviews = document.getElementById('reviews');
+reviews.addEventListener('click', showRating);*/
+
+// coding for the second rating form in homepage.ejs
+document.getElementById('ratingModalForm1').style.display = "none";
+var ratingModalForm1 = document.getElementById('reviews');
+ratingModalForm1.addEventListener('click', showRatingModalForm);
+function showRatingModalForm(){
+			 document.getElementById('ratingModalForm1').style.display = "block";
+}
+document.getElementById('close5').addEventListener('click', closeReviews);
+function closeReviews(){
+			 document.getElementById('ratingModalForm1').style.display = "none";
+}
+
+// coding for the post discription modal page rating
+var modalRate = document.getElementById('modalRate');
+modalRate.addEventListener("click", showRatingModalForm1);
+
+ var modalRate1 = document.getElementById('modalRate1');
+modalRate1.addEventListener("click", showRatingModalForm1);
+
+function showRatingModalForm1(){
+			 document.getElementById('ratingModalForm').style.display = "block";
+			 document.getElementById('modal5').style.display = "none";
+}
+
+
+
+/// coding for discription of
+document.getElementById('modal5').style.display = "none";
+var discoarse = document.getElementById('discoarse');
+discoarse.addEventListener('click', showDiscoarse);
+function showDiscoarse(){
+			 document.getElementById('modal5').style.display = "block";
+}
+document.getElementById('close6').addEventListener('click', closeDiscoarse);
+
+function closeDiscoarse(){
+			 document.getElementById('modal5').style.display = "none";
+}
+
+
+/// coding for clicking on picture on any position
+document.getElementById('modal7').style.display = "none";
+var AjaxImage = document.getElementById('AjaxImage');
+AjaxImage.addEventListener('click', showPicture1);
+function showPicture1(){
+				console.log("picture not showing")
+				document.getElementById('modal7').style.display = "block";
+}
+document.getElementById('close7').addEventListener('click', closePicture);
+
+function closePicture(){
+			 document.getElementById('modal7').style.display = "none";
+}
+document.getElementById('loadingDiv').style.display = 'none';
+document.getElementsByClassName('logoutModal')[0].style.display = 'none';
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+   // return "";
+}
+
+function checkCookie() {
+    var user=getCookie("daises");
+    //alert(user);
+    return user;
+}
+
+var mycookie = checkCookie();
+console.log(mycookie + "  inbox email");
+
+// heavy dependence on jquery is not good, it causes limitation at times!!!!!
+function postAjax(url, data, success) {
+			var params = typeof data == 'string' ? data : Object.keys(data).map(
+			        function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+			    ).join('&');
+
+			var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+			xhr.open('POST', url);
+			xhr.onreadystatechange = function() {
+			    if (xhr.readyState>3 && xhr.status==200) { 
+			    	success(xhr.responseText); 
+			    	$('#loadingRequest').hide(); // this is jquery!!!
+			     }
+			};
+			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send(params);
+			return xhr;
+}
+
+
+function postAjax(url, data, success) {
+			var params = typeof data == 'string' ? data : Object.keys(data).map(
+			        function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+			    ).join('&');
+
+			var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+			xhr.open('POST', url);
+			xhr.onreadystatechange = function() {
+			    if (xhr.readyState>3 && xhr.status==200) { 
+			    	success(xhr.responseText); 
+			    	$('#loadingRequest').hide(); // this is jquery!!!
+			     }
+			};
+			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send(params);
+			return xhr;
+}
+
+// example request with data object
+postAjax('/gettingFriendRequest', { 'personalEmail': mycookie}, function(theValue){
+      //console.log(theValue); 
+      var data = JSON.parse(theValue);
+      console.log(data);
+      outPuttingFriendRequest(data);
+});
+
+  function outPuttingFriendRequest(data){
+        
+    	//Html to inject;
+    	var generatedHTML;
+        
+    	if(data.message == 'No Friend Request!'){
+    		//generatedHTML = '<p>You do not have any friend request yet!</p>';
+    		$('#nofriendAvailable').show();
+    		$('#nofriendAvailable1').show();
+    		//$(generated).insertBefore('.midsection');
+    		$('#loadingRequest').hide();
+        }
+
+
+        //ajaxSectionDynamic1
+        if(data.message != 'No Friend Request!'){
+        	for(var i=0; i < data.message.length; i++){
+        		     generatedHTML = '<div id="ajaxSectionDynamic1" class="' + data.message[i].FriendEmail + '">' + '<div id="outerCoverDynamic">' + '<p id="firstPDynamic">' + data.message[i].onlineStatus + '</p>' + '<p id="SecondP">' + data.message[i].FriendFirstName + " " + data.message[i].FriendLastName + '</p>' + '<div class="row" id="innerRowDynamic">' + '<div id="pictureDivDynamic" class="col-3">' + '<img src="http://127.0.0.1:8000/Images/'+ data.message[i].FriendPicture + '"' + 'style="' + 'width:80%;"' + '/>' + '</div>' + '<div id="ratingDivDynamic" class="col-9">' + '<p id="ratingNumber1" style="visibility: hidden;">70</p>' + '<p id="ratingNumber2" style="visibility: hidden;">80</p>' + '<p id="mainReviewDynamic" style="visibility:  hidden;">reviews</p>' + '</div>' + '</div>' + '<p id="thirdPDynamic">' + data.message[i].Alaise + '</p>' + '<button id="connectButtonDynamic" onClick = "friendShipDecision(this);" data-custom ="' + data.message[i].FriendEmail + '"' + 'class="' + data.message[i].FriendEmail + '"' + '>Connect!</button>' + '</div>' + '</div>' + '<input type="text"/ style = "display: none;' + 'value="' + data.message[i].FriendEmail + '"' + " " +'/>';
+                         // dynamic insertion!
+	                     $(generatedHTML).insertBefore('#ajaxSectionDynamic');
+        	}
+                   
+            $('#loadingRequest').hide();
+         }	        
+  }
+
+
+/*  document.querySelector("#id-checkbox").addEventListener("click", function(event) {
+         
+         event.preventDefault();
+}, false); */
+
+
+  
+  function confirmFriendShip(url, data, success) {
+             
+              	        console.log('Someeeeeeeeeeeeeeeeeeeeeeee');
+						var params = typeof data == 'string' ? data : Object.keys(data).map(
+						        function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+						    ).join('&');
+
+						var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+						xhr.open('POST', url);
+						xhr.onreadystatechange = function() {
+						    if (xhr.readyState>3 && xhr.status==200) { 
+						    	success(xhr.responseText); 
+						    	$('.taggingFriends').hide(); // this is jquery!!!
+						     }
+						};
+						xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+						xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+						xhr.send(params);
+						return xhr;
+  }
+
+//will be using native javascript to write ajax since jquery is not working!!
+ $('document').ready(function(){
+       
+
+	$('#connectingForm').submit(function(event){
+       event.preventDefault();
+          var formData = new FormData(this);
+
+           var tagValue = document.getElementById('taggingSelection').value;
+
+              if(tagValue == 'Tag Friend'){
+              	 document.getElementById('taggingSelection').style.border = 'red';
+              	 document.getElementById('errorMessageTag').innerHtml = "Please Select Appropriate Tag!";
+              	 return;
+              }
+
+              if(tagValue != 'Tag Friend'){
+              	 document.getElementById('taggingSelection').style.border = 'green';
+              	 document.getElementById('errorMessageTag').innerHtml = "";
+              } 
+
+
+              
+               // a call to ajax function outSide the jquery method!
+              confirmFriendShip('/confirmingFriendRequest', ({'personalEmail': mycookie, 'FriendEmail': FriendEmail1, 'Tag': tagValue}), function(passParam){
+                    var data = JSON.parse(passParam);
+                    if(data.message == 'FriendShip Was Tagged Successfully'){
+                    	 console.log('checking if something ran here!!!');
+                    	
+                    	  var indentityString2 = data.FriendEmail;
+                    	$('.taggingConfirmed').show();
+                    	setTimeout(function(){
+                           $('.taggingConfirmed').hide();
+                    	}, 3000);
+                         
+                         // deleting the FriendRequest from the page!
+                        document.getElementsByClassName(indentityString2)[0].style.display = 'none';
+                    }
+                    /* handling of implimentation logic! */
+              });
+             console.log('this form was submitted');
+	               // hidding the tagging Interface!
+	          $('.taggingFriends').hide();
+	          return false;
+	});  
+            
+      $('#loadbutton').click(function(){
+            $('#loadingRequest').show(); 
+            	 $.ajax({
+				        url: "http://127.0.0.1:8000/getMoreFriends",
+				        type: 'GET',
+				        data: JSON.stringify({ personalEmail: mycookie /* GET THE COOKIE */}),
+                        crossDomain: true,
+				        async: true,
+				        cache: false,
+				        dataType: "json",
+				        contentType: "application/json; charset=utf-8",
+				        processData: false,
+				        success: function (data) {
+                             
+                             if(data){
+	                             for(x in data){
+                                      // Do something!
+	                             }
+                              }
+
+				        	setTimeout(function(){
+				        		$('#loadingRequest').hide(); 
+				        	}, 1000);
+                           
+				        },
+				        error: function(data){
+                            alert("Cannot Connect Now!!!!!!!!!!!");
+				        }
+				       
+				    });
+            });
+});
+
+ var FriendEmail1;
+
+  function friendShipDecision(value){
+  	   var thevalue = value.attributes[2].value;
+  	        FriendEmail1 = thevalue;
+  	   console.log(thevalue + "   this is the value of value!!!!!!!");
+  	       $('#taggingSoHidden').value = mycookie;
+  	       // $('#taggingSoHidden1').value = thevalue;
+  	         //thevalue = FriendEmail;
+  	         console.log(thevalue + "       this is the value");
+  	         console.log(FriendEmail1 + "      this is friends Emails");
+               $('.taggingFriends').show();
+  }
+
+		  function hiddingTaggingSection(){
+		  	  $('.taggingFriends').hide();
+		  }
+
+ $('.headerForm1').keyup(function(event){
+            	  $('.SearchHintp').hide();
+            	  var searchQuery = document.getElementsByClassName('search1')[0].value;
+            	  var theType = typeof searchQuery;
+            	  if(theType == 'number') theType = 'number';
+            	  if(searchQuery == '' || theType == 'number') return;
+            	  var value = document.getElementById('hiddenFieldForm').value;
+                  $.ajax({
+				        url: "http://127.0.0.1:8000/homepageSearchQuery",
+				        type: 'POST',
+				        data: JSON.stringify({'searchQuery': searchQuery, 'hiddenFieldForm': value}),
+                        crossDomain: true,
+				        async: true,
+				        cache: false,
+				        contentType: "application/json; charset=utf-8",
+				        processData: false,
+				        success: function (data) {
+				        	console.log(data);
+				        	var arrayData = [];
+				        	var onlineCounter = 0;
+				            var onlineCounter1 = 0;
+				            var offlineCounter = 0;
+				            var offlineCounter1 = 0;
+				        	if(data.message == 'No Result Found!'){
+				        		var searchHint = "No Result, Continue Searching!";
+				        		showHint(searchHint);
+				        		return
+				        	};
+
+				            if(data.online != "" && data.offline != ''){
+                                  for(var i=0; i < data.online.length; i++){
+                                  	   onlineCounter++;
+                                       arrayData.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                       arrayData.push(data.online[i].Daises);
+                                       if(onlineCounter == data.online.length){
+                                            // do something
+                                            break;
+                                       }
+                                  }
+
+                                  for(var i=0; i < data.offline.length; i++){
+                                  	   offlineCounter++;
+                                       arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
+                                       arrayData.push(data.offline[i].Daises);
+                                       if(offlineCounter == data.offline.length){
+                                       	    setTimeout(function(){
+                                       	    	showHint(arrayData);
+                                       	    },50);
+                                            return;
+                                       }
+                                  }
+				            }
+
+				            if(data.online == "" && data.offline >= 1){
+                                       for(var i=0; i < data.online.length; i++){
+                                       	    offlineCounter1++;
+                                       	    //console.log('was this function called! ' +  );
+                                            arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName); 
+                                            arrayData.push(data.offline[i].Daises);
+                                            if(offlineCounter1 == data.online.length){
+                                            	//console.log('was this function called!');
+                                                showHint(arrayData);
+                                            }
+                                       }
+				            }
+				            if(data.online != "" && data.offline == ''){
+                                       console.log('was this function called!');
+                                       for(var i=0; i < data.online.length; i++){
+                                       	console.log('was this function called!22');
+                                       	   onlineCounter1++;
+                                           arrayData.push(data.online[i].FirstName + ' ' + data.online[i].LastName);
+                                           arrayData.push(data.online[i].Daises);
+                                           if(onlineCounter1 == data.online.length){
+                                           	    console.log('Code block Entered!');
+                                                showHint(arrayData);
+                                           }
+                                       }
+				            }
+
+				            function showHint(searchHint){
+					            	if(searchHint == 'No Result, Continue Searching!'){
+					                    var generatedHTML = "<p class='SearchHintp'>No Result, Continue Searching!<br><br>Search with key words!</p>";
+					                    $(generatedHTML).insertBefore('#SearchHint');
+					                     $('.SearchHint').show();
+					                     return;
+					            	}
+					                console.log(searchHint);
+					                console.log('that is search hint above');
+					            	var searchCounter = 0;
+					            	//var uniqueId = abac;
+					            	for(var i=0; i < searchHint.length; i++){
+					            	    searchCounter++;
+					                    var generatedHTML = "<p class='SearchHintp'><a href='http://127.0.0.1:9000/homepageSearchQuery/" + searchHint[i] + "'" + " style='color: white; text-decoration: none; width: 100%;'>" + searchHint[i] + "</a></p>";
+					                   
+					                    $(generatedHTML).insertBefore('#SearchHint');
+					                    if(searchCounter == searchHint.length){
+					                         $('.SearchHint').show();
+					                         return;
+					                    }
+					                }
+				            }	            
+				        },
+				        error: function(data){
+                            alert("Please Check your server! <br> something is wrong!");
+				        }
+				       
+				    });
+            });
+	</script>
+    <script type="text/javascript" src='/JavaScript/homepage.js'></script>
+
+</body>
+</html>

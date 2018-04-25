@@ -1,0 +1,28 @@
+<div class="connecting">
+  <div style="background-color: transparent;position: fixed; top: 0px;width: 100%;">
+    <i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px; padding: 10px;" id="closeEnterDaises">close</i>
+  </div>
+  <div id="connectingDiv">
+     <form id="connectingForm" action="" method="POST" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-2" style="padding: 0px;">
+               <img src="/Images/<%= data %>" id="connectingPicture">
+            </div>
+            <div class="col-10" style="padding-left: 0px;">
+              <p id="connectingP">it seems you are <br>connecting with this person!!</p>
+            </div>
+          </div>
+          <div class="row" style="padding-top: 0px;">
+              <div class="col-9" style="padding-top: 0px;">
+                  <p id="connectButton">
+                    Nop!</p>
+              </div>
+              <div class="col-3" style="padding-top: 0px;">
+                  <button id="connectButton2" onclick="">
+                    Yes!</button>
+              </div>
+              <input type="text" id="soHidden" value="" style="display: none;">
+          </div>
+     </form>
+   </div>
+</div>

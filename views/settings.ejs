@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='Content-Type' content='text/html;charset=UTF-8' >
+
+  <title></title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/StyleSheets/settings.css">
+  <script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
+  <base href="http://127.0.0.1:9000/">
+</head>
+<body>
+  <div id='upmostHeader'>
+  <button id='upmostHeaderButton1'>Daises</button>
+  <button id='upmostHeaderButton2'>Logout</button>
+  <button id='upmostHeaderButton3' onclick="gotoHomePage()">Home</button>
+</div>
+
+<header>
+
+  <ul>
+    <li>
+      <form action="/homepage" method="POST">
+      <select name="statusTag" class='search1' style="border: none; background-color: #eeeeee;">
+        <option value="beloved">Filter Your Search!!!</option>
+        <option value="beloved">filter by Beloved</option>
+        <option value="saviour">filter by Savours</option>
+        <option value="Professional">filter by Professional</option>
+      </select>
+      <input type="text" class='search' value="Reach Out and meet people!!"/>
+    </form>
+    </li>
+
+  </ul>
+</header>
+  <div class='row' id='multiformSection1'>
+    <div class="col-2" id=''>
+    </div>
+    <div class="col-8" id='multiformSection'>
+      <div>
+        <div id='titleForm'><p>NOW LETS REACH OUT TO PEOPLE</p><br><br><br>
+        <form action="/" method="POST" id="professionlForm">
+             <div class="professional">
+             <label for="professional" id="labelForProfessional">professional</label><br><br><br><br><br>
+             <p id="professionalHint">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus sagittis massa at blandit. Praesent dapibus luctus ex, at pulvinar felis malesuada non. Fusce mollis ut enim a facilisis. Curabitur mattis felis at tortor blandit accumsan. Sed vestibulum felis quis ipsum aliquet, maximus porta nisi cursus. Vivamus pharetra augue ut varius hendrerit. Nullam sed maximus diam, non placerat massa. Suspendisse iaculis vestibulum maximus. massa nibh, commodo a tortor in, ultricies aliquam  </p><br>
+             <textarea name="" id="professionalDaises" >Enter Your Point For Professional Daises here</textarea><br>
+             <p id="professionalDaisesWarning" class="redColor">please Enter valid Daises</p><br>
+             <input type="text" value="Enter Alaise" id="professionalAlaise"><br>
+             <p id="professionalAlaiseWarning" class="redColor">please enter valid Alaise</p><br>
+             <p id="amountUSD">Amount: USD</p><br>
+             <input type="text" id="numberInput" value="Enter Amount"><br>
+             <p id="amountWarning" class="redColor">please enter valid Amount in numbers only!</p><br>
+             <select name="" id="professionalSelect" style="width: 60%;">
+                      <option value="NILL" name="nill">Nill</option>
+                      <option value="Health" name="health">Health</option>
+                      <option value="Security" name="security">Security</option>
+                      <option value="Spiritual" name="spiritual">Spiritual</option>
+                      <option value="Relationship" name="relationship">Relationship</option>
+                      <option value="Nutrition" name="nutrition">Nutrition</option>
+                      <option value="Art" name="art">Art</option>
+                      <option value="Music" name="music">Music</option>
+                      <option value="Sport" name="sport">Sport</option>
+                      <option value="Technology" name="technology">Technology</option>
+                      <option value="Finance" name="finance">Finance</option>
+                      <option value="Academic" name="academics">Academics</option>
+                      <option value="News" name="news">News</option>
+                      <option value="3M" name="miscellanious">3M</option>
+                      <option value="How to" name="howto">How to</option>
+            </select><br>
+            <p id="professionalSelectWarning" class="redColor">Tag cannot be Nill</p><br>
+
+            <div>
+                 <p onclick="displayRating()" id="showRate">00</p>
+                 <p onclick="displayRating()" id="showRate2">00</p>
+            </div>
+
+            <button id="firstButton">submit</button><br>
+        </div>
+        </form><br>
+        
+        <form action="" method="POST" id="saviourForm">
+              <div class="saviour">
+             <label for="saviour" id="labelForSaviour">Saviour</label><br><br><br><br><br>
+             <p id="saviourHint">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus sagittis massa at blandit. Praesent dapibus luctus ex, at pulvinar felis malesuada non. Fusce mollis ut enim a facilisis. Curabitur mattis felis at tortor blandit accumsan. Sed vestibulum felis quis ipsum aliquet, maximus porta nisi cursus. Vivamus pharetra augue ut varius hendrerit. Nullam sed maximus diam, non placerat massa. Suspendisse iaculis vestibulum maximus. massa nibh, commodo a tortor in, ultricies aliquam  </p><br>
+
+             <textarea name="" id="saviourDaises">Enter Your Point For Saviour Daises here</textarea><br>
+             <p id="saviourDaisesWarning" class="redColor">Enter valid Daises</p><br>
+             <input type="text" value="Enter Alaise" id="saviourAlaise"><br>
+             <p id="saviourAliaseWarning" class="redColor">Enter valid Alaise</p><br>
+             <select name="" id="saviourSelect" style="">
+                      <option value="NILL" name="nill">Nill</option>
+                      <option value="Health" name="health">Health</option>
+                      <option value="Security" name="security">Security</option>
+                      <option value="Spiritual" name="spiritual">Spiritual</option>
+                      <option value="Relationship" name="relationship">Relationship</option>
+                      <option value="Nutrition" name="nutrition">Nutrition</option>
+                      <option value="Art" name="art">Art</option>
+                      <option value="Music" name="music">Music</option>
+                      <option value="Sport" name="sport">Sport</option>
+                      <option value="Technology" name="technology">Technology</option>
+                      <option value="Finance" name="finance">Finance</option>
+                      <option value="Academic" name="academics">Academics</option>
+                      <option value="News" name="news">News</option>
+                      <option value="3M" name="miscellanious">3M</option>
+                      <option value="How to" name="howto">How to</option>
+            </select><br>
+            <p id="saviourSelectWarning" class="redColor">Tag cannot be Nill</p><br>
+            
+            <div>
+                 <p onclick="displayRating()" id="showRate3">00</p>
+                 <p onclick="displayRating()" id="showRate4">00</p>
+            </div>
+
+            <button id="secondButton">submit</button>
+        </div>
+        </form>
+        
+        <form action="/" method="POST" id="belovedForm">
+             <div class="beloved">
+             <label for="beloved" id="labelForBeloved">Beloved!</label><br><br><br><br><br>
+             <p id="belovedHint">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus sagittis massa at blandit. Praesent dapibus luctus ex, at pulvinar felis malesuada non. Fusce mollis ut enim a facilisis. Curabitur mattis felis at tortor blandit accumsan. Sed vestibulum felis quis ipsum aliquet, maximus porta nisi cursus. Vivamus pharetra augue ut varius hendrerit. Nullam sed maximus diam, non placerat massa. Suspendisse iaculis vestibulum maximus. massa nibh, commodo a tortor in, ultricies aliquam  </p><br>
+             <textarea name="" id="belovedDaises" >Enter Your Point For Beloved Daises here</textarea><br>
+             <p id="belovedDaisesWarning" class="redColor">please enter valid Daises</p><br>
+             <input type="text" value="Enter Alaise" id="belovedAlaise"><br>
+             <p id="belovedAlaiseWarning" class="redColor">please enter valid Alaise</p><br>
+             <select name="" id="belovedSelect" style="">
+                      <option value="NILL" name="nill">Nill</option>
+                      <option value="Health" name="health">Health</option>
+                      <option value="Security" name="security">Security</option>
+                      <option value="Spiritual" name="spiritual">Spiritual</option>
+                      <option value="Relationship" name="relationship">Relationship</option>
+                      <option value="Nutrition" name="nutrition">Nutrition</option>
+                      <option value="Art" name="art">Art</option>
+                      <option value="Music" name="music">Music</option>
+                      <option value="Sport" name="sport">Sport</option>
+                      <option value="Technology" name="technology">Technology</option>
+                      <option value="Finance" name="finance">Finance</option>
+                      <option value="Academic" name="academics">Academics</option>
+                      <option value="News" name="news">News</option>
+                      <option value="3M" name="miscellanious">3M</option>
+                      <option value="How to" name="howto">How to</option>
+            </select><br>
+            <p id="belovedSelectWarning" class="redColor">Tag cannot be NILL</p><br>
+
+            <div>
+                 <p onclick="displayRating()" id="showRate5">00</p>
+                 <p onclick="displayRating()" id="showRate6">00</p>
+            </div>
+
+            <button id="thirdButton">submit</button>
+        </div>
+        </form>
+        
+    </div>
+    </div>
+  </div>
+</div>
+<div class="quickNavigation">
+    <p onclick="moveToBeloved()">Beloved!</p>
+    <p onclick="moveToSaviour()">Saviour</p>
+    <p onclick="moveToProfessional()">Professional</p>
+</div>
+<div class="returnedMessageFormContainer">
+   <form action="/settings/firsthomepage" method="POST" class="returnedMessageForm">
+         <P id='dynamicallyContent'>something was successfully submitted</P>
+         <button>continue to homepage</button>
+         <p id="stayingPButton">stay here!</p>
+   </form>
+</div>
+<div id="hiddenForm" style="display: none;">
+  <form action="/settings/firsthomepage" method="POST" id="theHiddenForm">
+       <!--THIS FORM IS HIDDEN BY DEFAULT-->
+  </form>
+</div>
+
+<div class="col-2" id=''>
+</div>
+</div>
+<div class='row' id='footermain'>
+<div class="col-3" id='footer'>
+  <ul>
+    <li>Mango</li>
+    <li>Apple</li>
+    <li>Cashew</li>
+    <li>Pawpaw</li>
+    <li>Orange</li>
+  </ul>
+</div>
+<div class="col-3" id='footer'>
+  <ul>
+    <li>Lemon</li>
+    <li>Bananas</li>
+    <li>grape</li>
+    <li>bitterlemon</li>
+    <li>sourgrape</li>
+  </ul>
+</div>
+<div class="col-3" id='footer'>
+  <ul>
+    <li>waterlemon</li>
+    <li>groundnut</li>
+    <li>corn</li>
+    <li>rice</li>
+    <li>cereals</li>
+  </ul>
+</div>
+<div class="col-3" id='footer'>
+  <ul>
+    <li>benzen</li>
+    <li>methane</li>
+    <li>ethane</li>
+    <li>ethanol</li>
+    <li>gasoline</li>
+  </ul>
+</div>
+</div>
+
+<div id='lastDivSection' style="">
+<p>	LoveDaises Copyright 2017</p>
+</div>
+<script type="text/javascript">
+     $(document).ready(function(event){
+            
+            $('#professionlForm').submit(function(event){
+                 event.preventDefault();
+                 var daises = document.getElementById('professionalDaises').value;
+                 var alaise = document.getElementById('professionalAlaise').value;
+                 var select = document.getElementById('professionalSelect').value;
+                 var amount = document.getElementById('numberInput').value;
+                 if (daises == '' || daises == 'Enter Your Point For Professional Daises here') {
+                     $('#professionalDaisesWarning').show();
+                     setTimeout(function(){
+                        $('#professionalDaisesWarning').hide();
+                     }, 2000);
+                     return;
+                 }
+
+                 if (alaise == '' || alaise == 'Enter Alaise') {
+                     $('#professionalAlaiseWarning').show();
+                     setTimeout(function(){
+                        $('#professionalAlaiseWarning').hide();
+                     }, 2000);
+                     return;
+                 }
+                 
+                 if (select == 'NILL') {
+                     $('#professionalSelectWarning').show();
+                     setTimeout(function(){
+                        $('#professionalSelectWarning').hide();
+                     }, 2000);
+                     return;
+                 }
+
+                 if (amount == '') {
+                    $('#amountWarning').show();
+                    setTimeout(function(){
+                        $('#amountWarning').hide();
+                    }, 2000);
+                    return;
+                 }
+             /// ajax calling the server!
+
+                 $.ajax({
+                        url: "/settingsProfessional",
+                        type: 'POST',
+                        data: JSON.stringify({'daises': daises, 'aliase': alaise, 'amount': amount, 'select': select}),
+                        crossDomain: true,
+                        async: true,
+                        cache: false,
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        processData: false,
+                        success: function (data) {
+                              console.log(data + " professional Form submitted Successfully");
+                              document.getElementById('dynamicallyContent').innerHTML = 'You Just Submitted Professional Daises';
+                              $('.returnedMessageFormContainer').show();
+                              setTimeout(function(){
+                                 $('.returnedMessageFormContainer').hide();
+                              }, 3000);
+
+                              console.log('It looks like the Event did not bubble up to this point');
+                        },
+                        error: function(data){
+                            alert("Can't Connect Now!!");
+                        }
+               
+                 });
+
+                 return false;
+            });
+
+            // this will handle the submission of Saviour forms
+             $('#saviourForm').submit(function(event){
+                 event.preventDefault();
+                 var daises = document.getElementById('saviourDaises').value;
+                 var alaise = document.getElementById('saviourAlaise').value;
+                 var select = document.getElementById('saviourSelect').value;
+                 if (daises == '' || daises == 'Enter Your Point For Saviour Daises here') {
+                     $('#saviourDaisesWarning').show();
+                     setTimeout(function(){
+                        $('#saviourDaisesWarning').hide();
+                     }, 2000);
+                     return;
+                 }
+
+                 if (alaise == '' || alaise == 'Enter Alaise') {
+                     $('#saviourAliaseWarning').show();
+                     setTimeout(function(){
+                        $('#saviourAliaseWarning').hide();
+                     }, 2000);
+                     return;
+                 }
+                 
+                 if (select == 'NILL') {
+                     $('#saviourSelectWarning').show();
+                     setTimeout(function(){
+                        $('#saviourSelectWarning').hide();
+                     }, 2000);
+                     return;
+                 }
+
+                // ajax calling remote server!
+                 $.ajax({
+                        url: "/settingsSaviour",
+                        type: 'POST',
+                        data: JSON.stringify({'daises': daises, 'aliase': alaise, 'select': select}),
+                        crossDomain: true,
+                        async: true,
+                        cache: false,
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        processData: false,
+                        success: function (data) {
+                             console.log(data + " saviour Form submitted Successfully");
+                             document.getElementById('dynamicallyContent').innerHTML = 'You Just Submitted Saviour Daises';
+                              $('.returnedMessageFormContainer').show();
+                              setTimeout(function(){
+                                 $('.returnedMessageFormContainer').hide();
+                              }, 3000);
+                        },
+                        error: function(data){
+                            alert("Cant Connect Now!!");
+                        }
+                 });
+
+                 return false;
+            });
+
+             $('#belovedForm').submit(function(event){
+                 event.preventDefault();
+                 var daises = document.getElementById('belovedDaises').value;
+                 var alaise = document.getElementById('belovedAlaise').value;
+                 var select = document.getElementById('belovedSelect').value;
+                 if (daises == '' || daises == 'Enter Your Point For Beloved Daises here') {
+                     $('#belovedDaisesWarning').show();
+                     setTimeout(function(){
+                        $('#belovedDaisesWarning').hide();
+                     }, 2000);
+                     return;
+                 }
+
+                 if (alaise == '' || alaise == 'Enter Alaise') {
+                     $('#belovedAlaiseWarning').show();
+                     setTimeout(function(){
+                        $('#belovedAlaiseWarning').hide();
+                     }, 2000);
+                     return;
+                 }
+                 
+                 if (select == 'NILL') {
+                     $('#belovedSelectWarning').show();
+                     setTimeout(function(){
+                        $('#belovedSelectWarning').hide();
+                     }, 2000);
+                     return;
+                 }
+             // Ajax calling remote server!
+                 $.ajax({
+                        url: "/settingsBeloved",
+                        type: 'POST',
+                        data: JSON.stringify({'daises': daises, 'aliase': alaise, 'select': select}),
+                        crossDomain: true,
+                        async: true,
+                        cache: false,
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        processData: false,
+                        success: function (data) {
+                             console.log(data + " beloved Form submitted Successfully");
+                             document.getElementById('dynamicallyContent').innerHTML = 'You Just Submitted Beloved Daises';
+                              $('.returnedMessageFormContainer').show();
+                              setTimeout(function(){
+                                 $('.returnedMessageFormContainer').hide();
+                              }, 3000);
+                        },
+                        error: function(data){
+                            alert("Cant Connect Now!!");
+                        }
+                 });
+
+                 return false;
+            });
+          
+     });
+    
+    function displayRating(){
+        // display the rate here
+    }
+
+    function moveToProfessional(){
+         var section = document.getElementById('labelForProfessional');
+         section.scrollIntoView(true);
+    }
+
+    function moveToSaviour(){
+         var section = document.getElementById('firstButton');
+         section.scrollIntoView(true);
+    }
+
+    function moveToBeloved(){
+         var section = document.getElementById('secondButton');
+         section.scrollIntoView(true);
+    }
+
+    function gotoHomePage(){
+          $('#theHiddenForm').submit();
+    }
+
+</script>
+</script>
+</body>
+</html>
