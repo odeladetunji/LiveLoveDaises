@@ -2,7 +2,8 @@
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0px;
-	font-family: verdana;
+	font-family: vadana, sans-serif;
+    /*font-family: 'Forum', cursive;*/
 }
 .row::after {
 	background-color: lightgreen;
