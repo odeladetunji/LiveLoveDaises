@@ -35,8 +35,11 @@ var meetpeople = require('./routes/meetpeople');
 var get_settings = require('./routes/settings');
 var gettingFriendRequest = require('./routes/gettingFriendRequest');
 var homepageSearchQuery = require('./routes/homepageSearchQuery');
+var searchingDataBase = require('./routes/searchingDataBase');
+var fs = require('fs');
+var liveSearch = require('./routes/liveSearch');
+var liveSearch1 = require('./routes/liveSearch1');
 var mongo = require('mongodb');
-
 
 /*
 modules to handle navigations within the site
@@ -158,7 +161,9 @@ app.use('/settings/goingToHomePage', goingToHomePageNow);
 app.use('/profileSetUp/firsthomepage', firsthomepage);
 app.use('/settings/firsthomepage', firsthomepage);
 app.use('/firsthomepage/daises',fromdefaulthomepage);
-
+app.use('/searchingDataBase', searchingDataBase);
+app.use('/liveSearch', liveSearch);
+app.use('/liveSearch1', liveSearch1);
 //app.use(allowCrossDomain);
 /*var whitelist = ["http://127.0.0.1:1337/changepicture", "http://127.0.0.1:1337/daisesposting", "http://127.0.0.1:8080/rating",
  'http://127.0.0.1:8080', 'http://127.0.0.1:8080/gettingFriendRequest', 'http://127.0.0.1:8080/friendslist', "http://127.0.0.1:8080/gettingFormerChat"];
@@ -248,8 +253,22 @@ io.on('connection', function(socket){
                     if(error) throw error;
                     populatingObject(results);
                  })
-              })
+          });
 
+          socket.on('requestToConnect', function(data){
+                var dataToSend = {}
+                var recipientEmail = data.recipientEmail;
+                recipientSocket = socketUsersX[recipientEmail];
+                //emitting to recipient!
+                recipientSocket.emit('incomingRequest', dataToSend, function(data){
+                     console.log(data);
+                });
+          });
+
+          
+          socket.on('endingChatOfficial', function(data){
+                
+          })
        /*   socket.on('sending from reachOut', function(data){
                 socketUsers.personalSocket.emit('chatMessage Returned from server', data);
           })  */
@@ -313,6 +332,27 @@ io.on('connection', function(socket){
                 connection.query(sql, ['online', data.personalEmail], function(error, results, fields){
                       if(error)throw error;
                       console.log(data.personalEmail + "   onlineStatus was updated succesfully!. Status: online;");
+                });
+
+                // update the file also!
+                // 
+                var jsonDataBase;
+                var getFile = fs.createReadStream('./public/onlineDataBase/onlineStatus.json');
+                getFile.on('data', function(chunk){
+                    jsonDataBase = JSON.parse(chunk);
+                    console.log(chunk)
+                    jsonDataBase[data.personalEmail.split("@")[0]] = "online";
+                    (function(){
+                        var writeToDataBase = fs.createWriteStream('./public/onlineDataBase/onlineStatus.json');
+                            writeToDataBase.write(JSON.stringify(jsonDataBase));
+                            writeToDataBase.end(function(){
+                                 console.log('finished updating online status!   ||  online');
+                            }); 
+                    })();
+                });
+
+                getFile.on('error', function(){
+                     console.log('Error .............. ReadStream Error  ||  signuppost.js');
                 });
                 
                 var personalEmail = data.personalEmail;  // just storing it in a variable, thats all!
@@ -426,14 +466,37 @@ io.on('connection', function(socket){
                                       console.log('oooooooooooooooooooo')
                                    if((socketUsers1[x] = socket) && (onlineDataUniqueKeyPair[i] = x)){
                                           (function(){
-                                                var sql = 'UPDATE onlineofflinestatustable SET OnlineStatus = ? WHERE Email = ?';
+                                                    var sql = 'UPDATE onlineofflinestatustable SET OnlineStatus = ? WHERE Email = ?';
                                                     connection.query(sql, ['offline', x], function(error, results, fields){
                                                           if(error)throw error;
                                                           console.log(socketUsers1[x] + "   onlineStatus was updated succesfully!. Status:   offline;");
                                                     });
+
+                                                     (function(){
+                                                          var jsonDataBase;
+                                                          var valueOfX = x;
+                                                          var getFile = fs.createReadStream('./public/onlineDataBase/onlineStatus.json');
+                                                          getFile.on('data', function(chunk){
+                                                              jsonDataBase = JSON.parse(chunk);
+                                                              jsonDataBase[valueOfX.split("@")[0]] = "offline";
+                                                              (function(){
+                                                                      var writeToDataBase = fs.createWriteStream('./public/onlineDataBase/onlineStatus.json');
+                                                                      writeToDataBase.write(JSON.stringify(jsonDataBase));
+                                                                      
+                                                                      writeToDataBase.on('error', function(){
+                                                                            console.log('Error Writing file ..................  socket.io  || index.js');
+                                                                      })
+
+                                                                      writeToDataBase.end(function(){
+                                                                          console.log('DataBase Updated Successfull   socket.io    ||    offline');                      
+                                                                      })
+                                                              })();
+                                                          });
+                                                     })();
+
                                           })();
                                           (function(){
-                                              var sql = 'Select firstname, lastname From registrationtable Where Email = ?';
+                                                   var sql = 'Select firstname, lastname From registrationtable Where Email = ?';
                                                    connection.query(sql, [x], function(error, results, fields){
                                                          if(error)throw error;
                                                         // updateAllStatusOfTheUser(firstname, lastname);
