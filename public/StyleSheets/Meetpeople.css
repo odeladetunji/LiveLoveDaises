@@ -700,3 +700,89 @@ header li {
     margin-left: 43%;
     margin-top: 20px;
   }
+
+  .connecting {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+
+.taggingFriends {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 300; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+.connectingConfirmed {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 300; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+#connectingDiv {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.1s;
+    animation-name: zoom;
+    animation-duration: 0.1s;
+    background-color: transparent;
+}
+#connectingForm {
+  width: 40%;
+  background-color: white;
+  margin-top: 100px;
+  margin-left: 30%;
+  border-radius: 8px;
+}
+#connectingPicture{
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 15px;
+  border-radius: 50%;
+}
+
+#connectButton{
+     font-size: 14px;
+     background-color: green;
+     color: white;
+     border-radius: 5px;
+     float: right;
+     padding: 5px;
+     padding-bottom: 7px;
+     text-align: center;
+     border: none;
+     cursor: pointer;
+     width: 30%;
+}
+#connectingP{
+    width: 100%;
+    border-radius: 5px;
+   /* border: 1px solid grey;*/
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    background-color: lightgreen;
+  /*  color: white;*/
+    font-size: 16px;
+    cursor: pointer;
+}

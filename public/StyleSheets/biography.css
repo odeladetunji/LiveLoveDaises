@@ -369,9 +369,7 @@ i {
     display: inline;
     font-size: 12px;
     cursor: pointer;
-
   }
-
 
   #upmostHeaderButton2:hover, #upmostHeaderButton1:hover {
     background-color: green;
