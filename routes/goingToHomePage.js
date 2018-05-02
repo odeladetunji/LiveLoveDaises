@@ -25,7 +25,6 @@ router.post('/', function(req, res){
 
     function renderingHomePage(){
          var sql = 'select Pictures from registrationtable where Email = ?';
-         console.log('it got to this point');
          connection.query(sql, [email], function(error, results, fields){
               if (error) throw error;
 

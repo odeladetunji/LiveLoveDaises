@@ -53,10 +53,8 @@ function renderingHomePage(){
               }else{
                  pictureValue.manImage = results[0].Pictures;
               }
-             /* if(results[0].Pictures == "") pictureValue.manImage = "man.jpg";
-              if(results[0].Pictures != "") pictureValue.manImage = results[0].Pictures;*/
-              
-              res.render('homepage', { data: pictureValue.manImage });
+             
+              res.render('firsthomepage', { data: pictureValue.manImage });
               updatingRegistrationTableWithAlaise();
           });
 }
@@ -105,18 +103,6 @@ function renderingHomePage(){
             insertToMongoDb(personalPicture, message, firstname, lastname);
        });
        
-       //Am commenting out the code here since this feature is not needed yet!
-       /*if(req.files.videofile){
-          var videofile = req.files.videofile[0].filename;
-       }else{
-          var videofile = '';
-       }
-
-       if(req.files.imagefile){
-          var imagefile = req.files.imagefile[0].filename;
-       }else{
-          var imagefile = '';
-       }*/
        
        if(new Date().getHours() > 12){
            var period = 'PM';

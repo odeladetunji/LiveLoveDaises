@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var mysql = require('mysql');
 var mongo = require('mongodb');
+var fs = require('fs');
 
 
 router.post('/', function(req, res){
@@ -89,7 +90,25 @@ connection.connect();
                    console.log('this is before error was thrown');
                    if(error)throw error;
                    creatingOnlineIdentityOnStatusTable();
-              })          
+              });
+              
+              var jsonDataBase;
+              var getFile = fs.createReadStream('./public/onlineDataBase/onlineStatus.json');
+              getFile.on('data', function(chunk){
+                  jsonDataBase = JSON.parse(chunk);
+                  jsonDataBase[email.split("@")[0]] = "online";
+                  (function(){
+                      var writeToDataBase = fs.createWriteStream('./public/onlineDataBase/onlineStatus.json');
+                          writeToDataBase.write(JSON.stringify(jsonDataBase));
+                          writeToDataBase.end(function(){
+                              console.log('OnlineStutus Created in file onlineStatus.json');
+                          })
+                  })();
+              });
+
+              getFile.on('error', function(){
+                   console.log('Error .............. ReadStream Error  ||  signuppost.js');
+              });
   }
 
           
