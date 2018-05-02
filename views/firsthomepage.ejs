@@ -97,6 +97,18 @@
 		     <% include ./partials/videoModalMessage %>
 	</div>
 	<div>
+		     <% include ./partials/loaderInterfaceForChat %>
+	</div>
+	<div>
+		     <% include ./partials/connecting %>
+	</div>
+	<div>
+		     <% include ./partials/connectionConfirmed %>
+	</div>
+	<div>
+		     <% include ./partials/ConnectionRejection %>
+	</div>
+	<div>
 		     <% include ./partials/ratingPopUp %>
 	</div>
     <div>
@@ -167,6 +179,9 @@
 </div>
 <script src="/socket.io/socket.io.js"></script>
 <script type="application/javascript">
+       
+
+          $('#loaderInterfaceRequestChat').css('display', 'none');
 
 	      $('#lovedaisesHeading').css('background-color', 'black');
           $('.liveSearch').css('background-color', 'black');
@@ -174,6 +189,9 @@
             
           });
 
+          function cancellingConnectingInterface(){
+                $('.connecting').hide();
+          }
 
           function displayRatingForm(passedId){
                 $('.returnedRating').hide();
@@ -272,6 +290,70 @@
              document.getElementById('onlineButton').style.border = '1px solid black';
              document.getElementById('onlineButton').style.color = 'green';
          });
+
+          $('#connectingForm').submit(function(event){
+                   event.preventDefault();
+                   var postIdentity = document.getElementById('soHidden').value;
+                            // console.log(postIdentity + "  this is post identity3");
+                         console.log(postIdentity);
+		    	   $.ajax({
+				        url: "http://127.0.0.1:8000/connectingWithpeople",
+				        type: 'POST',
+				        data: JSON.stringify({ personalEmail: mycookie, "postIdentity": postIdentity}),
+                        crossDomain: true,
+				        async: true,
+				        cache: false,
+				        dataType: "json",
+				        contentType: "application/json; charset=utf-8",
+				        processData: false,
+				        success: function (data) {
+				        	var incommingMessage = 'Sorry!....You Cannot Send Friend Request to yourself';
+				        	if(incommingMessage == data.message){
+				        		//alert(data.message)
+				        		//$('.connectionRejection').show();
+				        		document.getElementById('rejectionMessage1').innerHTML = incommingMessage;
+				        		document.getElementById('connectionRejectionHidden').innerHTML = '';
+				        		document.getElementById('connectionRejectionHidden1').innerHTML = '';
+				        		$('.connectionRejection').show();
+				        	}
+				        	
+				        	if(data.message == 'You Guys are Friends already!!'){
+				        		document.getElementById('rejectionMessage1').innerHTML = "You guys are friends already!!";
+				        		document.getElementById('connectionRejectionHidden').innerHTML = '';
+				        		document.getElementById('connectionRejectionHidden1').innerHTML = '';
+				        		$('.connectionRejection').show();
+				        	}
+
+				        	if(data.message == 'Request Sent Succesfully'){
+				        		document.getElementById('rejectionMessage1').innerHTML = "Request Sent Succesfully!!";
+				        		document.getElementById('connectionRejectionHidden').innerHTML = '';
+				        		document.getElementById('connectionRejectionHidden1').innerHTML = '';
+				        		$('.connectionRejection').show();
+				        	}
+
+				        	// we are splitting returned message to write the final condition statement!
+                             if(data.message == 'You have Sent Request Before : has yet to accept your Request!!'){
+                                  //data.message.split(':')[0];
+                                  document.getElementById('rejectionMessage1').innerHTML = data.message.split(':')[0];
+                                  document.getElementById('connectionRejectionHidden').innerHTML = data.FirstName + " " + data.LastName;
+                                  document.getElementById('connectionRejectionHidden1').innerHTML = data.message.split(':')[1];
+
+                                  $('.connectionRejection').show(); 
+                             }
+
+				              setTimeout(function(){
+                                   $('.connectionRejection').hide();
+				              }, 4000);
+				        },
+				        error: function(data){
+                            alert("Something not right on Server!!");
+				        }
+				       
+				    });
+		    	   
+		    	    $('.connecting').hide();
+		    	    return false;
+ }); 
 
 		    function getCookie(cname) {
 			 var name = cname + "=";
@@ -389,6 +471,7 @@
 
 		 $('.firstRow').hide();
 		 $('#loaderInterfaceRequest').hide();
+
          $('.liveSearch').submit(function(event){
              event.preventDefault();
              var value = document.getElementsByClassName('search')[0].value;
@@ -396,7 +479,7 @@
              if(value == ''){ return; }
              $('#loaderInterfaceRequest').show();
               $.ajax({
-				        url: "http://127.0.0.1:8000/liveSearch",
+				        url: "http://127.0.0.1:9000/liveSearch",
 				        type: 'POST',
 				        data: JSON.stringify({'value': value}),
                         crossDomain: true,
@@ -677,15 +760,18 @@
         	  if(theType == 'number') theType = 'number';
         	  if(searchQuery == '' || theType == 'number') return;
         	  var value = document.getElementById('hiddenFieldForm').value;
-
+        	  console.log(value);
+        	  console.log('am expecting something up')
+           
         	  if(searchQuery == ""){
                    document.getElementById('lovedaisesHeading').style.marginTop = "100px";
+                  
        	           document.getElementsByClassName('homeSearch')[0].style.width = "50%";
        	           document.getElementsByClassName('homeSearch')[0].style.marginLeft = "25%";
         	  }
 
               $.ajax({
-			        url: "http://127.0.0.1:8000/homepageSearchQuery",
+			        url: "http://127.0.0.1:9000/searchingDataBase",
 			        type: 'POST',
 			        data: JSON.stringify({'searchQuery': searchQuery, 'hiddenFieldForm': value}),
                     crossDomain: true,
@@ -754,54 +840,8 @@
                                }
 
 	                           if(onlineCounter == data.online.length){
-	                           	    if(valueOfSearchFilterSelection == "filter by Beloved"){
-	                                       if(belovedArray.length == 0){ 
-
-                                             $('#loaderInterfaceRequest').hide();
-                                             $('.warningMessage').show();
-                                             setTimeout(function(){
-                                                $('.warningMessage').hide();
-                                             }, 3000);
-
-	                           	    	 }else{
-	                           	    	      showHint(belovedArray);
-	                                          return;
-	                           	    	 }
-	                           	    }
-
-	                           	    if(valueOfSearchFilterSelection == "filter by Saviour"){
-	                           	    	if(saviourArray.length == 0){ 
-
-                                             $('#loaderInterfaceRequest').hide();
-                                             $('.warningMessage').show();
-                                             setTimeout(function(){
-                                                $('.warningMessage').hide();
-                                             }, 3000);
-
-	                           	    	 }else{
-	                           	    	      showHint(saviourArray);
-	                                          return;
-	                           	    	 }
-	                           	    }
-
-	                           	    if(valueOfSearchFilterSelection == 'filter by Professional'){
-	                           	    	if(professionalArray.length == 0){ 
-
-                                             $('#loaderInterfaceRequest').hide();
-                                             $('.warningMessage').show();
-                                             setTimeout(function(){
-                                                $('.warningMessage').hide();
-                                             }, 3000);
-
-	                           	    	 }else{
-	                           	    	      showHint(professionalArray);
-	                                          return;
-	                           	    	 }
-	                           	    }
-	                           }
-                            }
-
-                            for(var i=0; i < data.offline.length; i++){
+	                  function gettingOfflineResult(){
+                              for(var i=0; i < data.offline.length; i++){
                                offlineCounter++;
                                arrayData.push(data.offline[i].FirstName + ' ' + data.offline[i].LastName);
                                arrayData.push(data.offline[i].Daises);
@@ -879,13 +919,15 @@
 	                           	    	 }
 	                           	    }
 	                           }
+                             }
+	                           	  }
+	                           	  gettingOfflineResult();
+	                           }
                             }
-                              
+                              return;
                         }			   
 
 			            if(data.online == "" && data.offline.length >= 1){
-			            	console.log('code got here offline');
-			            	console.log('this particular offline');
                             for(var i=0; i < data.offline.length; i++){
                                console.log('code entered offline loop');
                                console.log(valueOfSearchFilterSelection);
@@ -1086,7 +1128,7 @@
 			        }
 			       
 			    });
-        });
+       });
 
        function displayingFoundDaisesFinal(pElement){
               $('.searchFilter').css('display', 'none');
@@ -1105,7 +1147,7 @@
               console.log(searchValue);
               //console.log(pElement);
               $.ajax({
-		        url: "http://127.0.0.1:8000/liveSearch1",
+		        url: "http://127.0.0.1:9000/liveSearch1",
 		        type: 'POST',
 		        data: JSON.stringify({'value': searchValue}),
                 crossDomain: true,
@@ -1145,7 +1187,7 @@
                           	   if(data.online[i].PersonalPicture == ''){
                                     personalPicture = 'man.jpg';
                           	   }
-                               var generatedHTML = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+                               var generatedHTML = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.online[i].DaisesIdentity + ')">Connect</button>'+'</div>';
                                $(generatedHTML).insertBefore('#amountOfData1');
                                $('.firstRow').css('background-color', 'azure');
                                $('.singleSection').css('background-color', 'azure');
@@ -1162,7 +1204,7 @@
                           	   if(data.offline[i].PersonalPicture == ''){
                                     personalPicture1 = 'man.jpg';
                           	   }
-                               var generatedHTML1 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+                               var generatedHTML1 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.offline[i].DaisesIdentity + ')">Connect</button>'+'</div>';
                                $(generatedHTML1).insertBefore('#amountOfData2');
                                $('.firstRow').css('background-color', 'azure');
                                $('.singleSection').css('background-color', 'azure');
@@ -1186,7 +1228,7 @@
                           	   if(data.online[i].PersonalPicture == ''){
                                     personalPicture3 = 'man.jpg';
                           	   }
-                               var generatedHTML3 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+                               var generatedHTML3 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.online[i].DaisesIdentity + ')">Connect</button>'+'</div>';
                                $(generatedHTML3).insertAfter('#amountOfData');
                                $('.firstRow').css('background-color', 'azure');
                                $('.singleSection').css('background-color', 'azure');
@@ -1211,7 +1253,7 @@
                           	   if(data.offline[i].PersonalPicture == ''){
                                     personalPicture4 = 'man.jpg';
                           	   }
-                               var generatedHTML4 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated">Connect</button>'+'</div>';
+                               var generatedHTML4 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.offline[i].DaisesIdentity + ')">Connect</button>'+'</div>';
                                $(generatedHTML4).insertBefore('#amountOfData');
                                $('.firstRow').css('background-color', 'azure');
                                $('.singleSection').css('background-color', 'azure');
@@ -1327,7 +1369,7 @@
    	               var value = value;
    	               postUniqueId = value;
    	               rateUniqueId = value;
- 	       console.log(value + "   .............................");
+ 	               console.log(value + "   .............................");
          			   $.ajax({
 				        url: "http://127.0.0.1:8000/gettingRatingsOfClosePeople",
 				        type: 'POST',
@@ -1405,6 +1447,66 @@
       function closeReturnedRatingModal(){
       	  $('.returnedRatingModal').hide();
       }
+
+      function iWantToConnect(commingIdentity){
+           var identity = commingIdentity[0].id;
+           document.getElementById('soHidden').value = "";
+           document.getElementById('soHidden').value = identity;
+          // document.getElementsByClassName('connecting')[0].style.display = 'block';
+           $('.connecting').show();
+      }
+      
+/// Socket.io for Official Chat!
+         function honourRequest(){
+                socket.on('requestHonoured', function(data){
+                     $('.showOfficialChat').show();
+      	        });
+         }
+
+         function rejectedRequest(){
+      	        socket.on('requestRejected', function(data){
+                     $('.showOfficialChat').show();
+      	        });
+         }
+
+
+         socket.on("incomingRequest", function(){
+              $('.showOfficialChat').show();
+         });
+
+
+         $('#textChatting').keydown( function( event ) {
+         	   var dataToSend = $('#textChatting').val();
+               socket.emit('sendingChatOfficial', dataToSend, function(data){
+                   console.log(data);
+               });
+         });
+
+
+      function requestToStartChatting(){
+      	        socket.emit("requestToConnect", dataToEmit, function(data){
+                      console.log(data);
+      	        });
+
+                $.ajax({
+					        url: "http://127.0.0.1:9000/",
+					        type: 'POST',
+					        data: JSON.stringify({ sentData: value }),
+		                    crossDomain: true,
+					        async: true,
+					        cache: false,
+					        dataType: "json",
+					        contentType: "application/json; charset=utf-8",
+					        processData: false,
+					        success: function (data) {
+		                            console.log(data);
+					        },
+					        error: function(data){
+		                        alert("Something is not wright!!!");
+					        }
+					  });
+      }
+
 </script>
 <script src="http://127.0.0.1:9000/JavaScript/textChatting.js" type="application/javascript"></script>
 <script src="/JavaScript/videoChatting.js" type="application/javascript"></script>

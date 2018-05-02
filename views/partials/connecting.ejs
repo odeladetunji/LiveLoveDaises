@@ -1,6 +1,6 @@
 <div class="connecting">
   <div style="background-color: transparent;position: fixed; top: 0px;width: 100%;">
-    <i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px; padding: 10px;" id="closeEnterDaises">close</i>
+    <i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px; padding: 10px;" id="closeEnterDaises" onclick="cancellingConnectingInterface()">close</i>
   </div>
   <div id="connectingDiv">
      <form id="connectingForm" action="" method="POST" enctype="multipart/form-data">
@@ -14,7 +14,7 @@
           </div>
           <div class="row" style="padding-top: 0px;">
               <div class="col-9" style="padding-top: 0px;">
-                  <p id="connectButton">
+                  <p id="connectButton" onclick="cancellingConnectingInterface()">
                     Nop!</p>
               </div>
               <div class="col-3" style="padding-top: 0px;">
