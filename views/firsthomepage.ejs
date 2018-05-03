@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="/StyleSheets/messaging.css">
 	<link rel="stylesheet" type="text/css" href="/StyleSheets/chat.css">
     <link rel="stylesheet" type="text/css" href="/StyleSheets/meetpeople.css">
+    <link rel="stylesheet" type="text/css" href="/StyleSheets/animationCalling.css">
 	<script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
 	<base href = "http://127.0.0.1:8000/">
 </head>
@@ -80,18 +81,35 @@
 		     <% include ./partials/loaderInterfaceMeetPeople %>
 	</div>
 	 <div>
-     	 <% include ./partials/ratingFinal %>
+     	     <% include ./partials/ratingFinal %>
      </div>
 	<div>
 		     <% include ./partials/returnedRatingsEveryOneMeetPeople %>
 	</div>
+	<div>
+		     <% include ./partials/wentOffline %>
+	</div>
 
+    <div>
+		     <% include ./partials/confirmingModal %>
+	</div>
+	<div>
+		     <% include ./partials/notAvailable %>
+	</div>
+	<div>
+		     <% include ./partials/incommingCall %>
+	</div>
 	<div>
 		     <% include ./partials/chattingFromFirstHomepage %>
 	</div>
-
+    <div>
+		     <% include ./partials/declinedSuccessfully %>
+	</div>
 	<div>
 		     <% include ./partials/videoChatInterface %>
+	</div>
+	<div>
+		     <% include ./partials/dailer %>
 	</div>
 	<div>
 		     <% include ./partials/videoModalMessage %>
@@ -129,6 +147,9 @@
 		 <form action="http://127.0.0.1:9000" method="GET" class="displayingFinalResultSearch">
 		 	  
 		 </form>
+	</div>
+	<div style="display: none;">
+		<form action="http://127.0.0.1:9000/getTimeSchdulepage" method="GET" class="checkingTimeLine"></form>
 	</div>
 	<div style="display: none;">
 		 <form action="http://127.0.0.1:9000/getInboxpage" method="GET" class="displayRequest">
@@ -179,7 +200,32 @@
 </div>
 <script src="/socket.io/socket.io.js"></script>
 <script type="application/javascript">
-       
+          
+
+          function rejectIncommingCall(requestersEmail){
+          	  $('.incommingCall').css('display', 'none');
+          	  socket.Emit('requestRejected', data, /*data sent should
+          	  	be Requesters Email!*/function(data){
+                   console.log(data);
+          	  });
+          }
+
+          function checkTimeLine(){
+             $('.checkingTimeLine').submit()
+          }
+
+          function dontCheckTimeLine(){
+          	 $('.notAvailable').css('display', 'none');
+          }
+
+          function dontCall(){
+              $('.confirming').css('display', "none");
+          }
+
+          function continueCall(){
+          	  requestToStartChatting();
+          	  $('.confirming').css('display', "none");
+          }
 
           $('#loaderInterfaceRequestChat').css('display', 'none');
 
@@ -1457,55 +1503,6 @@
       }
       
 /// Socket.io for Official Chat!
-         function honourRequest(){
-                socket.on('requestHonoured', function(data){
-                     $('.showOfficialChat').show();
-      	        });
-         }
-
-         function rejectedRequest(){
-      	        socket.on('requestRejected', function(data){
-                     $('.showOfficialChat').show();
-      	        });
-         }
-
-
-         socket.on("incomingRequest", function(){
-              $('.showOfficialChat').show();
-         });
-
-
-         $('#textChatting').keydown( function( event ) {
-         	   var dataToSend = $('#textChatting').val();
-               socket.emit('sendingChatOfficial', dataToSend, function(data){
-                   console.log(data);
-               });
-         });
-
-
-      function requestToStartChatting(){
-      	        socket.emit("requestToConnect", dataToEmit, function(data){
-                      console.log(data);
-      	        });
-
-                $.ajax({
-					        url: "http://127.0.0.1:9000/",
-					        type: 'POST',
-					        data: JSON.stringify({ sentData: value }),
-		                    crossDomain: true,
-					        async: true,
-					        cache: false,
-					        dataType: "json",
-					        contentType: "application/json; charset=utf-8",
-					        processData: false,
-					        success: function (data) {
-		                            console.log(data);
-					        },
-					        error: function(data){
-		                        alert("Something is not wright!!!");
-					        }
-					  });
-      }
 
 </script>
 <script src="http://127.0.0.1:9000/JavaScript/textChatting.js" type="application/javascript"></script>
