@@ -996,7 +996,7 @@ header li {
 }
 
 .incommingCall {
-    display: none; /* Hidden by default */
+    display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 5; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -1005,8 +1005,9 @@ header li {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+   /* background-color: rgb(0,0,0); /* Fallback color */
+   /* background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: transparent;
 }
 
 #incommingInfo {
@@ -1023,6 +1024,7 @@ header li {
     border: 1px solid #888;
     width: 40%;
     padding-bottom: 20px;
+    margin-top: 200px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -1130,7 +1132,7 @@ header li {
 }
 
 .dialer {
-    display: block; /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 5; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -1166,9 +1168,9 @@ header li {
 .dropCall {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 5; /* Sit on top */
+    z-index: 7; /* Sit on top */
     padding-top: 20px; /* Location of the box */
-    left: 69%;
+    left: 30%;
     top: 0;
     width: 30%; /* Full width */
     overflow: auto; /* Enable scroll if needed */
@@ -1191,12 +1193,13 @@ header li {
 /* Modal Content */
 .dropCall-content {
     position: relative;
-    background-color: #de7575;
+    background-color: white;
     margin: auto;
     padding-top: 20px;
     width: 100%;
     padding-bottom: 10px;
     border-radius: 5px;
+    margin-top: 300px;
    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);*/
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -1208,11 +1211,42 @@ header li {
 	padding-bottom: 20px;
 }
 
-#declinedNotice {
-	text-align: center;
-	color: white;
-	font-weight: bold;
+#dropTheCall {
+    border: 1px solid green;
+    background-color: #ca1d27;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-left: 35%;
+    color: white;
 }
+
+#dropTheCall:hover {
+    color: white;
+    background-color: green;
+}
+
+.reciever {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#thisReciever {
+   background-color: rgb(0,0,0); /* Fallback color */
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity*/
+}
+
 
 
 

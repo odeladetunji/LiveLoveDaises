@@ -83,8 +83,14 @@
 	 <div>
      	     <% include ./partials/ratingFinal %>
      </div>
+     <div>
+     	     <% include ./partials/recieveCall %>
+     </div>
 	<div>
 		     <% include ./partials/returnedRatingsEveryOneMeetPeople %>
+	</div>
+	<div>
+		     <% include ./partials/dropCall %>
 	</div>
 	<div>
 		     <% include ./partials/wentOffline %>
@@ -200,14 +206,29 @@
 </div>
 <script src="/socket.io/socket.io.js"></script>
 <script type="application/javascript">
-          
+         
+          function dropTheCall(){
+              $('.dialer').css('display', 'none');
+              $('.dropCall').css('display', 'none');
+              $('.declineSuccessfull').css('display', 'block');
+          	  setTimeout(function(){
+                   $('.declineSuccessfull').css('display', 'none');
+          	  }, 3000);
+          }
 
           function rejectIncommingCall(requestersEmail){
+          	  $('.reciever').css('display', 'none');
+          	  $('#reciever').css('display', 'none');
           	  $('.incommingCall').css('display', 'none');
+          	  $('.declineSuccessfull').css('display', 'block');
+          	  setTimeout(function(){
+                   $('.declineSuccessfull').css('display', 'none');
+          	  }, 3000);
           	  socket.Emit('requestRejected', data, /*data sent should
           	  	be Requesters Email!*/function(data){
                    console.log(data);
           	  });
+              //console.log('recjection function was called');
           }
 
           function checkTimeLine(){
