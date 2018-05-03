@@ -1,0 +1,254 @@
+.fa-phone {
+        font-size: 50px;
+        color: green;
+        padding: 40px 45px;
+        border: 2px solid green;
+        border-radius: 50%;
+        background-color: transparent;
+        -webkit-animation-name: incommingCall; /* Safari 4.0 - 8.0 */
+        -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+        -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+        -webkit-animation-direction: alternate; /* Safari 4.0 - 8.0 */
+        animation-name: incommingCall;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;    
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes incommingCall {
+        0%   {
+            background-color: transparent; 
+            border: 2px solid white;
+            padding: 10px 15px;
+            font-size: 17px;
+            -ms-transform: rotate(10deg); /* IE 9 */
+            -webkit-transform: rotate(10deg); /* Safari */
+             transform: rotate(10deg); /* Standard syntax */
+         }
+         
+    25%  {   
+            background-color: transparent; 
+            border: 2px solid lightgreen;
+            padding: 20px 25px;
+            font-size: 32px;
+            -ms-transform: rotate(20deg); /* IE 9 */
+            -webkit-transform: rotate(20deg); /* Safari */
+             transform: rotate(20deg); /* Standard syntax */
+         }
+         
+    50%  {
+            background-color: transparent; 
+            border: 3px solid lightgreen;
+            padding: 30px 35px;
+            font-size: 42px;
+            -ms-transform: rotate(180deg); /* IE 9 */
+            -webkit-transform: rotate(180deg); /* Safari */
+             transform: rotate(180deg); /* Standard syntax */
+         }
+         
+    75%  {
+            background-color: transparent; 
+            border: 5px solid lightgreen;
+            padding: 40px 45px;
+            font-size: 52px;
+            -ms-transform: rotate(-90deg); /* IE 9 */
+            -webkit-transform: rotate(-90deg); /* Safari */
+             transform: rotate(-90deg); /* Standard syntax */
+         }
+         
+    100% {   
+             
+             background-color: transparent; 
+             border: 1px solid green;
+             padding: 50px 55px;
+             margin-left: 70%;
+             font-size: 72px;
+            -ms-transform: rotate(-180deg); /* IE 9 */
+            -webkit-transform: rotate(-180deg); /* Safari */
+             transform: rotate(-180deg); /* Standard syntax */
+         }
+}
+
+/* Standard syntax */
+@keyframes incommingCall {
+    0%   {
+            background-color: transparent; 
+            border: 2px solid white;
+            padding: 10px 15px;
+            font-size: 17px;
+            -ms-transform: rotate(10deg); /* IE 9 */
+            -webkit-transform: rotate(10deg); /* Safari */
+             transform: rotate(10deg); /* Standard syntax */
+         }
+         
+    25%  {   
+            background-color: transparent; 
+            border: 2px solid lightgreen;
+            padding: 20px 25px;
+            font-size: 32px;
+            -ms-transform: rotate(20deg); /* IE 9 */
+            -webkit-transform: rotate(20deg); /* Safari */
+             transform: rotate(20deg); /* Standard syntax */
+         }
+         
+    50%  {
+            background-color: transparent; 
+            border: 3px solid white;
+            padding: 30px 35px;
+            font-size: 42px;
+            -ms-transform: rotate(180deg); /* IE 9 */
+            -webkit-transform: rotate(180deg); /* Safari */
+             transform: rotate(180deg); /* Standard syntax */
+         }
+         
+    75%  {
+            background-color: transparent; 
+            border: 5px solid lightgreen;
+            padding: 40px 45px;
+            font-size: 52px;
+            -ms-transform: rotate(-90deg); /* IE 9 */
+            -webkit-transform: rotate(-90deg); /* Safari */
+             transform: rotate(-90deg); /* Standard syntax */
+         }
+         
+    100% {   
+             
+             background-color: transparent; 
+             border: 1px solid green;
+             padding: 50px 55px;
+             margin-left: 70%;
+             font-size: 72px;
+            -ms-transform: rotate(-180deg); /* IE 9 */
+            -webkit-transform: rotate(-180deg); /* Safari */
+             transform: rotate(-180deg); /* Standard syntax */
+         }
+}
+
+#second {
+            font-size: 50px;
+            color: green;
+            padding: 40px 45px;
+            border: 2px solid green;
+            border-radius: 50%;
+            background-color: white;
+            margin-left: 40%;
+            -webkit-animation-name: incommingCall1; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+            -webkit-animation-direction: alternate; /* Safari 4.0 - 8.0 */
+            animation-name: incommingCall1;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;    
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes incommingCall1 {
+        0%   {
+            background-color: white; 
+            border: 2px solid white;
+            padding: 10px 15px;
+            font-size: 17px;
+            -ms-transform: rotate(10deg); /* IE 9 */
+            -webkit-transform: rotate(10deg); /* Safari */
+             transform: rotate(10deg); /* Standard syntax */
+         }
+         
+    25%  {   
+            background-color: white; 
+            border: 2px solid lightgreen;
+            padding: 20px 25px;
+            font-size: 32px;
+            -ms-transform: rotate(20deg); /* IE 9 */
+            -webkit-transform: rotate(20deg); /* Safari */
+             transform: rotate(20deg); /* Standard syntax */
+         }
+         
+    50%  {
+            background-color: white; 
+            border: 3px solid white;
+            padding: 30px 35px;
+            font-size: 42px;
+            -ms-transform: rotate(180deg); /* IE 9 */
+            -webkit-transform: rotate(180deg); /* Safari */
+             transform: rotate(180deg); /* Standard syntax */
+         }
+         
+    75%  {
+            background-color: white; 
+            border: 5px solid lightgreen;
+            padding: 40px 50px;
+            font-size: 100px;
+            -ms-transform: rotate(-90deg); /* IE 9 */
+            -webkit-transform: rotate(-90deg); /* Safari */
+             transform: rotate(-90deg); /* Standard syntax */
+         }
+         
+    100% {   
+             
+             background-color: white; 
+             border: 1px solid green;
+             padding: 50px 60px;
+            
+             font-size: 150px;
+            -ms-transform: rotate(-180deg); /* IE 9 */
+            -webkit-transform: rotate(-180deg); /* Safari */
+             transform: rotate(-180deg); /* Standard syntax */
+         }
+}
+
+/* Standard syntax */
+@keyframes incommingCall1 {
+    0%   {
+            background-color: white; 
+            border: 2px solid white;
+            padding: 10px 15px;
+            font-size: 17px;
+            -ms-transform: rotate(10deg); /* IE 9 */
+            -webkit-transform: rotate(10deg); /* Safari */
+             transform: rotate(10deg); /* Standard syntax */
+         }
+         
+    25%  {   
+            background-color: white; 
+            border: 2px solid lightgreen;
+            padding: 20px 25px;
+            font-size: 32px;
+            -ms-transform: rotate(20deg); /* IE 9 */
+            -webkit-transform: rotate(20deg); /* Safari */
+             transform: rotate(20deg); /* Standard syntax */
+         }
+         
+    50%  {
+            background-color: white; 
+            border: 3px solid white;
+            padding: 30px 35px;
+            font-size: 42px;
+            -ms-transform: rotate(180deg); /* IE 9 */
+            -webkit-transform: rotate(180deg); /* Safari */
+             transform: rotate(180deg); /* Standard syntax */
+         }
+         
+    75%  {
+            background-color: white; 
+            border: 5px solid lightgreen;
+            padding: 40px 50px;
+            font-size: 100px;
+            -ms-transform: rotate(-90deg); /* IE 9 */
+            -webkit-transform: rotate(-90deg); /* Safari */
+             transform: rotate(-90deg); /* Standard syntax */
+         }
+         
+    100% {   
+             
+             background-color: white; 
+             border: 3px solid green;
+             padding: 50px 60px;
+            
+             font-size: 150px;
+            -ms-transform: rotate(-180deg); /* IE 9 */
+            -webkit-transform: rotate(-180deg); /* Safari */
+             transform: rotate(-180deg); /* Standard syntax */
+         }
+}

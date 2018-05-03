@@ -786,3 +786,435 @@ header li {
     font-size: 16px;
     cursor: pointer;
 }
+
+/* this section is for confirming calls!
+/* The Modal (background) */
+
+#thisConfirm {
+	background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.confirming {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#areUsure {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+/* Modal Content */
+.confirming-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding-top: 30px;
+    border: 1px solid #888;
+    width: 40%;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.confirming-body {
+	padding-bottom: 20px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+#confirmCall, #rejectCall {
+    border: 1px solid green;
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+#confirmCall:hover, #rejectCall:hover {
+    color: white;
+    background-color: green;
+}
+
+#confirmCall {
+	margin-left: 28%;
+}
+
+#rejectCall {
+	border: 1px solid red;
+}
+
+.notAvailable {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#personInfo {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+/* Modal Content */
+.notAvailable-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding-top: 30px;
+    border: 1px solid #888;
+    width: 40%;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.notAvailable-body {
+	padding-bottom: 20px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+#checkTimeLine, #dontCheckTimeLine {
+    border: 1px solid green;
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+#checkTimeLine:hover, #dontCheckTimeLine:hover {
+    color: white;
+    background-color: green;
+}
+
+#checkTimeLine {
+	margin-left: 28%;
+}
+
+#dontCheckTimeLine {
+	border: 1px solid red;
+}
+
+.disconnected {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#personInfo {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+/* Modal Content */
+.disconnected-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding-top: 30px;
+    border: 1px solid #888;
+    width: 40%;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.disconnected-body {
+	padding-bottom: 20px;
+}
+
+#disconnectedInfo {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.incommingCall {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#incommingInfo {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+/* Modal Content */
+.incommingCall-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding-top: 30px;
+    border: 1px solid #888;
+    width: 40%;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.incommingCall-body {
+	padding-bottom: 20px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+#confirmIncommingCall, #rejectIncommingCall {
+    border: 1px solid green;
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+#confirmIncommingCall:hover, #rejectIncommingCall:hover {
+    color: white;
+    background-color: green;
+}
+
+#confirmIncommingCall {
+	margin-left: 28%;
+}
+
+#rejectIncommingCall {
+	border: 1px solid red;
+}
+
+.declineSuccessfull {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    padding-top: 20px; /* Location of the box */
+    left: 69%;
+    top: 0;
+    width: 30%; /* Full width */
+    overflow: auto; /* Enable scroll if needed */
+   /* background-color: rgb(0,0,0); /* Fallback color */
+   /* background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    float: right;
+}
+
+#incommingInfo {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+#thisDecline {
+	/*background-color: rgb(0,0,0); /* Fallback color */
+   /* background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+   float: left;
+}
+
+/* Modal Content */
+.declineSuccessfull-content {
+    position: relative;
+    background-color: #de7575;
+    margin: auto;
+    padding-top: 20px;
+    width: 100%;
+    padding-bottom: 10px;
+    border-radius: 5px;
+   /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);*/
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.declineSuccessfull-body {
+	padding-bottom: 20px;
+}
+
+#declinedNotice {
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.dialer {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#thisDialer {
+   background-color: rgb(0,0,0); /* Fallback color */
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity*/
+}
+
+/* Modal Content */
+
+
+#hangUp {
+    border: 1px solid green;
+    background-color: #d42626;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-left: 30%;
+    color: white;
+}
+
+.dropCall {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    padding-top: 20px; /* Location of the box */
+    left: 69%;
+    top: 0;
+    width: 30%; /* Full width */
+    overflow: auto; /* Enable scroll if needed */
+   /* background-color: rgb(0,0,0); /* Fallback color */
+   /* background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    float: right;
+}
+
+#droppingCall {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+#thisDropCall {
+	/*background-color: rgb(0,0,0); /* Fallback color */
+   /* background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+   float: left;
+}
+
+/* Modal Content */
+.dropCall-content {
+    position: relative;
+    background-color: #de7575;
+    margin: auto;
+    padding-top: 20px;
+    width: 100%;
+    padding-bottom: 10px;
+    border-radius: 5px;
+   /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);*/
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.dropCall-body {
+	padding-bottom: 20px;
+}
+
+#declinedNotice {
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+
+
+
+
+
