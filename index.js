@@ -56,6 +56,7 @@ var get_chat_page = require('./routes/getchatpage');
 var get_media_page = require('./routes/getmediapage');
 var get_log_page = require('./routes/getlogpage');
 var get_TimeSchdule_page = require('./routes/getTimeSchdulepage');
+var checkingTimeSchedule = require('./routes/checkTimeSchedule');
 var getAgain = require('./routes/getnow');
 var TimeSchdule = require('./routes/timeSchdule');
 var settingsProfessional = require('./routes/settingsProfessional');
@@ -164,6 +165,7 @@ app.use('/firsthomepage/daises',fromdefaulthomepage);
 app.use('/searchingDataBase', searchingDataBase);
 app.use('/liveSearch', liveSearch);
 app.use('/liveSearch1', liveSearch1);
+app.use('/checkTimeSchedule', checkingTimeSchedule);
 //app.use(allowCrossDomain);
 /*var whitelist = ["http://127.0.0.1:1337/changepicture", "http://127.0.0.1:1337/daisesposting", "http://127.0.0.1:8080/rating",
  'http://127.0.0.1:8080', 'http://127.0.0.1:8080/gettingFriendRequest', 'http://127.0.0.1:8080/friendslist', "http://127.0.0.1:8080/gettingFormerChat"];
