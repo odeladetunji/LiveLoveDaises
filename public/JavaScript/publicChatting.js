@@ -3,7 +3,7 @@
  var userSentPicture;
  var socketSentData;
  var socket = io.connect('http://127.0.0.1:9000');
-
+ var identityStoreForCalling = {};
  // this code is not to be deleted for any reason
  // its sending email to an object and setting the 
  // value to the socket that sent it!!!
@@ -51,8 +51,56 @@
        });
  });
 
+         function dropTheCall(){
+              $('.dialer').css('display', 'none');
+              $('.dropCall').css('display', 'none');
+              $('.declineSuccessfull').css('display', 'block');
+          	  setTimeout(function(){
+                   $('.declineSuccessfull').css('display', 'none');
+          	  }, 3000);
+          }
 
+	      function callingSomeOne(identity){
+			  identityStoreForCalling['passedIdentity'] = identity;
+              $('.confirming').css('display', 'block');
+	      }
+
+          function rejectIncommingCall(requestersEmail){
+          	  $('.reciever').css('display', 'none');
+          	  $('#reciever').css('display', 'none');
+          	  $('.incommingCall').css('display', 'none');
+          	  $('.declineSuccessfull').css('display', 'block');
+          	  setTimeout(function(){
+                   $('.declineSuccessfull').css('display', 'none');
+          	  }, 3000);
+          	  socket.Emit('requestRejected', data, /*data sent should
+          	  	be Requesters Email!*/function(data){
+                   console.log(data);
+          	  });
+              //console.log('recjection function was called');
+          }
+
+          function checkTimeLine(){
+			 var scheduleForm = document.getElementsByClassName('checkingTimeLine')[0];
+			 var formData = new FormData(scheduleForm);
+			 formData.append('recipientIdentity', identityStoreForCalling['passedIdentity']);
+             $('.checkingTimeLine').submit()
+          }
+
+          function dontCheckTimeLine(){
+          	 $('.notAvailable').css('display', 'none');
+          }
+
+          function dontCall(){
+              $('.confirming').css('display', "none");
+          }
+
+          function continueCall(){
+          	  requestToStartChatting();
+          	  $('.confirming').css('display', "none");
+          }
 function requestToStartChatting(){
+	        var dataToEmit = {"recipientIdentity": identityStoreForCalling['passedIdentity']}
 	        $('.confirming').css('display', 'none');
 	        $('.dialer').css('display', 'block');
             $('.dropCall').css('display', 'block');
@@ -60,10 +108,10 @@ function requestToStartChatting(){
               console.log(data);
 	        });
             
-        /* $.ajax({
-		        url: "http://127.0.0.1:9000/",
+         $.ajax({
+		        url: "http://127.0.0.1:9000/checkingOnlineStatus",
 		        type: 'POST',
-		        data: JSON.stringify({ sentData: value }),
+		        data: JSON.stringify({ "message": identityStoreForCalling['passedIdentity'] }),
                 crossDomain: true,
 		        async: true,
 		        cache: false,
@@ -71,7 +119,15 @@ function requestToStartChatting(){
 		        contentType: "application/json; charset=utf-8",
 		        processData: false,
 		        success: function (data) {
-                        console.log(data);
+						console.log(data);
+						if (data.message == online) {
+							// person is online
+							$('.dropCall').show();
+							$('.dialer').show();
+						}else{
+							// meaning the person is offline
+							$('.notAvailable').show();
+						}
 		        },
 		        error: function(data){
                     alert("Something is not wright!!!");
@@ -81,10 +137,10 @@ function requestToStartChatting(){
 }
 
 
- $('#publicTextInput2').keydown( function( event ) {
+ $('#TextInput2public').keydown( function( event ) {
 	     if ( event.keyCode === 13 ) {
-	        var chatInputValue = document.getElementById('textInput2').value;
-	         document.getElementById('textInput2').value = "";
+	        var chatInputValue = document.getElementById('textInput2public').value;
+	         document.getElementById('textInput2public').value = "";
 
 	         var dataToSend = {'personalEmail': mycookie, 'FriendEmail': FriendEmailToSocket, 'chatMessage': chatInputValue};
 
@@ -98,7 +154,7 @@ function requestToStartChatting(){
                            console.log(theHeight + 'the height');
                        var finalheight = theHeight + chatULHeight;
                        document.getElementsByClassName('mainChatSection' + chatCounter2)[1].scrollTop = finalheight;
-                     $('#chatLogHidden1').hide();
+                     $('#chatLogHidden1public').hide();
 
             });
             event.preventDefault();
@@ -141,7 +197,7 @@ $('document').ready(function(event){
                                 
                                   if(data.message == 'You Currently have No friends!!!'){
                                            injectedHtml = '<li>Seems You have No Friends</li>';
-                                           $(injectedHtml).insertBefore('#hiddenLi');
+                                           $(injectedHtml).insertBefore('#hiddenLipublic');
                                            $(injectedHtml).insertBefore('#forVideoChat');
                                   }else{
                               	           for(i=0; i < data.arrayOfFriends.length; i++){
@@ -155,9 +211,9 @@ $('document').ready(function(event){
                                            
                                            injectedHtml1 = '<li id="' + data.arrayOfFriends[i].split(' ')[2] + '" onclick="showFriendNameOnVideoTemplate(this)">' + data.arrayOfFriends[i].split(' ')[0] + " " + data.arrayOfFriends[i].split(' ')[1] + '<span style="font-weight: bold; color:' + color + ';">.</span>' + '</li>';
 
-                                           $(injectedHtml).insertBefore('#hiddenLi');
+                                           $(injectedHtml).insertBefore('#hiddenLipublic');
 		                                   $(injectedHtml1).insertBefore('#forVideoChat');
-			                                   
+			                 
 							             }
                                   }
 				        },
@@ -183,7 +239,7 @@ function displayChatTemplate(value){
    	     var value = value;
    	     var FriendEmail = value.id;
    	         FriendEmailToSocket = FriendEmail;
-   	     document.getElementsByClassName('chatLogHidden1').innerHTML = '';
+   	     document.getElementsByClassName('chatLogHidden1public').innerHTML = '';
                   $.ajax({
 				        url: "http://127.0.0.1:8000/gettingFormerChat",
 				        type: 'POST',
@@ -207,10 +263,10 @@ function displayChatTemplate(value){
 
                                     generatedHTML = '<p id="noChatAvailableWithDisPerson" style="background-color: #110033; width: 100%; color: white; text-align: center; padding-top: 100px; padding-bottom: 100px; border: 0.2px solid white; border-radius: 15px; margin-top: 30px;">...start chatting now... <br><br>No Chat Available with this person...</p>';
                                         
-                                        document.getElementById('chatLogHidden1').innerHTML = generatedHTML;
+                                        document.getElementById('chatLogHidden1public').innerHTML = generatedHTML;
                                         
-                                        $('.chatLog1').show();
-                                        $('.chatLogHidden1').show();
+                                        $('.chatLog1public').show();
+                                        $('.chatLogHidden1public').show();
                                         $('#loaderInterfaceRequestChat').hide();
 				               }   
                                
@@ -220,7 +276,7 @@ function displayChatTemplate(value){
 				               	    chatCounter++;
 				               	   var someHTML = '<div class="mainChatSection' + chatCounter2 +'" style="position: fixed; max-width: 60%; height: 530px;"><ul style="margin: 0px; padding: 0px; max-width: 100%; padding-right: 3px;" class="chatContainer"><p id="mainChatLiHidden"></p></ul></div>';
 
-				               	    $(someHTML).insertBefore('#chatLogHidden');
+				               	    $(someHTML).insertBefore('#chatLogHiddenpublic');
 
 				               	    
 
@@ -258,7 +314,7 @@ function displayChatTemplate(value){
                                     	   
 				               	    var secondGeneratedHTML = '<div class="mainChatSection' + chatCounter2 +'" style="position: fixed; width: 47%; height: 530px;"><ul class="chatUL' + chatCounter2 + '" style="margin: 0px; padding: 0px; max-width: 100%; padding-right: 3px;" id="chatContainer"><p id="mainChatLiHidden' + chatCounter2 + '"></p></ul></div>';
 
-				               	    $(secondGeneratedHTML).insertBefore('#chatLogHidden');
+									   $(secondGeneratedHTML).insertBefore('#chatLogHiddenpublic');
 
 				               	     function checkingWhoSentChat(){
 				               	     	function chatSentByOneUserOnly(floatValue){
@@ -269,14 +325,14 @@ function displayChatTemplate(value){
 
 			                                	if(valueOfSender.trim() == mycookie){
 			                                         generatedHTML = '<li class="theChats" style="clear: both; color: white; display: block;margin-top: 7px; border-radius: 10px; padding: 10px; max-width: 80%; background-color: #f1f1f1; color: black; float:' + floatValue + '">' + data.message[i].split('|')[0] + '</li><br>';
-			                                         document.getElementById('chatLogHidden1').innerHTML = '';
+			                                         document.getElementById('chatLogHidden1public').innerHTML = '';
 			                                         $(generatedHTML).insertBefore('#mainChatLiHidden' + chatCounter2);   
 			                                    }
 			                                    
 			                                    if(valueOfSender.trim() != mycookie){
 			                                         
 			                                         generatedHTML = '<li style="clear: both; display: block; margin-top: 7px; border-radius: 10px; padding: 10px; max-width: 80%; color: white; background-color: #110033; float: left;">' + data.message[i].split('|')[0] + '</li><br>';
-			                                         document.getElementById('chatLogHidden1').innerHTML = '';
+			                                         document.getElementById('chatLogHidden1public').innerHTML = '';
 			                                         $(generatedHTML).insertBefore('#mainChatLiHidden' + chatCounter2);
 			                                        
 			                                    }
@@ -299,14 +355,14 @@ function displayChatTemplate(value){
 
 			                                    	if(valueOfSender.trim() == mycookie){
 			                                             generatedHTML = '<li class="theChats" style="clear: both; color: black; display: block;margin-top: 7px; border-radius: 10px; padding: 10px; max-width: 80%; background-color: #f1f1f1; float: right;">' + data.message[i].split('|')[0] + '</li><br>';
-			                                             document.getElementById('chatLogHidden1').innerHTML = '';
+			                                             document.getElementById('chatLogHidden1public').innerHTML = '';
 			                                             $(generatedHTML).insertBefore('#mainChatLiHidden' + chatCounter2);   
 			                                        }
 			                                        
 			                                        if(valueOfSender.trim() != mycookie){
 			                                             
 			                                             generatedHTML = '<li style="clear: both; display: block; margin-top: 7px; border-radius: 10px; padding: 10px; max-width: 80%; background-color: #110033; color: white; float: left;">' + data.message[i].split('|')[0] + '</li><br>';
-			                                             document.getElementById('chatLogHidden1').innerHTML = '';
+			                                             document.getElementById('chatLogHidden1public').innerHTML = '';
 			                                             $(generatedHTML).insertBefore('#mainChatLiHidden' + chatCounter2);
 			                                            
 			                                        }

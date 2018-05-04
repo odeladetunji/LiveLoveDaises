@@ -460,6 +460,32 @@ header li {
 	color: orange;
 	background-color: #183148;
 }
+
+#loaderInterfaceRequest{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    z-index: 200;
+  }
+
+  #loaderInterfaceRequestChat{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 25%;
+    top: 15%;
+    width: 50%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    z-index: 200;
+  }
 .noResultSetFound {
 	width: 100%;
     text-align: center;
@@ -1010,7 +1036,7 @@ header li {
 }
 
 .incommingCall {
-    display: block; /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 5; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -1243,7 +1269,7 @@ header li {
 }
 
 .reciever {
-    display: block; /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 5; /* Sit on top */
     padding-top: 100px; /* Location of the box */
