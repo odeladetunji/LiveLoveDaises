@@ -1,29 +1,30 @@
-<div class="reachOutDiv1 modal2" id="mode1" style="position: fixed; display: none;">
-		<div id="modal1">
-			<div style="z-index: 4; position: fixed; width: 100%; background-color: transparent;">
-				<i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px;padding: 10px;" id="close2" onclick="closeChattingInterface()">close</i>
+<div class="reachOutDiv1public modal2public" id="mode1public" style="position: fixed; display: none;">
+	<div id="modal1public">
+		<div style="z-index: 4; position: fixed; width: 100%; background-color: transparent;">
+			<i class="material-icons" style="float: right;color: red; cursor: pointer; font-size:50px;padding: 10px;" id="close2" onclick="closeChattingInterface()">close</i>
+		</div>
+		<div class="row mainRow1public" id="mainRow1public">
+			<div class="col-3" id="clientNamespublic" style="position: fixed;">
+				<ul>
+					<li id="hiddenLipublic" style="display: none;"></li>
+				</ul>
 			</div>
-			<div class="row mainRow1" id="mainRow1">
-				<div class="col-3" id="clientNames" style="position: fixed;">
-					<ul>
-						<li id="hiddenLi" style="display: none;"></li>
-					</ul>
+			<div class="col-6" id="chatSectionpublic" style="position: fixed; left: 25%;">
+				<button id="connectionButtonpublic" style="">Connected!!</button>
+				<div class="chatLog1public" style="width: 100%;" style="background-color: yellow; position: fixed; left: 20%;">
+					<p id="chatLogHidden1public"></p>
 				</div>
-				<div class="col-6" id="chatSection" style="margin-left: 25%;">
-					<button id="connectionButton" style="">Connected!!</button>
-					<div class="chatLog1" style="width: 100%;" style="background-color: yellow; position: fixed; left: 20%;">
-						<p id="chatLogHidden1"></p>
-					</div>
-					<div class="chatLog" style="width: 100%;">
-						<p id="chatLogHidden"></p>
-					</div>
-					<input type="text" id="textInput2" style="position: fixed; width: 47%; left: 21%; bottom: 8px;">
+				<div class="chatLogpublic" style="width: 100%;">
+					<p id="chatLogHiddenpublic"></p>
 				</div>
-				<div class="col-3" id="Time" style="position: fixed; right: 0px;">
-					<p id="timer">00:00</p>
-					<i class="material-icons" style="border-radius: 50%; padding: 20px;color: red;position: fixed; font-size: 100px; margin-left: 50px;" id='showVideoChat' onclick="showVideoInterface()">videocam</i>
-                    <h5 id="videoChatCaption" style="margin-left: 22%;margin-top: 150px;border: none; background-color: none;padding: 8px; color: white; border-radius: none;">Video Chat!!</h5>
-				</div>
+				<input type="textpublic" id="textInput2public" style="position: fixed; width: 47%; left: 21%; bottom: 8px;">
+			</div>
+			<div class="col-3" id="Timepublic" style="position: fixed; right: 0px;">
+				<p id="timerpublic">00:00</p>
+				<i class="material-icons" style="border-radius: 50%; padding: 20px;color: red;position: fixed; font-size: 100px; margin-left: 50px;"
+				 id='showVideoChatpublic' onclick="showVideoInterface()">videocam</i>
+				<h5 id="videoChatCaptionpublic" style="margin-left: 22%;margin-top: 150px;border: none; background-color: none;padding: 8px; color: white; border-radius: none;">Video Chat!!</h5>
 			</div>
 		</div>
 	</div>
+</div>

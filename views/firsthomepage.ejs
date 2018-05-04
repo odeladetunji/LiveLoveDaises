@@ -9,7 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="/StyleSheets/rateFinal.css">
 	<link rel="stylesheet" type="text/css" href="/StyleSheets/messaging.css">
 	<link rel="stylesheet" type="text/css" href="/StyleSheets/chat.css">
-    <link rel="stylesheet" type="text/css" href="/StyleSheets/meetpeople.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/meetpeople.css">
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/publicChatting.css">
     <link rel="stylesheet" type="text/css" href="/StyleSheets/animationCalling.css">
 	<script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
 	<base href = "http://127.0.0.1:8000/">
@@ -82,7 +83,10 @@
 	</div>
 	 <div>
      	     <% include ./partials/ratingFinal %>
-     </div>
+	 </div>
+	<div>
+		<% include ./partials/publicChatting %>
+	</div>
      <div>
      	     <% include ./partials/recieveCall %>
      </div>
@@ -206,51 +210,7 @@
 </div>
 <script src="/socket.io/socket.io.js"></script>
 <script type="application/javascript">
-         
-          function dropTheCall(){
-              $('.dialer').css('display', 'none');
-              $('.dropCall').css('display', 'none');
-              $('.declineSuccessfull').css('display', 'block');
-          	  setTimeout(function(){
-                   $('.declineSuccessfull').css('display', 'none');
-          	  }, 3000);
-          }
-
-	      function callingSomeOne(identity){
-              $('.confirming').css('display', 'block');
-	      }
-
-          function rejectIncommingCall(requestersEmail){
-          	  $('.reciever').css('display', 'none');
-          	  $('#reciever').css('display', 'none');
-          	  $('.incommingCall').css('display', 'none');
-          	  $('.declineSuccessfull').css('display', 'block');
-          	  setTimeout(function(){
-                   $('.declineSuccessfull').css('display', 'none');
-          	  }, 3000);
-          	  socket.Emit('requestRejected', data, /*data sent should
-          	  	be Requesters Email!*/function(data){
-                   console.log(data);
-          	  });
-              //console.log('recjection function was called');
-          }
-
-          function checkTimeLine(){
-             $('.checkingTimeLine').submit()
-          }
-
-          function dontCheckTimeLine(){
-          	 $('.notAvailable').css('display', 'none');
-          }
-
-          function dontCall(){
-              $('.confirming').css('display', "none");
-          }
-
-          function continueCall(){
-          	  requestToStartChatting();
-          	  $('.confirming').css('display', "none");
-          }
+        
 
           $('#loaderInterfaceRequestChat').css('display', 'none');
 
@@ -1532,6 +1492,6 @@
 </script>
 <script src="http://127.0.0.1:9000/JavaScript/textChatting.js" type="application/javascript"></script>
 <script src="/JavaScript/videoChatting.js" type="application/javascript"></script>
-<script src="http://127.0.0.1:9000/JavaScript/publicChatting1.js" type="application/javascript"></script>
+<script src="http://127.0.0.1:9000/JavaScript/publicChatting.js" type="application/javascript"></script>
 </body>
 </html>
