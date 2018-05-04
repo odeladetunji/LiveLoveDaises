@@ -216,6 +216,10 @@
           	  }, 3000);
           }
 
+	      function callingSomeOne(identity){
+              $('.confirming').css('display', 'block');
+	      }
+
           function rejectIncommingCall(requestersEmail){
           	  $('.reciever').css('display', 'none');
           	  $('#reciever').css('display', 'none');
@@ -1254,7 +1258,7 @@
                           	   if(data.online[i].PersonalPicture == ''){
                                     personalPicture = 'man.jpg';
                           	   }
-                               var generatedHTML = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.online[i].DaisesIdentity + ')">Connect</button>'+'</div>';
+                               var generatedHTML = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.online[i].DaisesIdentity + ')">Connect</button>' + "<i class='phoneIcon fa fa-phone'  class='connectButtonGenerated' onClick='callingSomeOne(" + data.online[i].DaisesIdentity + ")'></i></div></div>'";
                                $(generatedHTML).insertBefore('#amountOfData1');
                                $('.firstRow').css('background-color', 'azure');
                                $('.singleSection').css('background-color', 'azure');
@@ -1271,7 +1275,7 @@
                           	   if(data.offline[i].PersonalPicture == ''){
                                     personalPicture1 = 'man.jpg';
                           	   }
-                               var generatedHTML1 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.offline[i].DaisesIdentity + ')">Connect</button>'+'</div>';
+                               var generatedHTML1 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.offline[i].DaisesIdentity + ')">Connect</button>'+"<i class='phoneIcon fa fa-phone' class='connectButtonGenerated' onClick='callingSomeOne(" + data.online[i].DaisesIdentity + ")'></i></div></div>'";
                                $(generatedHTML1).insertBefore('#amountOfData2');
                                $('.firstRow').css('background-color', 'azure');
                                $('.singleSection').css('background-color', 'azure');
@@ -1295,7 +1299,7 @@
                           	   if(data.online[i].PersonalPicture == ''){
                                     personalPicture3 = 'man.jpg';
                           	   }
-                               var generatedHTML3 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.online[i].DaisesIdentity + ')">Connect</button>'+'</div>';
+                               var generatedHTML3 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: green;">'+ data.online[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.online[i].FirstName + ' ' + data.online[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.online[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.online[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.online[i].DaisesIdentity + '"  onclick="outputtingSecondRating(this.id)">' + data.online[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.online[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.online[i].DaisesIdentity + ')">Connect</button>'+"<i class='phoneIcon fa fa-phone' class='connectButtonGenerated' onClick='callingSomeOne(" + data.online[i].DaisesIdentity + ")'></i></div></div>'";
                                $(generatedHTML3).insertAfter('#amountOfData');
                                $('.firstRow').css('background-color', 'azure');
                                $('.singleSection').css('background-color', 'azure');
@@ -1320,7 +1324,7 @@
                           	   if(data.offline[i].PersonalPicture == ''){
                                     personalPicture4 = 'man.jpg';
                           	   }
-                               var generatedHTML4 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.offline[i].DaisesIdentity + ')">Connect</button>'+'</div>';
+                               var generatedHTML4 = '<div class="outerCovergenerated">'+'<p class="onlineIdentifier" style="color: red;">'+ data.offline[i].OnlineStatus +'</p>'+'<p class="thefullname">' + data.offline[i].FirstName + ' ' + data.offline[i].LastName + '</p>'+'<div class="row innerRowGenerated">'+'<div class="col-4 pictureDivgenerated">'+'</div>'+'<div class="col-8 ratingDivgenerated">'+'<p class ="ratingNumber1Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingRating(this.id)">' + data.offline[i].RateAvg1 + '</p>'+'<p class="ratingNumber2Generated" id="' + data.offline[i].DaisesIdentity + '" onclick="outputtingSecondRating(this.id)">' + data.offline[i].RateAvg2 + '</p>'+'<p class="mainReview" id="">reviews</p>'+'</div></div><p class="AlaiseGenerated">' + data.offline[i].Daises + '</p><button class="connectButtonGenerated" onClick="iWantToConnect(' + data.offline[i].DaisesIdentity + ')">Connect</button>'+"<i class='phoneIcon fa fa-phone' class='connectButtonGenerated' onClick='callingSomeOne(" + data.offline[i].DaisesIdentity + ")'></i></div></div>'";
                                $(generatedHTML4).insertBefore('#amountOfData');
                                $('.firstRow').css('background-color', 'azure');
                                $('.singleSection').css('background-color', 'azure');
@@ -1528,5 +1532,6 @@
 </script>
 <script src="http://127.0.0.1:9000/JavaScript/textChatting.js" type="application/javascript"></script>
 <script src="/JavaScript/videoChatting.js" type="application/javascript"></script>
+<script src="http://127.0.0.1:9000/JavaScript/publicChatting1.js" type="application/javascript"></script>
 </body>
 </html>

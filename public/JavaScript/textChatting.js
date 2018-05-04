@@ -150,7 +150,7 @@ function displayChatTemplate(value){
                                         document.getElementsByClassName('mainChatSection' + chatCounter2)[1].style.display = 'none';
 				               	    }
 
-                                    generatedHTML = '<p id="noChatAvailableWithDisPerson" style="background-color: #110033; width: 100%; color: white; text-align: center; padding-top: 100px; padding-bottom: 100px; border: 0.2px solid white; border-radius: 15px; margin-top: 30px;">...start chatting now... <br><br>No Chat Available with this person...</p>';
+                                    generatedHTML = '<p id="noChatAvailableWithDisPerson" style="background-color: #f1eef8;; width: 100%; color: black; text-align: center; padding-top: 100px; padding-bottom: 100px; border: 0.2px solid white; border-radius: 15px; margin-top: 30px;">...start chatting now... <br><br>No Chat Available with this person...</p>';
                                         
                                         document.getElementById('chatLogHidden1').innerHTML = generatedHTML;
                                         

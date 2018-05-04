@@ -483,7 +483,7 @@ header li {
 
 .outerCovergenerated{
 	padding: 10px;
-	padding-bottom: 30px;
+	padding-bottom: 60px;
 	background-color: white;
 	width: 80%;
 	margin-left:10%;
@@ -570,7 +570,21 @@ header li {
 	color: white;
 	text-align: center;
 }
+.phoneIcon {
+	padding: 13px;
+	padding-left: 16px;
+	padding-right: 16px;
+	border: 1px solid green;
+	border-radius: 50%;
+	font-size: 25px;
+	float: right;
+	margin-top: 5px;
+}
 
+.phoneIcon:hover {
+    color: green;
+    border: 1px solid black;
+}
 .connectButtonGenerated {
 	margin-top: 5px;
 	float: right;

@@ -53,11 +53,14 @@
 
 
 function requestToStartChatting(){
+	        $('.confirming').css('display', 'none');
+	        $('.dialer').css('display', 'block');
+            $('.dropCall').css('display', 'block');
 	        socket.emit("requestToConnect", dataToEmit, function(data){
               console.log(data);
 	        });
-
-        $.ajax({
+            
+        /* $.ajax({
 		        url: "http://127.0.0.1:9000/",
 		        type: 'POST',
 		        data: JSON.stringify({ sentData: value }),
@@ -74,6 +77,7 @@ function requestToStartChatting(){
                     alert("Something is not wright!!!");
 		        }
 			  });
+			  */
 }
 
 
