@@ -39,6 +39,7 @@ var searchingDataBase = require('./routes/searchingDataBase');
 var fs = require('fs');
 var liveSearch = require('./routes/liveSearch');
 var liveSearch1 = require('./routes/liveSearch1');
+var checkingOnlineStatus = require('./routes/checkingOnlineStatus');
 var mongo = require('mongodb');
 
 /*
@@ -166,6 +167,7 @@ app.use('/searchingDataBase', searchingDataBase);
 app.use('/liveSearch', liveSearch);
 app.use('/liveSearch1', liveSearch1);
 app.use('/checkTimeSchedule', checkingTimeSchedule);
+app.use('/checkingOnlineStatus', checkingOnlineStatus);
 //app.use(allowCrossDomain);
 /*var whitelist = ["http://127.0.0.1:1337/changepicture", "http://127.0.0.1:1337/daisesposting", "http://127.0.0.1:8080/rating",
  'http://127.0.0.1:8080', 'http://127.0.0.1:8080/gettingFriendRequest', 'http://127.0.0.1:8080/friendslist', "http://127.0.0.1:8080/gettingFormerChat"];
@@ -260,11 +262,38 @@ io.on('connection', function(socket){
           socket.on('requestToConnect', function(data){
                 var dataToSend = {}
                 var recipientEmail = data.recipientEmail;
-                recipientSocket = socketUsersX[recipientEmail];
-                //emitting to recipient!
-                recipientSocket.emit('incomingRequest', dataToSend, function(data){
-                     console.log(data);
-                });
+                var recipientSocket = socketUsersX[recipientEmail];
+                var callerFirstName, callerLastName;
+                function emmittingCall() {
+                    var sql = 'select daises from daisesposting where daisesidentity = ?'
+                    connection.query(sql, [data.recipientIdentity], function(error, results ,fields){
+                         if (error) {
+                             throw error;
+                         }
+                        recipientDaises = results[0].Discursion;
+                        dataToSend['recipientDaises'] = recipientDaises;
+                        dataToSend['callersFirstName'] = callersFirstName;
+                        dataToSend['callersLastName'] = callersLastName;
+                        //emitting to recipient!
+                        recipientSocket.emit('incomingRequest', dataToSend, function (data) {
+                          console.log('incomingRequest Emitted  || socket.io');
+                        });
+                    });
+                }
+
+                function callersIdentity(callerEmail) {
+                    var sql = 'select firstName, lastname from registrationtable where email = ?'
+                    connection.query(sql, [callerEmail], function(error, results, fields){
+                         if (error) {
+                           throw error;
+                         }
+                         callerFirstName = results[0].FirstName;
+                         callerLastName = results[0].LastName;
+                         emmittingCall();
+                    })
+                }
+
+                callersIdentity(data.callerEmail);
           });
 
           
