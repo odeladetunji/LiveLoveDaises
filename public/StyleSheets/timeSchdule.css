@@ -294,21 +294,22 @@ input {
   padding: 15px;
   border-radius: 0px;
   /*margin-left: 4%;*/
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: #fafafa;
 
   /* border: 1px solid #110033;*/
   border: none;
   border-radius: 10px;
 }
-#rute1 {
+
+#rute1, #rute2, #rute3, #rute4, #rute5, #rute6, #rute7 {
   width: 96%;
   padding: 13px;
   border-radius: 0px;
   background-color: #fafafa;
   /*border: 1px solid #110033;*/
   border: none;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #rute, #rute1 {
@@ -522,7 +523,7 @@ textarea {
   margin-top: 5px;
   background-color: white;
 }
-#textareaStyle {
+#textareaStyle1, #textareaStyle2, #textareaStyle3, #textareaStyle4, #textareaStyle5, #textareaStyle6, #textareaStyle7 {
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .SearchHint{
@@ -543,4 +544,12 @@ textarea {
     text-decoration: none;
     width: 100%;
  }
+
+ #unsetTimeSchedule {
+    color: red;
+    padding: 10px;
+    text-align: center;
+    width: 100%; 
+ }
+ 
 

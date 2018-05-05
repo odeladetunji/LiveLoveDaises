@@ -39,8 +39,10 @@
  }
 
 
- socket.on("incomingRequest", function(){
-      $('.showOfficialChat').show();
+ socket.on("incomingRequest", function(data){
+	  $('.showOfficialChat').show();
+	  console.log("incommingRequest was triggered");
+	  console.log(data);
  });
 
 
@@ -104,14 +106,12 @@ function requestToStartChatting(){
 	        $('.confirming').css('display', 'none');
 	        $('.dialer').css('display', 'block');
             $('.dropCall').css('display', 'block');
-	        socket.emit("requestToConnect", dataToEmit, function(data){
-              console.log(data);
-	        });
+	        
             
          $.ajax({
 		        url: "http://127.0.0.1:9000/checkingOnlineStatus",
 		        type: 'POST',
-		        data: JSON.stringify({ "message": identityStoreForCalling['passedIdentity'] }),
+		        data: JSON.stringify({ "recipientIdentity": identityStoreForCalling['passedIdentity'] }),
                 crossDomain: true,
 		        async: true,
 		        cache: false,
@@ -120,10 +120,20 @@ function requestToStartChatting(){
 		        processData: false,
 		        success: function (data) {
 						console.log(data);
-						if (data.message == online) {
+						if (data.message == "online") {
 							// person is online
 							$('.dropCall').show();
 							$('.dialer').show();
+							
+							var dataToEmit = {
+								"callerEmail": mycookie,
+								"recipientEmail": data.message.email,
+								'recipientIdentity': identityStoreForCalling['passedIdentity']
+							}
+							socket.emit("requestToConnect", dataToEmit, function (data) {
+								console.log(data);
+							});
+
 						}else{
 							// meaning the person is offline
 							$('.notAvailable').show();
@@ -133,7 +143,7 @@ function requestToStartChatting(){
                     alert("Something is not wright!!!");
 		        }
 			  });
-			  */
+			  
 }
 
 
