@@ -8,7 +8,6 @@
         <script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
 		<link rel="stylesheet" type="text/css" href="/StyleSheets/timeSchdule.css">
 		<base href = "http://127.0.0.1:9000/">
-
 	</head>
 	<body>
 		<div id='upmostHeader'>
@@ -40,6 +39,7 @@
 			</div>
 			<div class="col-8" id='multiformSection'>
 				<form action="/TimeSchdule" method="POST" class="timeForm">
+					<p id="unsetTimeSchedule">this User Has Not Set A TimeSchedule</p>
 					<div id='titleForm'><p>Day</p><p>Time</p><p>shortnote</p><br>
 					</div>
 					<div class="row" id="firstRow">
@@ -199,103 +199,7 @@
 			return user;
 		}
 
-		var mycookie = checkCookie();  
-
-	$('document').ready(function(event){
-            $.ajax({ // this ajax is used to update the form content ie, what user has already filled in the past!
-					url: "http://127.0.0.1:8000/getTimeSchdulepage",
-					type: 'POST',
-					data: JSON.stringify({ 'personalEmail': mycookie }), // this identity is the users email
-					crossDomain: true,
-					async: true,
-					cache: false,
-					contentType: "application/json; charset=utf-8",
-					processData: false,
-					success: function (data) {
-						console.log(data);
-						for (x in data.message) {
-							if (data.message.sundaytime != "") {
-								$('#rute1').val(data.message.sundaytime);
-							}
-
-							if (data.message.sundaynote != "") {
-								$('#textareaStyle1').val(data.message.sundaynote);
-							}
-
-							if (data.message.mondaytime != "") {
-								$('#rute2').val(data.message.mondaytime);
-							}
-
-							if (data.message.mondaynote != "") {
-								$('#textareaStyle2').val(data.message.mondaynote);
-							}
-
-							if (data.message.tuesdaytime != "") {
-								$('#rute3').val(data.message.tuesdaytime);
-							}
-
-							if (data.message.tuesdaynote != "") {
-								$('#textareaStyle3').val(data.message.tuesdaynote);
-							}
-
-							if (data.message.wednesdaytime != "") {
-								$('#rute4').val(data.message.wednesdaytime);
-							}
-
-							if (data.message.wednesdaynote != "") {
-								$('#textareaStyle4').val(data.message.wednesdaynote);
-							}
-
-							if (data.message.thursdaytime != "") {
-								$('#rute5').val(data.message.thursdaytime);
-							}
-
-							if (data.message.thursdaynote != "") {
-								$('#textareaStyle5').val(data.message.thursdaynote);
-							}
-
-							if (data.message.fridaytime != "") {
-								$('#rute6').val(data.message.fridaytime);
-							}
-
-							if (data.message.fridaynote != "") {
-								$('#textareaStyle6').val(data.message.fridaynote);
-							}
-							if (data.message.saturdaytime != "") {
-								$('#rute7').val(data.message.saturdaytime);
-							}
-
-							if (data.message.saturdaynote != "") {
-								$('#textareaStyle7').val(data.message.saturdaynote);
-							}
-						}
-					},
-					error: function (data) {
-						alert('Cant Connect To Server!!')
-					}
-		    });
-	});
-
-	$('.timeForm').submit(function(event){
-		  var formData = new FormData(this);
-		  event.preventDefault();
-		   $.ajax({
-					url: "/getTimeSchdulepage",
-					type: 'POST',
-					data: JSON.stringify({"formData": formData}),
-					crossDomain: true,
-					async: true,
-					cache: false,
-					contentType: "application/json; charset=utf-8",
-					processData: false,
-					success: function (data) {
-						console.log(data);
-					},
-					error: function(data){
-						alert('Something is not working!!!')
-					}
-				});
-	});
+	var mycookie = checkCookie();  
 
 	$('.headerForm1').keyup(function(event){
         	  $('.SearchHintp').hide();

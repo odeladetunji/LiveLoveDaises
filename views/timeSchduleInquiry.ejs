@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
         <script src="/JavaScript/jquery-3.2.1.min(first).js"></script>
 		<link rel="stylesheet" type="text/css" href="/StyleSheets/timeSchdule.css">
-		<base href = "http://beloveddais.com/">
+		<base href = "http://127.0.0.1:9000/">
 
 	</head>
 	<body>
@@ -47,10 +47,10 @@
 							<input type='text' name='' value='Sunday' id='rute' readonly>
 						</div>
 						<div class="col-2"id='tinana1'>
-							<input type='time' name='' value='' id='rute1' readonly>
+							<input type='text' name='' value='<%= data.sundaytime %>' id='rute1' readonly>
 						</div>
 						<div class="col-8"id='prustin'>
-							<textarea name="message" rows="4"  id="textareaStyle" readonly></textarea>
+							<textarea name="message" rows="4"  id="textareaStyle" value="<%= data.sundaynote %>" readonly></textarea>
 						</div>
 					</div>
 					<div class="row" id="firstRow1">
@@ -58,10 +58,11 @@
 							<input type='text' name='' value='Monday' id='rute' readonly>
 						</div>
 						<div class="col-2"id='tinana1'>
-							<input type='time' name='' value='' id='rute1' readonly>
+							<input type='text' name='' value='<%= data.mondaytime %>' id='rute1' readonly>
 						</div>
 						<div class="col-8"id='prustin'>
-							<textarea name="message" rows="4"  id="textareaStyle" readonly></textarea>
+							<textarea name="message" rows="4"  id="textareaStyle" value="
+							<%= data.mondaynote %>" readonly></textarea>
 						</div>
 					</div>
 
@@ -70,10 +71,11 @@
 							<input type='text' name='' value='Tuesday' id='rute' readonly>
 						</div>
 						<div class="col-2"id='tinana1'>
-							<input type='time' name='' value='' id='rute1' readonly>
+							<input type='text' name='' value='<%= data.tuesdaytime %>' id='rute1' readonly>
 						</div>
 						<div class="col-8"id='prustin'>
-							<textarea name="message" rows="4"  id="textareaStyle" readonly></textarea>
+							<textarea name="message" rows="4"  id="textareaStyle" value="
+							<%= data.tuesdaynote %>" readonly></textarea>
 						</div>
 					</div>
 
@@ -82,10 +84,11 @@
 							<input type='text' name='' value='Wednesday' id='rute' readonly>
 						</div>
 						<div class="col-2"id='tinana1'>
-							<input type='time' name='' value='' id='rute1' readonly>
+							<input type='text' name='' value='<%= data.wednesdaytime %>' id='rute1' readonly>
 						</div>
 						<div class="col-8"id='prustin'>
-							<textarea name="message" rows="4"  id="textareaStyle" readonly></textarea>
+							<textarea name="message" rows="4"  id="textareaStyle" value="
+							<%= data.wednesdaynote %>" readonly></textarea>
 						</div>
 					</div>
 
@@ -94,10 +97,11 @@
 							<input type='text' name='' value='Thursday' id='rute' readonly>
 						</div>
 						<div class="col-2"id='tinana1'>
-							<input type='time' name='' value='' id='rute1' readonly>
+							<input type='text' name='' value='<%= data.thursdaytime %>' id='rute1' readonly>
 						</div>
 						<div class="col-8"id='prustin'>
-							<textarea name="message" rows="4"  id="textareaStyle" readonly></textarea>
+							<textarea name="message" rows="4"  id="textareaStyle" value="
+							<%= data.thursdaynote %>" readonly></textarea>
 						</div>
 					</div>
 
@@ -106,10 +110,11 @@
 							<input type='text' name='' value='Friday' id='rute' readonly>
 						</div>
 						<div class="col-2"id='tinana1'>
-							<input type='time' name='' value='' id='rute1' readonly>
+							<input type='text' name='' value='<%= data.fridaytime %>' id='rute1' readonly>
 						</div>
 						<div class="col-8"id='prustin'>
-							<textarea name="message" rows="4"  id="textareaStyle" readonly></textarea>
+							<textarea name="message" rows="4"  id="textareaStyle" value="
+							<%= data.fridaynote %>" readonly></textarea>
 						</div>
 					</div>
 
@@ -118,13 +123,13 @@
 							<input type='text' name='' value='Saturday' id='rute' readonly>
 						</div>
 						<div class="col-2"id='tinana1'>
-							<input type='time' name='' value='' id='rute1' readonly>
+							<input type='text' name='' value='<%= data.saturdaytime %>' id='rute1' readonly>
 						</div>
 						<div class="col-8"id='prustin'>
-							<textarea name="message" rows="4" id="textareaStyle" readonly></textarea>
+							<textarea name="message" rows="4" id="textareaStyle" value="
+							<%= data.saturdaynote %>" readonly></textarea>
 						</div>
 					</div>
-				<input type="submit" id='secondButton' value="Submit" readonly>
 			</form>
 			</div>
 		</form>
@@ -200,22 +205,6 @@
 		}
 
 		var mycookie = checkCookie();  
-   $.ajax({
-			url: "http://127.0.0.1:8000/getTimeSchdulepage",
-			type: 'POST',
-			data: JSON.stringify({ 'identity': mycookie }), // this identity is the users email
-			crossDomain: true,
-			async: true,
-			cache: false,
-			contentType: "application/json; charset=utf-8",
-			processData: false,
-			success: function (data) {
-				console.log(data);
-			},
-			error: function(data){
-				alert('Cant Connect To Server!!')
-			}
-		});
 
 	$('.headerForm1').keyup(function(event){
         	  $('.SearchHintp').hide();
@@ -225,7 +214,7 @@
         	  if(searchQuery == '' || theType == 'number') return;
         	  var value = document.getElementById('hiddenFieldForm').value;
               $.ajax({
-			        url: "http://beloveddais.win/homepageSearchQuery",
+			        url: "http://127.0.0.1:8000/homepageSearchQuery",
 			        type: 'POST',
 			        data: JSON.stringify({'searchQuery': searchQuery, 'hiddenFieldForm': value}),
                     crossDomain: true,
