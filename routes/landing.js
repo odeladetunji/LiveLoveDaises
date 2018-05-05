@@ -9,8 +9,6 @@ var cookieParser = require('cookie-parser');
 
 
 router.get('/', function(req, res){
-
-
       res.render('landingpage');
 })
 

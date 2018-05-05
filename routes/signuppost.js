@@ -74,6 +74,19 @@ connection.connect();
         connection.query(mySql, dataForFriendsTable, function(error, results, fields){
           if(error)throw error;
         });
+        
+        var userEmail = {
+            "Email": email
+        }
+
+        var sql1 = 'insert into timeschedule set ?';
+        connection.query(sql1, userEmail, function(error, results, fields){
+             if (error) {
+                 throw error;
+             }
+             console.log("TimeSchedule Created Successfully!  || signuppost.js")
+             return;
+        });
   }
 
   function creatingOnlineStatus(){
