@@ -4,6 +4,7 @@
  var socketSentData;
  var socket = io.connect('http://127.0.0.1:9000');
  var identityStoreForCalling = {};
+ var incommingCallInformation;
  // this code is not to be deleted for any reason
  // its sending email to an object and setting the 
  // value to the socket that sent it!!!
@@ -25,22 +26,55 @@
  	 console.log('SomeOne Disconnect: From Client Side');
  });
 
+ function ringingTone() {
+	   var ringTone = document.getElementById('ringingTone');
+	   ringTone.play();
+	   setTimeout(function(){
+           ringTone.pause();
+	   }, 90000);
+ }
 
- function honourRequest(){
-        socket.on('requestHonoured', function(data){
-             $('.showOfficialChat').show();
-	        });
+
+
+/* function honourRequest(){
+	 $('.reciever').hide();
+	 $('.incommingCall').hide();
+	 socket.emit('requestHonoured', incommingCallInformation, function(data){
+             console.log(data);
+	 });
+ }*/
+
+ function confirmIncommingCall() {
+	 console.log('incomming call was confirmed')
+	 $('.reciever').hide();
+	 $('.incommingCall').hide();
+	 socket.emit('requestHonoured', incommingCallInformation, function (data) {
+		 console.log(data);
+	 });
  }
 
  function rejectedRequest(){
 	        socket.on('requestRejected', function(data){
-             $('.showOfficialChat').show();
+                 $('.showOfficialChat').show();
 	        });
  }
 
+socket.on('wentOffline', function(data){
+	 $('.wentOffline').show();
+	 setTimeout(() => {
+		 $('.wentOffline').hide();
+	 }, 5000);
+});
+
+socket.on('stillOnline', function(data){
+	$('.modal2public').show();
+})
 
  socket.on("incomingRequest", function(data){
-	  $('.showOfficialChat').show();
+	  //$('.showOfficialChat').show();
+	 $('.reciever').show();
+	 $('.incommingCall').show();
+	 incommingCallInformation = data;
 	  console.log("incommingRequest was triggered");
 	  console.log(data);
  });
@@ -63,7 +97,9 @@
           }
 
 	      function callingSomeOne(identity){
-			  identityStoreForCalling['passedIdentity'] = identity;
+			  identityStoreForCalling['passedIdentity'] = identity[0].id;
+			  console.log(identity[0].id);
+			  console.log('this is identity.id');
               $('.confirming').css('display', 'block');
 	      }
 
@@ -84,9 +120,8 @@
 
           function checkTimeLine(){
 			 var scheduleForm = document.getElementsByClassName('checkingTimeLine')[0];
-			 var formData = new FormData(scheduleForm);
-			 formData.append('recipientIdentity', identityStoreForCalling['passedIdentity']);
-             $('.checkingTimeLine').submit()
+			 document.getElementById('checkTimeInput').value = identityStoreForCalling['passedIdentity'];
+             $('.checkingTimeLine').submit();
           }
 
           function dontCheckTimeLine(){
@@ -106,8 +141,9 @@ function requestToStartChatting(){
 	        $('.confirming').css('display', 'none');
 	        $('.dialer').css('display', 'block');
             $('.dropCall').css('display', 'block');
-	        
-            
+	        ringingTone();  // this will ring for 90 seconds!
+			console.log(identityStoreForCalling['passedIdentity']);
+	        console.log('seing if it will work checkingOnlineStatus');
          $.ajax({
 		        url: "http://127.0.0.1:9000/checkingOnlineStatus",
 		        type: 'POST',
@@ -127,16 +163,31 @@ function requestToStartChatting(){
 							
 							var dataToEmit = {
 								"callerEmail": mycookie,
-								"recipientEmail": data.message.email,
+								"recipientEmail": data.email,
 								'recipientIdentity': identityStoreForCalling['passedIdentity']
 							}
+
+							if (mycookie == data.email /* you cant call yourself! */) {
+								$('.dialer').css('display', 'none');
+								$('.dropCall').css('display', 'none');
+								$('.stopCall').show();
+								setTimeout(() => {
+									$('.stopCall').hide();
+								}, 4000);
+								return;
+							}
+
+							console.log(dataToEmit);
+							console.log('outputted dataToEmit');
 							socket.emit("requestToConnect", dataToEmit, function (data) {
 								console.log(data);
 							});
-
+                            console.log('requestToConnect Was Sent')
 						}else{
 							// meaning the person is offline
 							$('.notAvailable').show();
+							$('.dialer').css('display', 'none');
+							$('.dropCall').css('display', 'none');
 						}
 		        },
 		        error: function(data){

@@ -27,11 +27,12 @@ router.post('/', function (req, res) {
                 console.log('OnlineDataBase Opened For Read Operation  ||  checkingOnlineStatus.js');
             })
             readFileStream.on('data', function(chunk){
-                    console('Stated Reading Data From onlineStatus.json  ||  checkingOnlineStatus.js');
+                    console.log('Stated Reading Data From onlineStatus.json  ||  checkingOnlineStatus.js');
                     var theObject = JSON.parse(chunk);
                     var splitedEmail = email.split('@')[0];
                     var onlineStatus = theObject[splitedEmail];
-
+                    console.log(email);
+                    console.log(onlineStatus);
                     res.send({'message': onlineStatus, "email": email}); 
             });
             readFileStream.on('end', function(){
@@ -47,3 +48,5 @@ router.post('/', function (req, res) {
          checkOnlineStatus(results[0].Email);
     });
 });
+
+module.exports = router;

@@ -259,21 +259,66 @@ io.on('connection', function(socket){
                  })
           });
 
+          socket.on('requestHonoured', function(data){
+               var gottenData = data;
+               console.log(data)
+               var objectCreated;
+               var onlineStatus;
+               var callerSocket = socketUsersX[gottenData.callersEmail];
+               var recipientSocket = socketUsersX[gottenData.recipientEmail];
+               var readFileStream = fs.createReadStream('./public/onlineDataBase/onlineStatus.json');
+               readFileStream.on('open', function(){
+                   console.log('file Opened for read operation!!!!');
+               });
+
+               readFileStream.on('data', function(chunk){
+                   objectCreated = JSON.parse(chunk);
+                   onlineStatus = objectCreated[data.callersEmail.split('@')[0]];
+                   if (onlineStatus == 'offline') {
+                       console.log('code got here if was invoked')
+                       
+                       callerSocket.emit('wentOffline', gottenData, function (data) {
+                             console.log(data)
+                       });
+                   }else{
+                       console.log('else statement was invoked')
+                       recipientSocket.emit('stillOnline', gottenData, function(data){
+                             console.log('first was emitten')
+                       });
+
+                       callerSocket.emit('stillOnline', gottenData, function (data) {
+                             console.log('second was emmited')
+                       });
+                   }
+                   console.log('reading file data');
+               })
+
+               readFileStream.on('end', function(){
+                   console.log('File Reading has Ended index.js .    ||   index.js');
+               });
+          });
+
           socket.on('requestToConnect', function(data){
+                console.log('Data got here');
+                console.log(data)
                 var dataToSend = {}
                 var recipientEmail = data.recipientEmail;
                 var recipientSocket = socketUsersX[recipientEmail];
                 var callerFirstName, callerLastName;
+                var recipientDaises;
+                console.log('got here');
                 function emmittingCall() {
-                    var sql = 'select daises from daisesposting where daisesidentity = ?'
+                    var sql = 'select Discursion from daisesposting where daisesidentity = ?'
                     connection.query(sql, [data.recipientIdentity], function(error, results ,fields){
                          if (error) {
                              throw error;
                          }
                         recipientDaises = results[0].Discursion;
                         dataToSend['recipientDaises'] = recipientDaises;
-                        dataToSend['callersFirstName'] = callersFirstName;
-                        dataToSend['callersLastName'] = callersLastName;
+                        dataToSend['callersFirstName'] = callerFirstName;
+                        dataToSend['callersLastName'] = callerLastName;
+                        dataToSend['callersEmail'] = data.callerEmail;
+                        dataToSend['recipientEmail'] = data.recipientEmail;
                         //emitting to recipient!
                         recipientSocket.emit('incomingRequest', dataToSend, function (data) {
                           console.log('incomingRequest Emitted  || socket.io');
@@ -281,14 +326,16 @@ io.on('connection', function(socket){
                     });
                 }
 
+
                 function callersIdentity(callerEmail) {
                     var sql = 'select firstName, lastname from registrationtable where email = ?'
                     connection.query(sql, [callerEmail], function(error, results, fields){
                          if (error) {
                            throw error;
                          }
-                         callerFirstName = results[0].FirstName;
-                         callerLastName = results[0].LastName;
+                         console.log(results)
+                         callerFirstName = results[0].firstName;
+                         callerLastName = results[0].lastname;
                          emmittingCall();
                     })
                 }

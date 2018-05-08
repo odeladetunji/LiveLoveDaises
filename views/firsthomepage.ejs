@@ -79,11 +79,22 @@
 	</div>
 
 	<div>
+		<audio controls id="ringingTone">
+			  <source src="http://127.0.0.1:9000/public/ringingtone/ringingtone.ogg" type="audio/ogg">
+			   file not supported
+		</audio>
+
+	</div>
+
+	<div>
 		     <% include ./partials/loaderInterfaceMeetPeople %>
 	</div>
 	 <div>
      	     <% include ./partials/ratingFinal %>
 	 </div>
+	<div>
+		<% include ./partials/notOnlineAgain %>
+	</div>
 	<div>
 	    	 <% include ./partials/publicChatting %>
 	</div>
@@ -102,6 +113,9 @@
 
     <div>
 		     <% include ./partials/confirmingModal %>
+	</div>
+	<div>
+		<% include ./partials/stopCall %>
 	</div>
 	<div>
 		     <% include ./partials/notAvailable %>
@@ -158,7 +172,10 @@
 		 </form>
 	</div>
 	<div style="display: none;">
-		<form action="http://127.0.0.1:9000/checkTimeSchedule" method="POST" class="checkingTimeLine"></form>
+		<form action="http://127.0.0.1:9000/checkTimeSchedule" method="POST" class="checkingTimeLine">
+			<input type="text" name="checkTimeInput" id="checkTimeInput">
+		</form>
+		
 	</div>
 	<div style="display: none;">
 		 <form action="http://127.0.0.1:9000/getInboxpage" method="GET" class="displayRequest">
@@ -1490,7 +1507,7 @@
 
 </script>
 <script src="http://127.0.0.1:9000/JavaScript/textChatting.js" type="application/javascript"></script>
-<script src="/JavaScript/videoChatting.js" type="application/javascript"></script>
+<script src="http://127.0.0.1:9000/JavaScript/videoChatting1.js" type="application/javascript"></script>
 <script src="http://127.0.0.1:9000/JavaScript/publicChatting.js" type="application/javascript"></script>
 </body>
 </html>
