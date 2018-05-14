@@ -2,9 +2,22 @@
 
  var userSentPicture;
  var socketSentData;
- var socket = io.connect('http://127.0.0.1:9000');
+ var socket; // = io.connect('http://127.0.0.1:9000');
  var identityStoreForCalling = {};
  var incommingCallInformation;
+
+$('document').ready(function (event) {
+	var socket = io.connect('http://127.0.0.1:9000');
+	console.log(mycookie);
+	console.log('seeing mycookie')
+	setTimeout(() => {
+		socket.emit("my other event", "this one is from the client side");
+		socket.emit('am online now!', { 'personalEmail': mycookie }, function (data) {
+			console.log(data);
+			console.log('callback function ran for "am online now!"');
+		});
+	}, 5000);
+});
  // this code is not to be deleted for any reason
  // its sending email to an object and setting the 
  // value to the socket that sent it!!!
@@ -17,11 +30,11 @@
  
  var returnedData = 'Resending arrived on the client machine!';
 
- socket.emit("my other event", "this one is from the client side");
+ /*socket.emit("my other event", "this one is from the client side");
  socket.emit('am online now!', {'personalEmail': mycookie}, function(data){
  	console.log(data);
  	console.log('callback function ran for "am online now!"');
- });
+ });*/
  socket.on('disconnect', function(){
  	 console.log('SomeOne Disconnect: From Client Side');
  });
