@@ -8,7 +8,7 @@ var fs = require('fs');
 router.post('/', function (req, res) {
     console.log(req.body);
     var recipientIdentity = req.body.recipientIdentity; // its an email
-
+    console.log(recipientIdentity)
     var connection = mysql.createConnection({
         host: '127.0.0.1',
         user: 'root',
@@ -45,6 +45,7 @@ router.post('/', function (req, res) {
          if (error) {
              throw error;
          }
+         console.log(results)
          checkOnlineStatus(results[0].Email);
     });
 });
