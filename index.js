@@ -487,28 +487,55 @@ io.on('connection', function(socket){
            });
            
            socket.on('videoChat Friend', function(data, callback){
-                  if(videoUsers2[data.FriendEmail] != 'busy!' && videoUsers[data.FriendEmail] != null){
-                     setTimeout(function(){
-                            videoUsers2[data.FriendEmail] = 'busy!';
-                     }, 30);
+                   var gottenData;
+                   var onlineStatus;
+                   var availabilityStatus;
+                   var readFile = fs.createReadStream('./public/onlineDataBase/onlineStatus.json');
+                   readFile.on('open', function(){
+                         console.log('File Opened   ||  Socket.io');
+                   });
 
-                    callback('Friend is not busy!');
-                  }
-
-                  if(videoUsers2[data.FriendEmail] == 'busy!'){
-                     callback('Friend is busy!');
-                  }
-
-                  if(videoUsers[data.FriendEmail] == null){
-                     callback('Friend is not Online!');
-                  }
+                   readFile.on('data', function(chunk){
+                         gottenData = JSON.parse(chunk);
+                         onlineStatus = gottenData[data.friendIdentity.split('@')[0]];
+                         if (onlineStatus == 'online') {
+                                 var readFileAgain = fs.createReadStream('./public/onlineDataBase/availabilityStatus.json');
+                                 readFileAgain.on('open', function(){
+                                     console.log('File Opened For Reading  || Socket.io');
+                                 });
+                                 readFileAgain.on('data', function(chunk){
+                                     gottenData = JSON.parse(chunk);
+                                     availabilityStatus = gottenData[data.friendIdentity.split('@')[0]];
+                                     if (availabilityStatus == 'notBusy!') {
+                                         var callersSocket = socketUsersX[data.ownersEmail];
+                                         callersSocket.emit('notBusy!', function (data) {
+                                             console.log(data);
+                                         });
+                                     }else{
+                                         // meaning this guy is busy!
+                                         var callersSocket = socketUsersX[data.ownersEmail];
+                                         callersSocket.emit('busy!', function (data) {
+                                             console.log(data);
+                                         });
+                                     }
+                                 });
+                                 readFileAgain.on('end', function(){
+                                     console.log('Finished Reading File  ||  Socket.io')
+                                 });
+                         }else{
+                             // this means the person is offline!
+                             var callersSocket = socketUsersX[data.ownersEmail];
+                             callersSocket.emit('user not online', function () {
+                                     console.log('user not online');
+                             });
+                         }
+                   });
            });
 
            socket.on('offer', function(data, callback){
-                 callback('offer was sent to: ' + data.friendIdentity);
-                 var friendFullName;
-                 if(videoUsers[data.friendIdentity] != null){
-                      var sql = 'Select firstName, LastName From registrationtable Where Email = ?';
+                       callback('offer was sent to: ' + data.friendIdentity);
+                       var friendFullName;
+                       var sql = 'Select firstName, LastName From registrationtable Where Email = ?';
                        connection.query(sql, [data.friendIdentity], function(error, results, fields){
                               if(error)throw error;
                               var callerName = results[FirstName] + ' ' + results[Lastname];
@@ -519,20 +546,80 @@ io.on('connection', function(socket){
                            // calling someOne!
                            data.fullname = callerName;
                            data.friendEmail = data.friendIdentity;
-                           videoUsers[data.friendIdentity].emit('inComingOffer', data, function(data){
-                                 console.log(data);
+
+                           var readFile = fs.createReadStream('./public/onlineDataBase/onlineStatus.json');
+                           readFile.on('open', function () {
+                               console.log('File Opened For Reading!!!');
                            });
+
+                           readFile.on('data', function (chunk) {
+                               var fileContent = JSON.parse(chunk);
+                               var onlineStatus = fileContent[data.friendIdentity.split('@')[0]];
+                               if (onlineStatus == 'online') {
+                                   var recipientSocket = socketUsersX[data.friendIdentity];
+                                   recipientSocket.emit('inComingOffer', data, function (data) {
+                                       console.log(data);
+                                   });
+                               } else {
+                                   var callersSocket = socketUsersX[data.ownerEmail];
+                                   callersSocket.emit('user not online', data);
+                               }
+                           });
+
+                           readFile.on('end', function () {
+                               console.log('Finished Reading File');
+                           })
                        }
-                 };
+                 
            });
 
            socket.on('answer', function(data, callback){
-              callback('answer sent!');
-              videoUsers[data.friendEmail].emit('onAnswer', data);
-           })
+               callback('answer sent!');
+
+               var readFile = fs.createReadStream('./public/onlineDataBase/onlineStatus.json');
+               readFile.on('open', function () {
+                   console.log('File Opened For Reading!!!');
+               });
+
+               readFile.on('data', function (chunk) {
+                   var fileContent = JSON.parse(chunk);
+                   var onlineStatus = fileContent[data.friendIdentity.split('@')[0]];
+                   if (onlineStatus == 'online') {
+                       var recipientSocket = socketUsersX[data.friendIdentity];
+                       recipientSocket.emit('onAnswer', data);
+                   } else {
+                       var callersSocket = socketUsersX[data.ownerEmail];
+                       callersSocket.emit('user not online', data);
+                   }
+               });
+
+               readFile.on('end', function () {
+                   console.log('Finished Reading File');
+               })
+           });
 
            socket.on('candidate', function(data){
-               videoUsers2[data.friendIdentity].emit('incoming candidate', data);
+                   var readFile = fs.createReadStream('./public/onlineDataBase/onlineStatus.json');
+                   readFile.on('open', function(){
+                       console.log('File Opened For Reading!!!');
+                   });
+
+                   readFile.on('data', function(chunk){
+                       var fileContent = JSON.parse(chunk);
+                       var onlineStatus = fileContent[data.friendIdentity.split('@')[0]];
+                       if (onlineStatus == 'online') {
+                           var recipientSocket = socketUsersX[data.friendIdentity];
+                           recipientSocket.emit('incoming candidate', data);
+                       }else{
+                           var callersSocket = socketUsersX[data.ownerEmail];
+                           callersSocket.emit('user not online', data);
+                       }
+                   });
+
+                   readFile.on('end', function() {
+                       console.log('Finished Reading File');
+                   })
+               
            });
 
            socket.on('disconnect', function() {
