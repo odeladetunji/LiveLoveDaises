@@ -9,7 +9,7 @@
 $('document').ready(function (event) {
 	var socket = io.connect('http://127.0.0.1:9000');
 	console.log(mycookie);
-	console.log('seeing mycookie')
+	console.log('seeing mycookie');
 	setTimeout(() => {
 		socket.emit("my other event", "this one is from the client side");
 		socket.emit('am online now!', { 'personalEmail': mycookie }, function (data) {
@@ -286,7 +286,7 @@ $('document').ready(function(event){
                                            injectedHtml1 = '<li id="' + data.arrayOfFriends[i].split(' ')[2] + '" onclick="showFriendNameOnVideoTemplate(this)">' + data.arrayOfFriends[i].split(' ')[0] + " " + data.arrayOfFriends[i].split(' ')[1] + '<span style="font-weight: bold; color:' + color + ';">.</span>' + '</li>';
 
                                            $(injectedHtml).insertBefore('#hiddenLipublic');
-		                                   $(injectedHtml1).insertBefore('#forVideoChat');
+		                                   //$(injectedHtml1).insertBefore('#forVideoChat');
 			                 
 							             }
                                   }
